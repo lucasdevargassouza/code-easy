@@ -8,6 +8,7 @@
     "start": "node ./scripts/start.js && tsc ./app/main.ts && node ./scripts/server.js"
   },
   "dependencies": {
+    "sass": "^1.20.1",
     "typescript": "^3.4.5"
   },
   "repository": {
