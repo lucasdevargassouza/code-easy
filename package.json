@@ -4,7 +4,8 @@
   "description": "Plataforma low code!",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./scripts/start.js"
   },
   "dependencies": {
     "typescript": "^3.4.5"
