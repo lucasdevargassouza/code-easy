@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./scripts/start.js"
+    "start": "node ./scripts/start.js && tsc ./app/main.ts && node ./scripts/server.js"
   },
   "dependencies": {
     "typescript": "^3.4.5"
