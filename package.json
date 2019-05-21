@@ -1,0 +1,18 @@
+{
+  "name": "code-easy",
+  "version": "1.0.0",
+  "description": "Plataforma low code!",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://ls18017.visualstudio.com/Code%20Easy/_git/Code%20Easy"
+  },
+  "author": "Lucas Souza",
+  "license": "ISC"
+}
