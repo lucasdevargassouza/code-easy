@@ -1,14 +1,11 @@
-const http = require('http')
-const port = 3000
-const ip = 'localhost'
+const express = require("express");
 
-const server = http.createServer((req, res) => {
-  console.log('Recebendo uma request!')
+app = express();
+
+/* app.get('/', function (req, res) { 
+  res.send(); 
   
-  res.end("Teste")
-})
-
-server.listen(port, ip, () => {
-  console.log(`Servidor rodando em http://${ip}:${port}`)
-  console.log('Para derrubar o servidor: ctrl + c');
-})
+}); */
+app.use(express.static('./app/index'))
+//app.get('/', express.static(__dirname + '/app/index'))
+app.listen(3000);
