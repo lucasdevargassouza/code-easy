@@ -21,9 +21,11 @@ function startProject() {
     ps.invoke()
         .then(output => {
             console.log(output);
+            alert("Projeto criado!")
         })
         .catch(err => {
             console.log(err);
+            alert("Erro no processo de criação do projeto!")
         })
 }
 
