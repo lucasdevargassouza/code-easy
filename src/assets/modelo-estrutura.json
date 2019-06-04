@@ -1,0 +1,23 @@
+{
+  "name": "Nome do projeto",
+  "description": "Descrição longa do projeto",
+  "models": [
+    {
+      "modelName": "Nome do model",
+      "modelDescription": "Descrição longa do model",
+      "modelAtributes": [
+        {
+          "atributeName": "Nome da Propriedade",
+          "atributeProperties": {
+            "type": "string",
+            "required": true,
+            "unique": true,
+            "defaultValue": true
+          }
+        }
+      ]
+    }
+  ],
+  "controlers": [],
+  "dependences": []
+}
