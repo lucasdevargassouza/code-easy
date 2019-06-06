@@ -1,6 +1,11 @@
 {
   "name": "Nome do projeto",
   "description": "Descrição longa do projeto",
+  "author": "Nome do desenvolvedor",
+  "configuracoes": {
+    "connectionString": "",
+    "useStrict": true
+  },
   "models": [
     {
       "modelName": "Nome do model",
@@ -18,6 +23,41 @@
       ]
     }
   ],
-  "controlers": [],
-  "dependences": []
+  "controlers": [
+    {
+      "name": "Nome_do_Metodo",
+      "content": "Conteúdo do metodo"
+    }
+  ],
+  "repository": [
+    {
+      "name": "Nome_do_Metodo",
+      "content": "Conteúdo do metodo"
+    }
+  ],
+  "routes": [
+    {
+      "routerName": "Nome da rota desejada ex: '/produtos' ",
+      "controllerMethodo": "Metodo da controller a ser usado",
+      "content": "Conteúdo adicional ou parâmetro"
+    }
+  ],
+  "services": [
+    {
+      "name": "Nome_do_Metodo",
+      "content": "Conteúdo do metodo"
+    }
+  ],
+  "dependences": [
+    {
+      "name": "Nome da dependênca",
+      "version": "Nome da dependência"
+    }
+  ],
+  "devdependences": [
+    {
+      "name": "Nome da dependênca",
+      "version": "Nome da dependência"
+    }
+  ]
 }

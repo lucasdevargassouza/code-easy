@@ -18,6 +18,7 @@ import { WebviewDirective } from './share/directives/webview.directive';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
+import { TopBarFrameComponent } from './share/components/top-bar-frame/top-bar-frame.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -28,7 +29,8 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     HomeComponent,
-    WebviewDirective
+    WebviewDirective,
+    TopBarFrameComponent
   ],
   imports: [
     BrowserModule,

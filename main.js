@@ -24,6 +24,7 @@ function createWindow() {
         y: 0,
         width: 1000,
         height: 800,
+        frame: false,
         webPreferences: {
             nodeIntegration: true,
         },
@@ -42,7 +43,7 @@ function createWindow() {
         }));
     }
     if (serve) {
-        win.webContents.openDevTools();
+        //win.webContents.openDevTools();
     }
     // Emitted when the window is closed.
     win.on('closed', function () {

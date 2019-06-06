@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    remote.dialog.showOpenDialog({ properties: ['openDirectory'] });
+    //remote.dialog.showOpenDialog({ properties: ['openDirectory'] });
   }
 
 }
