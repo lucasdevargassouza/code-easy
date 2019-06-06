@@ -5,55 +5,44 @@
     background-color: $color-top-bar;
     display: flex;
     color: $color-white;
-    -webkit-app-region: drag;
 }
 
 .left {
-    flex: 1;
 }
 
 .center {
     flex: 1;
+    text-align: center;
+    padding-top: $size-2;
+    -webkit-app-region: drag;
+    font-size: $size-3;
 }
 
 .right {
-    flex: 1;
     display: flex;
 }
 
 .frame-buttons {
     display: flex;
     height: $size-fill;
-    width: $size-35;
-    position: relative;
+    cursor: pointer;
 }
 
-.frame-btn-minimizar {
+.frame-btn {
     flex: 1;
     text-align: center;
     padding-top: $size-1-5;
+    width: $size-13;
 }
 
-.frame-btn-maximizar {
-    flex: 1;
-    text-align: center;
-    padding-top: $size-1-5;
-}
+.frame-btn-minimizar {}
+.frame-btn-maximizar {}
+.frame-btn-close {}
 
-.frame-btn-close {
-    flex: 1;
-    text-align: center;
-    padding-top: $size-1-5;
-}
-
-.frame-btn-maximizar:hover, .frame-btn-minimizar:hover {
+.frame-btn:hover {
     background-color: $color-top-bar-button-maximizar;
 }
 
 .frame-btn-close:hover {
     background-color: $color-top-bar-button-close;
-}
-
-.ide-buttons {
-    flex: 1;
 }

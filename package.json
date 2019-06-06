@@ -82,5 +82,11 @@
   },
   "engines": {
     "node": ">=10.9.0"
+  },
+  "dependencies": {
+    "@angular/animations": "github:angular/animations-builds",
+    "@angular/cdk": "github:angular/cdk-builds",
+    "@angular/material": "github:angular/material2-builds",
+    "hammerjs": "^2.0.8"
   }
 }

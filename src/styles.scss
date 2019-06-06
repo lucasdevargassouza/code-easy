@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 
 $size-fill: 100%;
 $size-none: 0px;
@@ -30,7 +32,8 @@ $size-35: 140px;
 
 $color-white: #ffffff;
 
-$color-top-bar: #3f3c3c;
+$color-top-bar: #3C3C3C;
+$color-background: #1E1E1E;
 $color-top-bar-button-close: #c70000;
 $color-top-bar-button-maximizar: #4d4848;
 $color-top-bar-button-minimizar: #4d4848;
@@ -54,4 +57,5 @@ body {
   padding: 0;
 
   height: 100%;
+  font-family: Consolas, 'Courier New', monospace;
 }
