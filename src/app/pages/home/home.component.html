@@ -1,27 +1,19 @@
 <div class="main-page">
-  <!-- Top bar frame -->
-  <app-top-bar-frame [tituloIde]="'Nome do projeto'"></app-top-bar-frame>
+    <!-- Top bar frame -->
+    <app-top-bar-frame [tituloIde]="'Nome do projeto'"></app-top-bar-frame>
 
-  <div class="application-body">
-    <mat-grid-list cols="3" rowHeight="100%">
-      <mat-grid-tile>
-        <div class="col-left">
+    <div class="application-body">
+        <!-- <div class="col-left" mwlResizable [enableGhostResize]="true" [style.width.px]='width'
+            [resizeEdges]="{bottom: fasle, right: true, top: fasle, left: false}" (resize)="onResizeEnd($event)">
 
+        </div> -->
+        <div class="col-left" [style.width.px]='width'>
+
+            <div class="grabber" (mousedown)="onMouseDown($event)" (mousemove)="onMouseMove($event)" (mouseup)="onMouseMove($event)"></div>
         </div>
-      </mat-grid-tile>
-      <mat-grid-tile>
-            <div class="col-center">
 
-            </div>
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <div class="col-right">
+    </div>
 
-        </div>
-      </mat-grid-tile>
-    </mat-grid-list>
-  </div>
-
-  <!-- Status bar -->
-  <app-botton-bar-status></app-botton-bar-status>
+    <!-- Status bar -->
+    <app-botton-bar-status></app-botton-bar-status>
 </div>

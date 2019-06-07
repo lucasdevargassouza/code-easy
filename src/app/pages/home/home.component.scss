@@ -1,29 +1,46 @@
-@import '../../../styles.scss';
+@import "../../../styles.scss";
 
 .main-page {
-    background-color: $color-background;
-    height: $size-fill;
-    display: flex;
-    flex-direction: column;
+  background-color: $color-background;
+  height: $size-fill;
+  display: flex;
+  flex-direction: column;
 }
 
 .application-body {
-    flex: 1;
+  flex: 1;
 }
 
 .col-left {
-    height: $size-fill;
-    width: $size-fill;
-    background-color: $color-background-col-left;
+  width: $size-fill;
+  height: $size-fill;
+  background-color: $color-background-col-left;
 }
 
 .col-center {
-    height: $size-fill;
-    width: $size-fill;
+  height: $size-fill;
+  width: $size-fill;
 }
 
 .col-right {
-    height: $size-fill;
-    width: $size-fill;
-    background-color: $color-background-col-left;
+  height: $size-fill;
+  width: $size-fill;
+  background-color: $color-background-col-left;
+}
+
+.grabber {
+  cursor: col-resize;
+  width: 3px;
+  background-color: #444;
+  overflow: hidden;
+  height: $size-fill;
+  margin-left: auto;
+}
+
+.grabber:focus {
+  border: none;
+}
+
+.mwlResizable {
+  box-sizing: border-box; // required for the enableGhostResize option to work
 }

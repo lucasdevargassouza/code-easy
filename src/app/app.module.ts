@@ -7,6 +7,8 @@ import { HttpClientModule, HttpClient } from "@angular/common/http";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 
+import { ResizableModule } from 'angular-resizable-element';
+
 //Angular Material Components
 import { 
   MatCheckboxModule, MatButtonModule,
@@ -76,6 +78,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     BrowserAnimationsModule,
 
+    ResizableModule,
     // Material components
     MatCheckboxModule,
     MatCheckboxModule,
