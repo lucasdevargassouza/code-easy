@@ -33,7 +33,11 @@ $size-35: 140px;
 $color-white: #ffffff;
 
 $color-top-bar: #3C3C3C;
+$color-botton-bar: #0F77BF;
 $color-background: #1E1E1E;
+$color-background-col-left: #252527;
+$color-background-col-rifht: #252527;
+
 $color-top-bar-button-close: #c70000;
 $color-top-bar-button-maximizar: #4d4848;
 $color-top-bar-button-minimizar: #4d4848;
@@ -57,5 +61,5 @@ body {
   padding: 0;
 
   height: 100%;
-  font-family: Consolas, 'Courier New', monospace;
+  font-family: Segoe UI, 'Courier New', monospace;
 }

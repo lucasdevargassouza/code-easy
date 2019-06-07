@@ -87,6 +87,7 @@
     "@angular/animations": "github:angular/animations-builds",
     "@angular/cdk": "github:angular/cdk-builds",
     "@angular/material": "github:angular/material2-builds",
+    "angular-resize-event": "^1.0.0",
     "hammerjs": "^2.0.8"
   }
 }

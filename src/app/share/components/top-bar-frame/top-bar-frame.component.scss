@@ -1,48 +1,60 @@
-@import '../../../../styles.scss';
+@import "../../../../styles.scss";
 
 .top-bar-main {
-    height: $size-8;
-    background-color: $color-top-bar;
-    display: flex;
-    color: $color-white;
+  position: fixed;
+  width: 100%;
+  height: $size-8;
+  background-color: $color-top-bar;
+  display: flex;
+  color: $color-white;
 }
 
 .left {
 }
 
 .center {
-    flex: 1;
-    text-align: center;
-    padding-top: $size-2;
-    -webkit-app-region: drag;
-    font-size: $size-3;
+  flex: 1;
+  text-align: center;
+  padding-top: $size-2;
+  -webkit-app-region: drag;
+  
+  font-family: Segoe UI;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 14px;
 }
 
 .right {
-    display: flex;
+  display: flex;
 }
 
 .frame-buttons {
-    display: flex;
-    height: $size-fill;
-    cursor: pointer;
+  display: flex;
+  height: $size-fill;
+  cursor: pointer;
 }
 
 .frame-btn {
-    flex: 1;
-    text-align: center;
-    padding-top: $size-1-5;
-    width: $size-13;
+  flex: 1;
+  text-align: center;
+  width: $size-13;
 }
 
-.frame-btn-minimizar {}
-.frame-btn-maximizar {}
-.frame-btn-close {}
+.frame-btn-minimizar {
+  content: url(assets/icons/btn-minimizar.svg);
+}
+.frame-btn-maximizar {
+  content: url(assets/icons/btn-maximizar.svg);
+}
+.frame-btn-close {
+  content: url(assets/icons/btn-close.svg);
+}
 
 .frame-btn:hover {
-    background-color: $color-top-bar-button-maximizar;
+  background-color: $color-top-bar-button-maximizar;
 }
 
 .frame-btn-close:hover {
-    background-color: $color-top-bar-button-close;
+  background-color: $color-top-bar-button-close;
 }

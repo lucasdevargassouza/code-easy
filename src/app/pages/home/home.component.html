@@ -1,4 +1,27 @@
 <div class="main-page">
-    <app-top-bar-frame [tituloIde]="'Nome do projeto'"></app-top-bar-frame>
-    <button mat-button>Click me!</button>
+  <!-- Top bar frame -->
+  <app-top-bar-frame [tituloIde]="'Nome do projeto'"></app-top-bar-frame>
+
+  <div class="application-body">
+    <mat-grid-list cols="3" rowHeight="100%">
+      <mat-grid-tile>
+        <div class="col-left">
+
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+            <div class="col-center">
+
+            </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div class="col-right">
+
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+
+  <!-- Status bar -->
+  <app-botton-bar-status></app-botton-bar-status>
 </div>

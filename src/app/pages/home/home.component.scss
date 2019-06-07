@@ -2,5 +2,28 @@
 
 .main-page {
     background-color: $color-background;
-    height: 100%;
+    height: $size-fill;
+    display: flex;
+    flex-direction: column;
+}
+
+.application-body {
+    flex: 1;
+}
+
+.col-left {
+    height: $size-fill;
+    width: $size-fill;
+    background-color: $color-background-col-left;
+}
+
+.col-center {
+    height: $size-fill;
+    width: $size-fill;
+}
+
+.col-right {
+    height: $size-fill;
+    width: $size-fill;
+    background-color: $color-background-col-left;
 }
