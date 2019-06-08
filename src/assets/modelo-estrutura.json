@@ -6,46 +6,58 @@
     "connectionString": "",
     "useStrict": true
   },
-  "models": [
+  "src": [
     {
-      "modelName": "Nome do model",
-      "modelDescription": "Descrição longa do model",
-      "modelAtributes": [
+      "models": [
         {
-          "atributeName": "Nome da Propriedade",
-          "atributeProperties": {
-            "type": "string",
-            "required": true,
-            "unique": true,
-            "defaultValue": true
-          }
+          "modelName": "Nome do model",
+          "modelDescription": "Descrição longa do model",
+          "modelAtributes": [
+            {
+              "atributeName": "Nome da Propriedade",
+              "atributeProperties": {
+                "type": "string",
+                "required": true,
+                "unique": true,
+                "defaultValue": true
+              }
+            }
+          ]
         }
       ]
-    }
-  ],
-  "controlers": [
+    },
     {
-      "name": "Nome_do_Metodo",
-      "content": "Conteúdo do metodo"
-    }
-  ],
-  "repository": [
+      "controlers": [
+        {
+          "name": "Nome_do_Metodo",
+          "content": "Conteúdo do metodo"
+        }
+      ]
+    },
     {
-      "name": "Nome_do_Metodo",
-      "content": "Conteúdo do metodo"
-    }
-  ],
-  "routes": [
+      "repository": [
+        {
+          "name": "Nome_do_Metodo",
+          "content": "Conteúdo do metodo"
+        }
+      ]
+    },
     {
-      "routerName": "Nome da rota desejada ex: '/produtos' ",
-      "controllerMethodo": "Metodo da controller a ser usado",
-      "content": "Conteúdo adicional ou parâmetro"
-    }
-  ],
-  "services": [
+      "routes": [
+        {
+          "routerName": "Nome da rota desejada ex: '/produtos' ",
+          "controllerMethodo": "Metodo da controller a ser usado",
+          "content": "Conteúdo adicional ou parâmetro"
+        }
+      ]
+    },
     {
-      "name": "Nome_do_Metodo",
-      "content": "Conteúdo do metodo"
+      "services": [
+        {
+          "name": "Nome_do_Metodo",
+          "content": "Conteúdo do metodo"
+        }
+      ]
     }
   ],
   "dependences": [

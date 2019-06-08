@@ -1,19 +1,43 @@
 <div class="main-page">
-    <!-- Top bar frame -->
-    <app-top-bar-frame [tituloIde]="'Nome do projeto'"></app-top-bar-frame>
+  <!-- Top bar frame -->
+  <app-top-bar-frame [tituloIde]="'Nome do projeto'"></app-top-bar-frame>
+  <!-- Top bar frame -->
 
-    <div class="application-body">
-        <!-- <div class="col-left" mwlResizable [enableGhostResize]="true" [style.width.px]='width'
-            [resizeEdges]="{bottom: fasle, right: true, top: fasle, left: false}" (resize)="onResizeEnd($event)">
+  <div class="application-body">
+    <div class="col-left" [style.width.px]="widthColLeft">
+      <div style="flex: 1">
 
-        </div> -->
-        <div class="col-left" [style.width.px]='width'>
 
-            <div class="grabber" (mousedown)="onMouseDown($event)" (mousemove)="onMouseMove($event)" (mouseup)="onMouseMove($event)"></div>
-        </div>
 
+
+        <app-resources-tree></app-resources-tree>
+
+
+
+
+      </div>
+      <div class="grabber-col-left" (mousedown)="onMouseDownColLeft($event)"></div>
     </div>
 
-    <!-- Status bar -->
-    <app-botton-bar-status></app-botton-bar-status>
+    <div class="col-center"></div>
+
+    <div class="col-right" [style.width.px]="widthColRight">
+        <div class="grabber-col-right" (mousedown)="onMouseDownColRight($event)"></div>
+        <div style="flex: 1">
+
+
+
+
+            <app-resources-tree></app-resources-tree>
+            
+            
+            
+            
+        </div>
+    </div>
+  </div>
+
+  <!-- Status bar -->
+  <app-botton-bar-status></app-botton-bar-status>
+  <!-- Status bar -->
 </div>

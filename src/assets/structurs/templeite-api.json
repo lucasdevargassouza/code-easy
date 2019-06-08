@@ -1,0 +1,75 @@
+{
+  "name": "",
+  "description": "",
+  "author": "",
+  "configuracoes": {
+    "connectionString": "",
+    "useStrict": true
+  },
+  "src": [
+    {
+      "models": [
+        {
+          "modelName": "",
+          "modelDescription": "",
+          "modelAtributes": [
+            {
+              "atributeName": "",
+              "atributeProperties": {
+                "type": "string",
+                "required": true,
+                "unique": true,
+                "defaultValue": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "controlers": [
+        {
+          "name": "",
+          "content": ""
+        }
+      ]
+    },
+    {
+      "repository": [
+        {
+          "name": "",
+          "content": ""
+        }
+      ]
+    },
+    {
+      "routes": [
+        {
+          "routerName": "",
+          "controllerMethodo": "",
+          "content": ""
+        }
+      ]
+    },
+    {
+      "services": [
+        {
+          "name": "",
+          "content": ""
+        }
+      ]
+    }
+  ],
+  "dependences": [
+    {
+      "name": "",
+      "version": ""
+    }
+  ],
+  "devdependences": [
+    {
+      "name": "",
+      "version": ""
+    }
+  ]
+}

@@ -9,38 +9,47 @@
 
 .application-body {
   flex: 1;
+  display: flex;
 }
 
 .col-left {
-  width: $size-fill;
   height: $size-fill;
   background-color: $color-background-col-left;
+  box-shadow: $box-shadow-small;
+  min-width: $size-14;
+  max-width: $size-half;
+  display: flex;
 }
 
 .col-center {
   height: $size-fill;
   width: $size-fill;
+  flex: 1;
 }
 
 .col-right {
   height: $size-fill;
-  width: $size-fill;
-  background-color: $color-background-col-left;
+  background-color: $color-background-col-right;    
+  box-shadow: $box-shadow-small;
+  min-width: $size-38;
+  max-width: $size-half;
+  display: flex;
 }
 
-.grabber {
-  cursor: col-resize;
-  width: 3px;
-  background-color: #444;
+.grabber-col-left {
+  cursor: e-resize;
+  width: 5px;
+  background-color: $color-background-col-left;
   overflow: hidden;
   height: $size-fill;
   margin-left: auto;
 }
 
-.grabber:focus {
-  border: none;
+.grabber-col-right {
+  cursor: e-resize;
+  width: 5px;
+  background-color: $color-background-col-right;
+  overflow: hidden;
+  height: $size-fill;
 }
 
-.mwlResizable {
-  box-sizing: border-box; // required for the enableGhostResize option to work
-}

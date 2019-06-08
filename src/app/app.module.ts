@@ -6,14 +6,8 @@ import { FormsModule } from "@angular/forms";
 import { HttpClientModule, HttpClient } from "@angular/common/http";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
-
-import { ResizableModule } from 'angular-resizable-element';
-
 //Angular Material Components
-import { 
-  MatCheckboxModule, MatButtonModule,
-  
-} from "@angular/material";
+import { MatCheckboxModule, MatButtonModule } from "@angular/material";
 
 import { MatInputModule } from "@angular/material/input";
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
@@ -57,7 +51,9 @@ import { WebviewDirective } from "./share/directives/webview.directive";
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./pages/home/home.component";
 import { TopBarFrameComponent } from "./share/components/top-bar-frame/top-bar-frame.component";
-import { BottonBarStatusComponent } from './share/components/botton-bar-status/botton-bar-status.component';
+import { BottonBarStatusComponent } from "./share/components/botton-bar-status/botton-bar-status.component";
+import { ResourcesTreeComponent } from "./share/components/resources-tree/resources-tree.component";
+import { CONSTS } from "./share/services/consts/consts.service";
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -71,6 +67,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     WebviewDirective,
     TopBarFrameComponent,
     BottonBarStatusComponent,
+    ResourcesTreeComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +75,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     BrowserAnimationsModule,
 
-    ResizableModule,
     // Material components
     MatCheckboxModule,
     MatCheckboxModule,
@@ -121,7 +117,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     })
   ],
-  providers: [ElectronService],
+  providers: [ElectronService, CONSTS],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

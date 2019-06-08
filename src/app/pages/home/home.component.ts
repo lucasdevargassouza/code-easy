@@ -1,7 +1,7 @@
 import { Component, OnInit, HostListener } from "@angular/core";
 import { remote } from "electron";
 
-import { ResizeEvent } from 'angular-resizable-element';
+import { CONSTS } from "./../../share/services/consts/consts.service";
 
 @Component({
   selector: "app-home",
@@ -9,42 +9,47 @@ import { ResizeEvent } from 'angular-resizable-element';
   styleUrls: ["./home.component.scss"]
 })
 export class HomeComponent implements OnInit {
-  private x = 100;
-  private oldX = 0;
-  private grabber = false;
-  public width = 150;
-  
-  constructor() { }
+
+  constructor() {}
 
   ngOnInit() {
     //remote.dialog.showOpenDialog({ properties: ['openDirectory'] });
   }
 
-  onResizeEnd(event: ResizeEvent): void {
-    this.width = event.rectangle.width;
-  }
+  //#region Resize Divs
+  private oldX = 0;
+  private grabberColLeft = false;
+  private grabberColRight = false;
+  public widthColLeft = 300;
+  public widthColRight = 300;
 
-
-  /* @HostListener('document:mousedown', ['$event']) */
-  onMouseDown(event: MouseEvent) {
-    this.grabber = true;
+  public onMouseDownColLeft(event: MouseEvent) {
+    this.grabberColLeft = true;
     this.oldX = event.clientX;
   }
-  
-  @HostListener("document:mousemove", ['$event'])
-  onMouseMove(event: MouseEvent) {
-    if (!this.grabber) {
-      return;
+
+  public onMouseDownColRight(event: MouseEvent) {
+    this.grabberColRight = true;
+    this.oldX = event.clientX;
+  }
+
+  @HostListener("document:mousemove", ["$event"])
+  public onMouseMove(event: MouseEvent) {
+    if (this.grabberColLeft) {
+      this.widthColLeft += event.clientX - this.oldX;
+      this.oldX = event.clientX;
     }
-    this.resizer(event.clientX - this.oldX);
-    this.oldX = event.clientX;
+    if (this.grabberColRight) {
+      this.widthColRight -= event.clientX - this.oldX;
+      this.oldX = event.clientX;
+    }
   }
 
-  @HostListener('document:mouseup', ['$event'])
-  onMouseUp(event: MouseEvent) {
-    this.grabber = false;
+  @HostListener("document:mouseup", ["$event"])
+  public onMouseUp(event: MouseEvent) {
+    this.grabberColLeft = false;
+    this.grabberColRight = false;
   }
-  resizer(offsetX: number) {
-    this.width += offsetX;
-  }
+
+  //#endregion
 }

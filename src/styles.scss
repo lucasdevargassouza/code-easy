@@ -3,6 +3,7 @@
 
 
 $size-fill: 100%;
+$size-half: 50%;
 $size-none: 0px;
 
 $size-1: 4px;
@@ -29,6 +30,7 @@ $size-21: 80px;
 $size-22: 84px;
 //...
 $size-35: 140px;
+$size-38: 152px;
 
 $color-white: #ffffff;
 
@@ -36,13 +38,14 @@ $color-top-bar: #3C3C3C;
 $color-botton-bar: #0F77BF;
 $color-background: #1E1E1E;
 $color-background-col-left: #252527;
-$color-background-col-rifht: #252527;
+$color-background-col-right: #252527;
 
 $color-top-bar-button-close: #c70000;
 $color-top-bar-button-maximizar: #4d4848;
 $color-top-bar-button-minimizar: #4d4848;
 
 
+$box-shadow-small: 0px 0px 5px 0.1px #191919;
 
 
 
@@ -62,4 +65,5 @@ body {
 
   height: 100%;
   font-family: Segoe UI, 'Courier New', monospace;
+  overflow: hidden;
 }
