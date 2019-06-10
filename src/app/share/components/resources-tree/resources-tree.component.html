@@ -1,3 +1,17 @@
-<p>
-  resources-tree works!
-</p>
+<!-- Para caso tenha itens a baixo -->
+<div *ngIf="objeto.isHaveChild">
+  <div class="item-list-pai" (click)="toggleContent()">
+    {{ objeto.itemName }}
+  </div>
+  <div *ngIf="showContent" class="item-list-pai" (click)="alert('teste')">
+    <app-resources-tree
+      *ngFor="let obj of objeto.itemList"
+      [objeto]="obj"
+    ></app-resources-tree>
+  </div>
+</div>
+
+<!-- Para caso não tenha itens a baixo -->
+<div *ngIf="!objeto.isHaveChild" class="item-list-pai">
+  {{ objeto.itemName }}
+</div>

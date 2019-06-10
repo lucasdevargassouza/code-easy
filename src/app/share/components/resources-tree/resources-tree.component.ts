@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input,  } from '@angular/core';
 
 @Component({
   selector: 'app-resources-tree',
@@ -6,10 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./resources-tree.component.scss']
 })
 export class ResourcesTreeComponent implements OnInit {
+  public showContent: Boolean = false;
 
-  constructor() { }
+  @Input() public objeto: any;
+  public isHaveChild: Boolean;
+  constructor() {
+  }
 
   ngOnInit() {
+    this.isHaveChild = this.objeto.isHaveChild as Boolean;
+  }
+
+  public toggleContent() {
+    this.showContent = !this.showContent;
   }
 
 }

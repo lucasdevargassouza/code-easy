@@ -36,9 +36,13 @@
   display: flex;
 }
 
+.grabber-col-left:active, .grabber-col-right:active {
+  background-color: $color-top-bar;
+}
+
 .grabber-col-left {
   cursor: e-resize;
-  width: 5px;
+  width: 2px;
   background-color: $color-background-col-left;
   overflow: hidden;
   height: $size-fill;
@@ -47,9 +51,10 @@
 
 .grabber-col-right {
   cursor: e-resize;
-  width: 5px;
+  width: 2px;
   background-color: $color-background-col-right;
   overflow: hidden;
   height: $size-fill;
 }
+
 

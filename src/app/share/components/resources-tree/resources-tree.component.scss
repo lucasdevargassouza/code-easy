@@ -1,0 +1,12 @@
+@import "./../../../../styles.scss";
+
+.item-list-pai {
+    min-height: $size-6;
+    cursor: pointer;
+    padding-left: $size-4;
+    font-size: $font-size-3-5;
+}
+
+.item-list-pai:hover {
+    background-color: $color-top-bar;
+}

@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-
+// Sizes ------------------
 $size-fill: 100%;
 $size-half: 50%;
 $size-none: 0px;
@@ -32,6 +32,22 @@ $size-22: 84px;
 $size-35: 140px;
 $size-38: 152px;
 
+// Font-sizes -------------
+$font-size-1: 4px;
+$font-size-1-5: 6px;
+$font-size-2: 8px;
+$font-size-3: 12px;
+$font-size-3-5: 14px;
+$font-size-4: 16px;
+$font-size-5: 20px;
+$font-size-6: 24px;
+$font-size-7: 28px;
+$font-size-8: 32px;
+$font-size-9: 36px;
+$font-size-10: 40px;
+
+
+// Colors -----------------
 $color-white: #ffffff;
 
 $color-top-bar: #3C3C3C;
@@ -66,4 +82,5 @@ body {
   height: 100%;
   font-family: Segoe UI, 'Courier New', monospace;
   overflow: hidden;
+  color: white;
 }

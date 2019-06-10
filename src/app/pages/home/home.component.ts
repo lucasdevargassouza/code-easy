@@ -10,7 +10,94 @@ import { CONSTS } from "./../../share/services/consts/consts.service";
 })
 export class HomeComponent implements OnInit {
 
-  constructor() {}
+  public src = [
+    {
+      "itemName": "Models",
+      "isHaveChild": true,
+      "itemList": [
+        {
+          "itemName": "Nome do modelo",
+          "itemDescription": "",
+          "isHaveChild": true,
+          "itemList": [
+            {
+              "itemName": "Nome atributo",
+              "isHaveChild": false,
+              "itemProperties": {
+                "type": "string",
+                "required": true,
+                "unique": true,
+                "defaultValue": true
+              }
+            },
+            {
+              "itemName": "Nome atributo",
+              "isHaveChild": false,
+              "itemProperties": {
+                "type": "string",
+                "required": true,
+                "unique": true,
+                "defaultValue": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "itemName": "Controllers",
+      "itemDescription": "",
+      "isHaveChild": true,
+      "itemList": [
+        {
+          "itemName": "Nome da controler",
+          "isHaveChild": false,
+          "content": ""
+        }
+      ]
+    },
+    {
+      "itemName": "Repository",
+      "itemDescription": "",
+      "isHaveChild": true,
+      "itemList": [
+        {
+          "itemName": "Nome do repositório",
+          "isHaveChild": false,
+          "content": ""
+        }
+      ]
+    },
+    {
+      "itemName": "Routers",
+      "itemDescription": "",
+      "isHaveChild": true,
+      "itemList": [
+        {
+          "itemName": "Nome da rota",
+          "isHaveChild": false,
+          "controllerMethodo": "",
+          "content": ""
+        }
+      ]
+    },
+    {
+      "itemName": "Services",
+      "itemDescription": "",
+      "isHaveChild": true,
+      "itemList": [
+        {
+          "itemName": "Nome do service",
+          "isHaveChild": false,
+          "content": ""
+        }
+      ]
+    }
+  ];
+  
+  constructor() {
+    console.log(this.src)
+  }
 
   ngOnInit() {
     //remote.dialog.showOpenDialog({ properties: ['openDirectory'] });
