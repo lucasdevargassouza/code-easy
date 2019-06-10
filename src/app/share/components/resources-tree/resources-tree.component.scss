@@ -1,16 +1,22 @@
 @import "./../../../../styles.scss";
 
 .item-list-pai {
-    min-height: $size-6;
-    cursor: pointer;
-    padding-left: $size-4;
-    font-size: $font-size-3-5;
+  cursor: pointer;
+  padding: $size-0-5 $size-0-75 $size-0-75 $size-4;
+  font-size: $font-size-3-5;
 }
 
 .item-list-pai:hover {
-    background-color: $color-top-bar;
+  background-color: $color-top-bar;
 }
 
 .item-list-pai:active {
-    background-color: $color-background-col-click;
+  background-color: $color-background-col-click;
+}
+
+.item-list-filho {
+  min-height: $size-6;
+  cursor: pointer;
+  padding-left: $size-2;
+  font-size: $font-size-3-5;
 }

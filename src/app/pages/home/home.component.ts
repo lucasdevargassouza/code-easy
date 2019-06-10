@@ -10,87 +10,13 @@ import { CONSTS } from "./../../share/services/consts/consts.service";
 })
 export class HomeComponent implements OnInit {
 
-  public src = [
-    {
-      "itemName": "Models",
-      "isHaveChild": true,
-      "itemList": [
-        {
-          "itemName": "Nome do modelo",
-          "itemDescription": "",
-          "isHaveChild": false,
-          "itemList": [
-            {
-              "itemName": "Nome atributo",
-              "isHaveChild": false,
-              "itemProperties": {
-                "type": "string",
-                "required": true,
-                "unique": true,
-                "defaultValue": true
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "itemName": "Controllers",
-      "itemDescription": "",
-      "isHaveChild": true,
-      "itemList": [
-        {
-          "itemName": "Nome da controler",
-          "isHaveChild": false,
-          "content": ""
-        }
-      ]
-    },
-    {
-      "itemName": "Repository",
-      "itemDescription": "",
-      "isHaveChild": true,
-      "itemList": [
-        {
-          "itemName": "Nome do repositório",
-          "isHaveChild": false,
-          "content": ""
-        }
-      ]
-    },
-    {
-      "itemName": "Routers",
-      "itemDescription": "",
-      "isHaveChild": true,
-      "itemList": [
-        {
-          "itemName": "Nome da rota",
-          "isHaveChild": false,
-          "controllerMethodo": "",
-          "content": ""
-        }
-      ]
-    },
-    {
-      "itemName": "Services",
-      "itemDescription": "",
-      "isHaveChild": true,
-      "itemList": [
-        {
-          "itemName": "Nome do service",
-          "isHaveChild": false,
-          "content": ""
-        }
-      ]
-    }
-  ];
+  public src = [];
   
-  constructor() {
-    console.log(this.src)
-  }
-
+  constructor() {}
+  
   ngOnInit() {
     //remote.dialog.showOpenDialog({ properties: ['openDirectory'] });
+    this.src = JSON.parse(localStorage.getItem(CONSTS.applicationResources.srcLocal));
   }
 
   //#region Resize Divs

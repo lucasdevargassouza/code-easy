@@ -2,7 +2,7 @@
 <!-- Para caso tenha itens a baixo -->
 <div *ngIf="objeto?.isHaveChild">
   <div class="item-list-pai" (click)="toggleContent()"> {{ objeto.itemName }} </div>
-  <div *ngIf="showContent" class="item-list-pai">
+  <div *ngIf="showContent" class="item-list-filho">
     <app-resources-tree *ngFor="let obj of objeto?.itemList" [objeto]="obj"></app-resources-tree>
   </div>
 </div>
