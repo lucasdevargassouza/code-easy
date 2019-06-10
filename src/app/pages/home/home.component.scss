@@ -14,7 +14,7 @@
 
 .col-left {
   height: $size-fill;
-  background-color: $color-background-col-left;
+  background-color: $color-background-col;
   box-shadow: $box-shadow-small;
   min-width: $size-14;
   max-width: $size-half;
@@ -29,7 +29,7 @@
 
 .col-right {
   height: $size-fill;
-  background-color: $color-background-col-right;    
+  background-color: $color-background-col;    
   box-shadow: $box-shadow-small;
   min-width: $size-38;
   max-width: $size-half;
@@ -43,7 +43,7 @@
 .grabber-col-left {
   cursor: e-resize;
   width: 2px;
-  background-color: $color-background-col-left;
+  background-color: $color-background-col;
   overflow: hidden;
   height: $size-fill;
   margin-left: auto;
@@ -52,7 +52,7 @@
 .grabber-col-right {
   cursor: e-resize;
   width: 2px;
-  background-color: $color-background-col-right;
+  background-color: $color-background-col;
   overflow: hidden;
   height: $size-fill;
 }

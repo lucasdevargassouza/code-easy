@@ -1,24 +1,30 @@
-import { Component, OnInit, Input,  } from '@angular/core';
+import { Component, OnInit, Input } from "@angular/core";
+
+import { ResourcesTreeInterface } from "./resources-tree.interface";
 
 @Component({
-  selector: 'app-resources-tree',
-  templateUrl: './resources-tree.component.html',
-  styleUrls: ['./resources-tree.component.scss']
+  selector: "app-resources-tree",
+  templateUrl: "./resources-tree.component.html",
+  styleUrls: ["./resources-tree.component.scss"]
 })
 export class ResourcesTreeComponent implements OnInit {
   public showContent: Boolean = false;
 
-  @Input() public objeto: any;
-  public isHaveChild: Boolean;
-  constructor() {
-  }
+  @Input() objeto: ResourcesTreeInterface;
+
+  constructor() {}
 
   ngOnInit() {
-    this.isHaveChild = this.objeto.isHaveChild as Boolean;
+    if (this.objeto == undefined) {
+      this.objeto = {
+        itemName: "",
+        isHaveChild: false,
+        itemList: []
+      };
+    }
   }
 
   public toggleContent() {
     this.showContent = !this.showContent;
   }
-
 }

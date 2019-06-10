@@ -18,18 +18,8 @@ export class HomeComponent implements OnInit {
         {
           "itemName": "Nome do modelo",
           "itemDescription": "",
-          "isHaveChild": true,
+          "isHaveChild": false,
           "itemList": [
-            {
-              "itemName": "Nome atributo",
-              "isHaveChild": false,
-              "itemProperties": {
-                "type": "string",
-                "required": true,
-                "unique": true,
-                "defaultValue": true
-              }
-            },
             {
               "itemName": "Nome atributo",
               "isHaveChild": false,

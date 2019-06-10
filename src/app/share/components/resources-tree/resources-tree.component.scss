@@ -10,3 +10,7 @@
 .item-list-pai:hover {
     background-color: $color-top-bar;
 }
+
+.item-list-pai:active {
+    background-color: $color-background-col-click;
+}
