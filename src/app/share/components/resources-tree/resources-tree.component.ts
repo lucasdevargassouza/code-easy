@@ -8,7 +8,6 @@ import { ResourcesTreeInterface } from "./resources-tree.interface";
   styleUrls: ["./resources-tree.component.scss"]
 })
 export class ResourcesTreeComponent implements OnInit {
-  public showContent: Boolean = false;
 
   @Input() objeto: ResourcesTreeInterface;
 
@@ -19,12 +18,15 @@ export class ResourcesTreeComponent implements OnInit {
       this.objeto = {
         itemName: "",
         isHaveChild: false,
+        isSelected: false,
+        indexHistorico: [],
         itemList: []
       };
     }
   }
 
   public toggleContent() {
-    this.showContent = !this.showContent;
+    this.objeto.isSelected = !this.objeto.isSelected;
   }
+
 }

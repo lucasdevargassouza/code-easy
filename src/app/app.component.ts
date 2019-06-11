@@ -35,6 +35,10 @@ export class AppComponent {
     let src = [];
     try {
       src = JSON.parse(localStorage.getItem(CONSTS.applicationResources.srcLocal));
+      if (src === null) {
+        localStorage.setItem(CONSTS.applicationResources.srcLocal, JSON.stringify(CONSTS.applicationResources.srcPadrao));
+        src = JSON.parse(localStorage.getItem(CONSTS.applicationResources.srcLocal));
+      }
     } catch (e) {
       localStorage.setItem(CONSTS.applicationResources.srcLocal, JSON.stringify(CONSTS.applicationResources.srcPadrao));
     }

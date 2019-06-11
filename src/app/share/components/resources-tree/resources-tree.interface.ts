@@ -1,6 +1,7 @@
-
 export interface ResourcesTreeInterface {
     "itemName": string,
     "isHaveChild": Boolean,
-    "itemList": []
+    "isSelected": Boolean,
+    "itemList": [],
+    "indexHistorico": []
 }
