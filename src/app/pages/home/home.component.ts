@@ -1,22 +1,24 @@
-import { Component, OnInit, HostListener } from "@angular/core";
-import { remote } from "electron";
+import { Component, OnInit, HostListener } from '@angular/core';
+import { remote } from 'electron';
 
-import { CONSTS } from "./../../share/services/consts/consts.service";
+import { CONSTS } from './../../share/services/consts/consts.service';
 
 @Component({
-  selector: "app-home",
-  templateUrl: "./home.component.html",
-  styleUrls: ["./home.component.scss"]
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
 
   public src = [];
-  
+
   constructor() {}
-  
+
   ngOnInit() {
-    //remote.dialog.showOpenDialog({ properties: ['openDirectory'] });
+    // remote.dialog.showOpenDialog({ properties: ['openDirectory'] });
     this.src = JSON.parse(localStorage.getItem(CONSTS.applicationResources.srcLocal));
+    console.log(this.src);
+
   }
 
   //#region Resize Divs
@@ -36,7 +38,7 @@ export class HomeComponent implements OnInit {
     this.oldX = event.clientX;
   }
 
-  @HostListener("document:mousemove", ["$event"])
+  @HostListener('document:mousemove', ['$event'])
   public onMouseMove(event: MouseEvent) {
     if (this.grabberColLeft) {
       this.widthColLeft += event.clientX - this.oldX;
@@ -48,7 +50,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  @HostListener("document:mouseup", ["$event"])
+  @HostListener('document:mouseup', ['$event'])
   public onMouseUp(event: MouseEvent) {
     this.grabberColLeft = false;
     this.grabberColRight = false;

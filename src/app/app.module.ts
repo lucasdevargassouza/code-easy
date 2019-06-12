@@ -54,6 +54,7 @@ import { TopBarFrameComponent } from "./share/components/top-bar-frame/top-bar-f
 import { BottonBarStatusComponent } from "./share/components/botton-bar-status/botton-bar-status.component";
 import { ResourcesTreeComponent } from "./share/components/resources-tree/resources-tree.component";
 import { CONSTS } from "./share/services/consts/consts.service";
+import { PropertiesEditorComponent } from './share/components/properties-editor/properties-editor.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -67,7 +68,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     WebviewDirective,
     TopBarFrameComponent,
     BottonBarStatusComponent,
-    ResourcesTreeComponent
+    ResourcesTreeComponent,
+    PropertiesEditorComponent
   ],
   imports: [
     BrowserModule,
