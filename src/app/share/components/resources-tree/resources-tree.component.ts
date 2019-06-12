@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
 
 import { ResourcesTreeInterface } from "./resources-tree.interface";
+import { Emissor } from "../../services/emissor-eventos/emissor-eventos.service";
 
 @Component({
   selector: "app-resources-tree",
@@ -14,6 +15,7 @@ export class ResourcesTreeComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
+
     if (this.objeto == undefined) {
       this.objeto = {
         itemName: "",
@@ -27,6 +29,10 @@ export class ResourcesTreeComponent implements OnInit {
 
   public toggleContent() {
     this.objeto.isSelected = !this.objeto.isSelected;
+  }
+
+  public emiteCaminho() {
+    Emissor.itemSelectedLocation.emit(["teste"])  
   }
 
 }

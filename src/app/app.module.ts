@@ -55,6 +55,7 @@ import { BottonBarStatusComponent } from "./share/components/botton-bar-status/b
 import { ResourcesTreeComponent } from "./share/components/resources-tree/resources-tree.component";
 import { CONSTS } from "./share/services/consts/consts.service";
 import { PropertiesEditorComponent } from './share/components/properties-editor/properties-editor.component';
+import { Emissor } from "./share/services/emissor-eventos/emissor-eventos.service";
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -119,7 +120,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     })
   ],
-  providers: [ElectronService, CONSTS],
+  providers: [ElectronService, CONSTS, Emissor],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
