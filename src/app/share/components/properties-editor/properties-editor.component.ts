@@ -1,4 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Emissor } from '../../services/emissor-eventos/emissor-eventos.service';
+import { ResourcesTreeInterface } from '../resources-tree/resources-tree.interface';
+import { CONSTS } from '../../services/consts/consts.service';
+
 
 /**
  * Este componente.
@@ -14,11 +18,22 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./properties-editor.component.scss']
 })
 export class PropertiesEditorComponent implements OnInit {
-  @Input() itemLocation: [];
+  private srcLocal: ResourcesTreeInterface[];
 
   constructor() {}
 
   ngOnInit() {
-    console.log(this.itemLocation);
+    Emissor.itemSelectedLocation.subscribe( data => this.mudaItemEditado(data), error => console.log(error));
+
+    this.srcLocal = JSON.parse(localStorage.getItem(CONSTS.applicationResources.srcLocal));
+  }
+
+  private mudaItemEditado(itemAtual: []) {
+    console.log(itemAtual);
+    
+  }
+
+  private getItemAEditar(itemAtual: []) {
+    //this.srcLocal.filter
   }
 }

@@ -18,17 +18,20 @@ export class CONSTS {
         'itemName': 'Models',
         'isHaveChild': true,
         'isSelected': false,
+        'indexPath': [0],
         'itemList': [
           {
             'itemName': 'Nome do modelo',
             'itemDescription': '',
             'isHaveChild': false,
             'isSelected': false,
+            'indexPath': [0, 0],
             'itemList': [
               {
                 'itemName': 'Nome atributo',
                 'isHaveChild': false,
                 'isSelected': false,
+                'indexPath': [0, 0, 0],
                 'itemProperties': {
                   'type': 'string',
                   'required': true,
@@ -45,11 +48,13 @@ export class CONSTS {
         'itemDescription': '',
         'isHaveChild': true,
         'isSelected': false,
+        'indexPath': [1],
         'itemList': [
           {
             'itemName': 'Nome da controler',
             'isHaveChild': false,
             'isSelected': false,
+            'indexPath': [1, 0],
             'content': ''
           }
         ]
@@ -59,11 +64,13 @@ export class CONSTS {
         'itemDescription': '',
         'isHaveChild': true,
         'isSelected': false,
+        'indexPath': [2],
         'itemList': [
           {
             'itemName': 'Nome do repositório',
             'isHaveChild': false,
             'isSelected': false,
+            'indexPath': [2, 0],
             'content': ''
           }
         ]
@@ -73,12 +80,14 @@ export class CONSTS {
         'itemDescription': '',
         'isHaveChild': true,
         'isSelected': false,
+        'indexPath': [3],
         'itemList': [
           {
             'itemName': 'Nome da rota',
             'isHaveChild': false,
             'isSelected': false,
             'controllerMethodo': '',
+            'indexPath': [3, 0],
             'content': ''
           }
         ]
@@ -88,11 +97,13 @@ export class CONSTS {
         'itemDescription': '',
         'isHaveChild': true,
         'isSelected': false,
+        'indexPath': [4],
         'itemList': [
           {
             'itemName': 'Nome do service',
             'isHaveChild': false,
             'isSelected': false,
+            'indexPath': [4, 0],
             'content': ''
           }
         ]

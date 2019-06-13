@@ -11,17 +11,16 @@ import { Emissor } from "../../services/emissor-eventos/emissor-eventos.service"
 export class ResourcesTreeComponent implements OnInit {
 
   @Input() objeto: ResourcesTreeInterface;
-
+  
   constructor() {}
 
   ngOnInit() {
-
     if (this.objeto == undefined) {
       this.objeto = {
         itemName: "",
         isHaveChild: false,
         isSelected: false,
-        indexHistorico: [],
+        indexPath: [],
         itemList: []
       };
     }
@@ -32,7 +31,7 @@ export class ResourcesTreeComponent implements OnInit {
   }
 
   public emiteCaminho() {
-    Emissor.itemSelectedLocation.emit(["teste"])  
+    Emissor.itemSelectedLocation.emit(this.objeto.indexPath); 
   }
 
 }

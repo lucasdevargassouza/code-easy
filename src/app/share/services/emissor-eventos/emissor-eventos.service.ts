@@ -4,9 +4,7 @@ import { Injectable,EventEmitter  } from '@angular/core';
   providedIn: 'root'
 })
 export class Emissor {
-  public static itemSelectedLocation = new EventEmitter<[any]>();
+  public static itemSelectedLocation = new EventEmitter<[]>();
 
-  constructor() {
-    Emissor.itemSelectedLocation.emit([{"0": "teste"}]);
-  }
+  constructor() {}
 }

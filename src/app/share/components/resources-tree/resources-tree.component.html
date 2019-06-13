@@ -3,10 +3,10 @@
 <div *ngIf="objeto?.isHaveChild">
   <div class="item-list-pai" (click)="toggleContent()"> {{ objeto.itemName }} </div>
   <div *ngIf="objeto?.isSelected" class="item-list-filho">
-    <app-resources-tree *ngFor="let obj of objeto?.itemList" [objeto]="obj"></app-resources-tree>
+    <app-resources-tree *ngFor="let obj of objeto?.itemList; index as i" [objeto]="obj"></app-resources-tree>
   </div>
 </div>
 
 <!-- Para caso não tenha itens a baixo -->
-<div *ngIf="!objeto?.isHaveChild" class="item-list-pai"> {{ objeto.itemName }} </div>
+<div *ngIf="!objeto?.isHaveChild" (click)="emiteCaminho()" class="item-list-pai"> {{ objeto.itemName }} </div>
  
