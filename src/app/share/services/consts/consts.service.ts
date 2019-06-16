@@ -19,6 +19,7 @@ export class CONSTS {
         'isHaveChild': true,
         'isSelected': false,
         'indexPath': [0],
+        'propertiesList': [],
         'itemList': [
           {
             'itemName': 'Nome do modelo',
@@ -26,6 +27,7 @@ export class CONSTS {
             'isHaveChild': false,
             'isSelected': false,
             'indexPath': [0, 0],
+            'propertiesList': [],
             'itemList': [
               {
                 'itemName': 'Nome atributo',
@@ -49,12 +51,14 @@ export class CONSTS {
         'isHaveChild': true,
         'isSelected': false,
         'indexPath': [1],
+        'propertiesList': [],
         'itemList': [
           {
             'itemName': 'Nome da controler',
             'isHaveChild': false,
             'isSelected': false,
             'indexPath': [1, 0],
+            'propertiesList': [],
             'content': ''
           }
         ]
@@ -65,12 +69,14 @@ export class CONSTS {
         'isHaveChild': true,
         'isSelected': false,
         'indexPath': [2],
+        'propertiesList': [],
         'itemList': [
           {
             'itemName': 'Nome do repositório',
             'isHaveChild': false,
             'isSelected': false,
             'indexPath': [2, 0],
+            'propertiesList': [],
             'content': ''
           }
         ]
@@ -81,6 +87,7 @@ export class CONSTS {
         'isHaveChild': true,
         'isSelected': false,
         'indexPath': [3],
+        'propertiesList': [],
         'itemList': [
           {
             'itemName': 'Nome da rota',
@@ -88,6 +95,7 @@ export class CONSTS {
             'isSelected': false,
             'controllerMethodo': '',
             'indexPath': [3, 0],
+            'propertiesList': [],
             'content': ''
           }
         ]
@@ -98,12 +106,14 @@ export class CONSTS {
         'isHaveChild': true,
         'isSelected': false,
         'indexPath': [4],
+        'propertiesList': [],
         'itemList': [
           {
             'itemName': 'Nome do service',
             'isHaveChild': false,
             'isSelected': false,
             'indexPath': [4, 0],
+            'propertiesList': [],
             'content': ''
           }
         ]

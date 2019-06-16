@@ -9,8 +9,13 @@ import { CONSTS } from './../../share/services/consts/consts.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
   public src = [];
+
+  private oldX = 0;
+  private grabberColLeft = false;
+  private grabberColRight = false;
+  public widthColLeft = 300;
+  public widthColRight = 300;
 
   constructor() {}
 
@@ -18,16 +23,9 @@ export class HomeComponent implements OnInit {
     // remote.dialog.showOpenDialog({ properties: ['openDirectory'] });
     this.src = JSON.parse(localStorage.getItem(CONSTS.applicationResources.srcLocal));
     console.log(this.src);
-
   }
 
   //#region Resize Divs
-  private oldX = 0;
-  private grabberColLeft = false;
-  private grabberColRight = false;
-  public widthColLeft = 300;
-  public widthColRight = 300;
-
   public onMouseDownColLeft(event: MouseEvent) {
     this.grabberColLeft = true;
     this.oldX = event.clientX;

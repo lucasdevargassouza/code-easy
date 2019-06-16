@@ -24,16 +24,25 @@ export class PropertiesEditorComponent implements OnInit {
 
   ngOnInit() {
     Emissor.itemSelectedLocation.subscribe( data => this.mudaItemEditado(data), error => console.log(error));
-
-    this.srcLocal = JSON.parse(localStorage.getItem(CONSTS.applicationResources.srcLocal));
   }
 
   private mudaItemEditado(itemAtual: []) {
     console.log(itemAtual);
-    
+    this.srcLocal = this.getItemAEditar(itemAtual);
   }
 
   private getItemAEditar(itemAtual: []) {
-    //this.srcLocal.filter
+    let itemCurrent: any = JSON.parse(localStorage.getItem(CONSTS.applicationResources.srcLocal));
+    if (itemAtual.length > 0) {
+      for (let i = 0; itemAtual.length > i; i++) {
+        if (i > 0) {
+          itemCurrent = itemCurrent.itemList[itemAtual[i]];
+        } else {
+          itemCurrent = itemCurrent[itemAtual[i]];
+        }
+      }
+    }
+    console.log(itemCurrent);
+    return itemCurrent;
   }
 }
