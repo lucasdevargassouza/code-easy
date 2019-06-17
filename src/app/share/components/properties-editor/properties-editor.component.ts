@@ -20,10 +20,27 @@ import { CONSTS } from '../../services/consts/consts.service';
 export class PropertiesEditorComponent implements OnInit {
   private srcLocal: ResourcesTreeInterface[];
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
-    Emissor.itemSelectedLocation.subscribe( data => this.mudaItemEditado(data), error => console.log(error));
+    if (this.srcLocal == undefined) {
+      this.srcLocal = [
+        {
+          itemName: "",
+          isHaveChild: false,
+          isSelected: false,
+          indexPath: [],
+          propertiesList: [
+            {
+              propertieName: '',
+              propertieValue: ''
+            }
+          ],
+          itemList: []
+        }
+      ];
+    }
+    Emissor.itemSelectedLocation.subscribe(data => this.mudaItemEditado(data), error => console.log(error));
   }
 
   private mudaItemEditado(itemAtual: []) {

@@ -1,1 +1,8 @@
-{{ srcLocal }}
+<div class="propertie-list">
+    <div class="propertie" *ngFor="let item of srcLocal.propertiesList">
+        <div>
+            {{ item.propertieName }}
+        </div>
+        <input type="text" name="input-propertie-0" id="input-propertie-0" />
+    </div>
+</div>

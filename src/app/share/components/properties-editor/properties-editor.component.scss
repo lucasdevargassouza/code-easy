@@ -1,0 +1,18 @@
+@import "./../../../../styles.scss";
+
+.propertie-list {
+    padding: $size-1;
+    color: #adadad;
+}
+
+.propertie {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.propertie input {
+    background: #5f5f5f;
+    border: 0px solid white;
+    color: white;
+}

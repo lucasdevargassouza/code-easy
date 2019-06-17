@@ -3,6 +3,11 @@ export interface ResourcesTreeInterface {
     'isHaveChild': Boolean;
     'isSelected': Boolean;
     'indexPath': [];
-    'propertiesList': [];
+    'propertiesList': [
+        {
+            'propertieName': '',
+            'propertieValue': ''
+        }
+    ];
     'itemList': [];
 }
