@@ -56,6 +56,7 @@ import { ResourcesTreeComponent } from "./share/components/resources-tree/resour
 import { CONSTS } from "./share/services/consts/consts.service";
 import { PropertiesEditorComponent } from './share/components/properties-editor/properties-editor.component';
 import { Emissor } from "./share/services/emissor-eventos/emissor-eventos.service";
+import { DatabaseStorageService } from "./share/services/database-storage/database-storage.service";
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -120,7 +121,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     })
   ],
-  providers: [ElectronService, CONSTS, Emissor],
+  providers: [ElectronService, CONSTS, Emissor, DatabaseStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

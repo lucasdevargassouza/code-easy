@@ -2,6 +2,8 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { remote } from 'electron';
 
 import { CONSTS } from './../../share/services/consts/consts.service';
+import { Emissor } from '../../share/services/emissor-eventos/emissor-eventos.service';
+import { DatabaseStorageService } from '../../share/services/database-storage/database-storage.service';
 
 @Component({
   selector: 'app-home',
@@ -17,11 +19,19 @@ export class HomeComponent implements OnInit {
   public widthColLeft = 300;
   public widthColRight = 300;
 
-  constructor() {}
+  constructor(
+    private database: DatabaseStorageService,
+  ) {}
 
   ngOnInit() {
     // remote.dialog.showOpenDialog({ properties: ['openDirectory'] });
-    this.src = JSON.parse(localStorage.getItem(CONSTS.applicationResources.srcLocal));
+
+    this.database.getSrc();
+
+    Emissor.srcGlobal.subscribe(
+      data => this.src = data,
+      error => console.log(error)
+    );
     console.log(this.src);
   }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Emissor } from '../../services/emissor-eventos/emissor-eventos.service';
-import { ResourcesTreeInterface } from '../resources-tree/resources-tree.interface';
+import { ResourcesTreeInterface } from '../../services/resources-tree.interface';
 import { CONSTS } from '../../services/consts/consts.service';
 
 
@@ -19,17 +19,63 @@ import { CONSTS } from '../../services/consts/consts.service';
 })
 export class PropertiesEditorComponent implements OnInit {
   private srcLocal: ResourcesTreeInterface[];
+  private srcGlobal: ResourcesTreeInterface[];
 
   constructor() { }
 
   ngOnInit() {
+    this.incializaSrc();
+    this.inicializaEmissores();
+  }
+
+  public inputsOnChange() {
+    console.log(this.srcGlobal);
+  }
+
+  // Sempre retorna o item que deve ser editado.
+  private getItemAEditar(itemAtual: []) {
+    let itemCurrent: any = this.srcGlobal;
+    if (itemAtual.length > 0) {
+      for (let i = 0; itemAtual.length > i; i++) {
+        if (i > 0) {
+          itemCurrent = itemCurrent.itemList[itemAtual[i]];
+        } else {
+          itemCurrent = itemCurrent[itemAtual[i]];
+        }
+      }
+    }
+    return itemCurrent;
+  }
+
+  // Inicializa os amissores que recebem os dados.
+  private inicializaEmissores() {
+    Emissor.srcGlobal.subscribe(
+      data => this.srcGlobal = data,
+      error => console.log(error)
+    );
+
+    Emissor.itemSelectedLocation.subscribe(
+      async data => {
+        this.srcLocal = await this.getItemAEditar(data);
+      },
+      error => console.log(error)
+    );
+  }
+
+  // Usada apenas para iniciar o src e não apresentar erro.
+  private incializaSrc() {
     if (this.srcLocal == undefined) {
       this.srcLocal = [
         {
-          itemName: "",
           isHaveChild: false,
           isSelected: false,
           indexPath: [],
+          staticPropertiesList: [
+            {
+              propertieName: '',
+              propertieValue: ''
+            }
+          ],
           propertiesList: [
             {
               propertieName: '',
@@ -40,26 +86,5 @@ export class PropertiesEditorComponent implements OnInit {
         }
       ];
     }
-    Emissor.itemSelectedLocation.subscribe(data => this.mudaItemEditado(data), error => console.log(error));
-  }
-
-  private mudaItemEditado(itemAtual: []) {
-    console.log(itemAtual);
-    this.srcLocal = this.getItemAEditar(itemAtual);
-  }
-
-  private getItemAEditar(itemAtual: []) {
-    let itemCurrent: any = JSON.parse(localStorage.getItem(CONSTS.applicationResources.srcLocal));
-    if (itemAtual.length > 0) {
-      for (let i = 0; itemAtual.length > i; i++) {
-        if (i > 0) {
-          itemCurrent = itemCurrent.itemList[itemAtual[i]];
-        } else {
-          itemCurrent = itemCurrent[itemAtual[i]];
-        }
-      }
-    }
-    console.log(itemCurrent);
-    return itemCurrent;
   }
 }

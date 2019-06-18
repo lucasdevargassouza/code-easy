@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 
-import { ResourcesTreeInterface } from "./resources-tree.interface";
+import { ResourcesTreeInterface } from "../../services/resources-tree.interface";
 import { Emissor } from "../../services/emissor-eventos/emissor-eventos.service";
 
 @Component({
@@ -17,10 +17,15 @@ export class ResourcesTreeComponent implements OnInit {
   ngOnInit() {
     if (this.objeto == undefined) {
       this.objeto = {
-        itemName: "",
         isHaveChild: false,
         isSelected: false,
         indexPath: [],
+        staticPropertiesList: [
+          {
+            propertieName: '',
+            propertieValue: ''
+          }
+        ],
         propertiesList: [
           {
             propertieName: '',

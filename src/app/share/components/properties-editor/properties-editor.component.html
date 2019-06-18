@@ -1,8 +1,8 @@
 <div class="propertie-list">
-    <div class="propertie" *ngFor="let item of srcLocal.propertiesList">
+    <div class="propertie" *ngFor="let item of srcLocal.staticPropertiesList; index as i">
         <div>
             {{ item.propertieName }}
         </div>
-        <input type="text" name="input-propertie-0" id="input-propertie-0" />
+        <input type="text" [(ngModel)]="item.propertieValue" (change)="inputsOnChange()" name="input-propertie-{{ i }}" id="input-propertie-{{ i }}" />
     </div>
 </div>

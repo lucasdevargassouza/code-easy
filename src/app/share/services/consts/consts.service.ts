@@ -19,6 +19,12 @@ export class CONSTS {
         'isHaveChild': true,
         'isSelected': false,
         'indexPath': [0],
+        'staticPropertiesList': [
+            {
+                'propertieName': 'Nome: ',
+                'propertieValue': 'Models'
+            }
+        ],
         'propertiesList': [
           {
               'propertieName': 'Nome: ',
@@ -27,40 +33,37 @@ export class CONSTS {
         ],
         'itemList': [
           {
-            'itemName': 'Nome do modelo',
             'itemDescription': '',
             'isHaveChild': false,
             'isSelected': false,
             'indexPath': [0, 0],
+            'staticPropertiesList': [
+                {
+                    'propertieName': 'Nome: ',
+                    'propertieValue': 'Nome do modelo'
+                }
+            ],
             'propertiesList': [
               {
                   'propertieName': 'Nome: ',
                   'propertieValue': ''
               }
             ],
-            'itemList': [
-              {
-                'itemName': 'Nome atributo',
-                'isHaveChild': false,
-                'isSelected': false,
-                'indexPath': [0, 0, 0],
-                'itemProperties': {
-                  'type': 'string',
-                  'required': true,
-                  'unique': true,
-                  'defaultValue': true
-                }
-              }
-            ]
+            'itemList': []
           }
         ]
       },
       {
-        'itemName': 'Controllers',
         'itemDescription': '',
         'isHaveChild': true,
         'isSelected': false,
         'indexPath': [1],
+        'staticPropertiesList': [
+            {
+                'propertieName': 'Nome: ',
+                'propertieValue': 'Controllers'
+            }
+        ],
         'propertiesList': [
           {
               'propertieName': 'Nome: ',
@@ -69,26 +72,35 @@ export class CONSTS {
         ],
         'itemList': [
           {
-            'itemName': 'Nome da controler',
             'isHaveChild': false,
             'isSelected': false,
             'indexPath': [1, 0],
+            'staticPropertiesList': [
+                {
+                    'propertieName': 'Nome: ',
+                    'propertieValue': 'Nome da controler'
+                }
+            ],
             'propertiesList': [
               {
                   'propertieName': 'Nome: ',
                   'propertieValue': ''
               }
             ],
-            'content': ''
           }
         ]
       },
       {
-        'itemName': 'Repository',
         'itemDescription': '',
         'isHaveChild': true,
         'isSelected': false,
         'indexPath': [2],
+        'staticPropertiesList': [
+            {
+                'propertieName': 'Nome: ',
+                'propertieValue': 'Repository'
+            }
+        ],
         'propertiesList': [
           {
               'propertieName': 'Nome: ',
@@ -97,26 +109,35 @@ export class CONSTS {
         ],
         'itemList': [
           {
-            'itemName': 'Nome do repositório',
             'isHaveChild': false,
             'isSelected': false,
             'indexPath': [2, 0],
+            'staticPropertiesList': [
+                {
+                    'propertieName': 'Nome: ',
+                    'propertieValue': 'Nome do repositório'
+                }
+            ],
             'propertiesList': [
               {
                   'propertieName': 'Nome: ',
                   'propertieValue': ''
               }
             ],
-            'content': ''
           }
         ]
       },
       {
-        'itemName': 'Routers',
         'itemDescription': '',
         'isHaveChild': true,
         'isSelected': false,
         'indexPath': [3],
+        'staticPropertiesList': [
+            {
+                'propertieName': 'Nome: ',
+                'propertieValue': 'Routers'
+            }
+        ],
         'propertiesList': [
           {
               'propertieName': 'Nome: ',
@@ -125,27 +146,36 @@ export class CONSTS {
         ],
         'itemList': [
           {
-            'itemName': 'Nome da rota',
             'isHaveChild': false,
             'isSelected': false,
             'controllerMethodo': '',
             'indexPath': [3, 0],
+            'staticPropertiesList': [
+                {
+                    'propertieName': 'Nome: ',
+                    'propertieValue': 'Nome da rota'
+                }
+            ],
             'propertiesList': [
               {
                   'propertieName': 'Nome: ',
                   'propertieValue': ''
               }
             ],
-            'content': ''
           }
         ]
       },
       {
-        'itemName': 'Services',
         'itemDescription': '',
         'isHaveChild': true,
         'isSelected': false,
         'indexPath': [4],
+        'staticPropertiesList': [
+            {
+                'propertieName': 'Nome: ',
+                'propertieValue': 'Services'
+            }
+        ],
         'propertiesList': [
           {
               'propertieName': 'Nome: ',
@@ -154,17 +184,21 @@ export class CONSTS {
         ],
         'itemList': [
           {
-            'itemName': 'Nome do service',
             'isHaveChild': false,
             'isSelected': false,
             'indexPath': [4, 0],
+            'staticPropertiesList': [
+                {
+                    'propertieName': 'Nome: ',
+                    'propertieValue': 'Nome do service'
+                }
+            ],
             'propertiesList': [
               {
                   'propertieName': 'Nome: ',
                   'propertieValue': ''
               }
             ],
-            'content': ''
           }
         ]
       }
