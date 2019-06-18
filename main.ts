@@ -1,4 +1,4 @@
-import { app, BrowserWindow, screen } from 'electron';
+import { app, BrowserWindow, screen, Tray } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 
@@ -6,10 +6,12 @@ let win, serve;
 const args = process.argv.slice(1);
 serve = args.some(val => val === '--serve');
 
+
 function createWindow() {
 
   const electronScreen = screen;
   const size = electronScreen.getPrimaryDisplay().workAreaSize;
+  const appIcon = new Tray(__dirname + '/src/assets/logo2.png');
 
   // Create the browser window.
   /* win = new BrowserWindow({
@@ -30,6 +32,7 @@ function createWindow() {
     webPreferences: {
       nodeIntegration: true,
     },
+    icon: __dirname + '/src/assets/logo2.png'
   });
 
   if (serve) {
@@ -46,7 +49,7 @@ function createWindow() {
   }
 
   if (serve) {
-    //win.webContents.openDevTools();
+    // win.webContents.openDevTools();
   }
 
   // Emitted when the window is closed.

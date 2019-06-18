@@ -9,6 +9,7 @@ serve = args.some(function (val) { return val === '--serve'; });
 function createWindow() {
     var electronScreen = electron_1.screen;
     var size = electronScreen.getPrimaryDisplay().workAreaSize;
+    var appIcon = new electron_1.Tray(__dirname + '/src/assets/logo2.png');
     // Create the browser window.
     /* win = new BrowserWindow({
       x: 0,
@@ -28,6 +29,7 @@ function createWindow() {
         webPreferences: {
             nodeIntegration: true,
         },
+        icon: __dirname + '/src/assets/logo2.png'
     });
     if (serve) {
         require('electron-reload')(__dirname, {
@@ -43,7 +45,7 @@ function createWindow() {
         }));
     }
     if (serve) {
-        //win.webContents.openDevTools();
+        // win.webContents.openDevTools();
     }
     // Emitted when the window is closed.
     win.on('closed', function () {
