@@ -5,6 +5,7 @@ export interface ResourcesTreeInterface {
     'staticPropertiesList': [
         {
             'propertieName': '',
+            'propertiePlaceholder': '',
             'propertieValue': ''
         }
     ];

@@ -1,12 +1,12 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input } from '@angular/core';
 
-import { ResourcesTreeInterface } from "../../services/resources-tree.interface";
-import { Emissor } from "../../services/emissor-eventos/emissor-eventos.service";
+import { ResourcesTreeInterface } from '../../services/resources-tree.interface';
+import { Emissor } from '../../services/emissor-eventos/emissor-eventos.service';
 
 @Component({
-  selector: "app-resources-tree",
-  templateUrl: "./resources-tree.component.html",
-  styleUrls: ["./resources-tree.component.scss"]
+  selector: 'app-resources-tree',
+  templateUrl: './resources-tree.component.html',
+  styleUrls: ['./resources-tree.component.scss']
 })
 export class ResourcesTreeComponent implements OnInit {
 
@@ -15,7 +15,7 @@ export class ResourcesTreeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    if (this.objeto == undefined) {
+    if (this.objeto === undefined) {
       this.objeto = {
         isHaveChild: false,
         isSelected: false,
@@ -23,6 +23,7 @@ export class ResourcesTreeComponent implements OnInit {
         staticPropertiesList: [
           {
             propertieName: '',
+            propertiePlaceholder: '',
             propertieValue: ''
           }
         ],

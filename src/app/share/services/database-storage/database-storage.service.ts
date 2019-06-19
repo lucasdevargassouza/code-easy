@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Emissor } from '../emissor-eventos/emissor-eventos.service';
 import { CONSTS } from '../consts/consts.service';
+import { ResourcesTreeInterface } from '../resources-tree.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +18,7 @@ export class DatabaseStorageService {
     );
   }
 
-  public updateSrc() {
-
-
-    this.getSrc();
+  public updateSrc(srcGlobal: ResourcesTreeInterface[]) {
+    localStorage.setItem(CONSTS.applicationResources.srcLocal, JSON.stringify(srcGlobal));
   }
 }

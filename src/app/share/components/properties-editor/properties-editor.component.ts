@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Emissor } from '../../services/emissor-eventos/emissor-eventos.service';
 import { ResourcesTreeInterface } from '../../services/resources-tree.interface';
 import { CONSTS } from '../../services/consts/consts.service';
+import { DatabaseStorageService } from '../../services/database-storage/database-storage.service';
 
 
 /**
@@ -18,18 +19,34 @@ import { CONSTS } from '../../services/consts/consts.service';
   styleUrls: ['./properties-editor.component.scss']
 })
 export class PropertiesEditorComponent implements OnInit {
-  private srcLocal: ResourcesTreeInterface[];
+  private srcLocal: ResourcesTreeInterface;
   private srcGlobal: ResourcesTreeInterface[];
 
-  constructor() { }
+  constructor(
+    private database: DatabaseStorageService,
+
+  ) { }
 
   ngOnInit() {
-    this.incializaSrc();
     this.inicializaEmissores();
   }
 
+  // Adiciona uma nova propriedade extendida no item.
+  public addExtendedPropertie() {
+    this.srcLocal.propertiesList.push(
+      {
+        'propertieName': '',
+        'propertieValue': ''
+      }
+    );
+    this.database.updateSrc(this.srcGlobal);
+  }
+
+  // Em cada change salva os dados.
   public inputsOnChange() {
-    console.log(this.srcGlobal);
+    setTimeout(() => {
+      this.database.updateSrc(this.srcGlobal);
+    }, 1);
   }
 
   // Sempre retorna o item que deve ser editado.
@@ -64,27 +81,26 @@ export class PropertiesEditorComponent implements OnInit {
 
   // Usada apenas para iniciar o src e não apresentar erro.
   private incializaSrc() {
-    if (this.srcLocal == undefined) {
-      this.srcLocal = [
-        {
-          isHaveChild: false,
-          isSelected: false,
-          indexPath: [],
-          staticPropertiesList: [
-            {
-              propertieName: '',
-              propertieValue: ''
-            }
-          ],
-          propertiesList: [
-            {
-              propertieName: '',
-              propertieValue: ''
-            }
-          ],
-          itemList: []
-        }
-      ];
+    if (this.srcLocal === undefined) {
+      this.srcLocal = {
+        isHaveChild: false,
+        isSelected: false,
+        indexPath: [],
+        staticPropertiesList: [
+          {
+            propertieName: '',
+            propertiePlaceholder: '',
+            propertieValue: ''
+          }
+        ],
+        propertiesList: [
+          {
+            propertieName: '',
+            propertieValue: ''
+          }
+        ],
+        itemList: []
+      };
     }
   }
 }

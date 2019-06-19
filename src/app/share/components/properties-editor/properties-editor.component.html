@@ -1,8 +1,23 @@
-<div class="propertie-list">
+<div class="propertie-list" *ngIf="srcLocal?.staticPropertiesList">
     <div class="propertie" *ngFor="let item of srcLocal.staticPropertiesList; index as i">
-        <div>
-            {{ item.propertieName }}
-        </div>
-        <input type="text" [(ngModel)]="item.propertieValue" (change)="inputsOnChange()" name="input-propertie-{{ i }}" id="input-propertie-{{ i }}" />
+        <div> {{ item.propertieName }} </div>
+        <input type="text" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" placeholder="{{ item.propertiePlaceholder }}" [(ngModel)]="item.propertieValue" (ngModelChange)="inputsOnChange()" title=""/>
     </div>
+</div>
+<hr class="hr" *ngIf="srcLocal?.propertiesList"/>
+<div class="propertie-list" *ngIf="srcLocal && srcLocal.isHaveChild === false">
+    <div class="extended" *ngFor="let item of srcLocal.propertiesList; index as i">
+        <div class="propertie">
+            <div>Nome: </div><input type="text" id="input-extended-name-propertie-{{ i }}" name="input-extended-name-propertie-{{ i }}" [(ngModel)]="item.propertieName" (ngModelChange)="inputsOnChange()" title=""/>
+        </div>
+        <div class="propertie">
+            <div>Valor: </div><input type="text" id="input-extended-value-propertie-{{ i }}" name="input-extended-value-propertie-{{ i }}" [(ngModel)]="item.propertieValue" (ngModelChange)="inputsOnChange()" title=""/>
+        </div>
+    </div>
+</div>
+<div *ngIf="srcLocal && srcLocal.isHaveChild === false">
+    <button class="mini-btn-add" (click)="addExtendedPropertie()">
+        <mat-icon>add</mat-icon>
+    </button>
+    <hr class="hr"/>
 </div>

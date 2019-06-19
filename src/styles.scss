@@ -52,6 +52,8 @@ $font-size-10: 40px;
 // Colors -----------------
 $color-white: #ffffff;
 
+$color-background-propertie-editor: #3C3C3C;
+$color-background-propertie-editor-exetended-hover: #525252;
 $color-top-bar: #3C3C3C;
 $color-botton-bar: #0F77BF;
 $color-background: #1E1E1E;
@@ -62,8 +64,16 @@ $color-top-bar-button-close: #c70000;
 $color-top-bar-button-maximizar: #4d4848;
 $color-top-bar-button-minimizar: #4d4848;
 
+// Fonte colors
+$font-color-label-propertie-editor: #adadad;
+$font-color-input-propertie-editor: #d8d8d8;
+$font-color-input-propertie-editor-focus: #f3f3f3;
 
+// Box shadows
 $box-shadow-small: 0px 0px 5px 0.1px #191919;
+
+// Outlines
+$outline-padrao: 2px solid #f3f3f3;
 
 
 
@@ -86,3 +96,9 @@ body {
   overflow: hidden;
   color: white;
 }
+
+
+.item-com-erro {
+  border: thin dotted red;
+}
+

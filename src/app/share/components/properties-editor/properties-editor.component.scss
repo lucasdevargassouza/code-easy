@@ -2,19 +2,70 @@
 
 .propertie-list {
     padding: $size-1;
-    color: #adadad;
+    color: $font-color-label-propertie-editor;
+    padding-bottom: $size-2;
 }
 
 .propertie {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    font-size: $font-size-3;
+    margin-top: $size-0-5;
+    margin-bottom: $size-0-5;
+}
+
+.propertie div {
+    width: 30%;
+}
+
+.hr {
+    border: 0.5px solid $color-top-bar;
 }
 
 .propertie input {
-    background: #5f5f5f;
-    border: 0px solid white;
-    color: white;
-    padding-left: 5px;
-    padding-right: 5px;
+    background: $color-background-propertie-editor;
+    border: $size-none solid $color-white;
+    color: $font-color-input-propertie-editor;
+    padding-left: $size-1-5;
+    padding-right: $size-1-5;
+    width: 70%;
+}
+
+.propertie input:focus {
+    .extended {
+        background: $color-background-propertie-editor;
+        .propertie input {
+            background: $color-background-propertie-editor-exetended-hover;
+        }
+    }
+    outline: auto;
+    color: $font-color-input-propertie-editor-focus;
+}
+
+
+.extended {
+    padding-left: $size-2;
+    padding-right: $size-2;
+    padding-top: $size-1;
+    padding-bottom: $size-1;
+
+}
+
+.extended:hover {
+    .propertie input {
+        background: $color-background-propertie-editor-exetended-hover;
+    }
+    background: $color-background-propertie-editor;
+}
+
+.mini-btn-add {
+    outline: unset;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.mini-btn-add:active {
+    color: $font-color-input-propertie-editor-focus;
 }

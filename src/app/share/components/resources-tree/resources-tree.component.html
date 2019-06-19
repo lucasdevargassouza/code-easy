@@ -1,12 +1,12 @@
 
 <!-- Para caso tenha itens a baixo -->
 <div *ngIf="objeto?.isHaveChild">
-  <div class="item-list-pai" (click)="toggleContent()"> {{ objeto.staticPropertiesList[0].propertieValue }} </div>
+  <div class="item-list-pai" (click)="toggleContent(); emiteCaminho()" title="{{ objeto.staticPropertiesList[1].propertieValue }}" > {{ objeto.staticPropertiesList[0].propertieValue }} </div>
   <div *ngIf="objeto?.isSelected" class="item-list-filho">
     <app-resources-tree *ngFor="let obj of objeto?.itemList" [objeto]="obj"></app-resources-tree>
   </div>
 </div>
 
 <!-- Para caso não tenha itens a baixo -->
-<div *ngIf="!objeto?.isHaveChild" (click)="emiteCaminho()" class="item-list-pai"> {{ objeto.staticPropertiesList[0].propertieValue }} </div>
+<div *ngIf="!objeto?.isHaveChild" (click)="emiteCaminho()" class="item-list-pai" title="{{ objeto.staticPropertiesList[1].propertieValue }}" > {{ objeto.staticPropertiesList[0].propertieValue }} </div>
  

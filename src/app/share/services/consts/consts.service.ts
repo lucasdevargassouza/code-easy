@@ -20,10 +20,16 @@ export class CONSTS {
         'isSelected': false,
         'indexPath': [0],
         'staticPropertiesList': [
-            {
-                'propertieName': 'Nome: ',
-                'propertieValue': 'Models'
-            }
+          {
+              'propertieName': 'Nome: ',
+              'propertiePlaceholder': 'Um nome aqui...',
+              'propertieValue': 'Models'
+          },
+          {
+              'propertieName': 'Descrição: ',
+              'propertiePlaceholder': 'Uma descrição aqui...',
+              'propertieValue': ''
+          }
         ],
         'propertiesList': [
           {
@@ -40,7 +46,13 @@ export class CONSTS {
             'staticPropertiesList': [
                 {
                     'propertieName': 'Nome: ',
+                    'propertiePlaceholder': 'Um nome aqui...',
                     'propertieValue': 'Nome do modelo'
+                },
+                {
+                    'propertieName': 'Descrição: ',
+                    'propertiePlaceholder': 'Uma descrição aqui...',
+                    'propertieValue': ''
                 }
             ],
             'propertiesList': [
@@ -61,7 +73,13 @@ export class CONSTS {
         'staticPropertiesList': [
             {
                 'propertieName': 'Nome: ',
+                'propertiePlaceholder': 'Um nome aqui...',
                 'propertieValue': 'Controllers'
+            },
+            {
+                'propertieName': 'Descrição: ',
+                'propertiePlaceholder': 'Uma descrição aqui...',
+                'propertieValue': ''
             }
         ],
         'propertiesList': [
@@ -78,7 +96,13 @@ export class CONSTS {
             'staticPropertiesList': [
                 {
                     'propertieName': 'Nome: ',
+                    'propertiePlaceholder': 'Um nome aqui...',
                     'propertieValue': 'Nome da controler'
+                },
+                {
+                    'propertieName': 'Descrição: ',
+                    'propertiePlaceholder': 'Uma descrição aqui...',
+                    'propertieValue': ''
                 }
             ],
             'propertiesList': [
@@ -98,7 +122,13 @@ export class CONSTS {
         'staticPropertiesList': [
             {
                 'propertieName': 'Nome: ',
+                'propertiePlaceholder': 'Um nome aqui...',
                 'propertieValue': 'Repository'
+            },
+            {
+                'propertieName': 'Descrição: ',
+                'propertiePlaceholder': 'Uma descrição aqui...',
+                'propertieValue': ''
             }
         ],
         'propertiesList': [
@@ -115,7 +145,13 @@ export class CONSTS {
             'staticPropertiesList': [
                 {
                     'propertieName': 'Nome: ',
+                    'propertiePlaceholder': 'Um nome aqui...',
                     'propertieValue': 'Nome do repositório'
+                },
+                {
+                    'propertieName': 'Descrição: ',
+                    'propertiePlaceholder': 'Uma descrição aqui...',
+                    'propertieValue': ''
                 }
             ],
             'propertiesList': [
@@ -135,7 +171,13 @@ export class CONSTS {
         'staticPropertiesList': [
             {
                 'propertieName': 'Nome: ',
+                'propertiePlaceholder': 'Um nome aqui...',
                 'propertieValue': 'Routers'
+            },
+            {
+                'propertieName': 'Descrição: ',
+                'propertiePlaceholder': 'Uma descrição aqui...',
+                'propertieValue': ''
             }
         ],
         'propertiesList': [
@@ -153,7 +195,13 @@ export class CONSTS {
             'staticPropertiesList': [
                 {
                     'propertieName': 'Nome: ',
+                    'propertiePlaceholder': 'Um nome aqui...',
                     'propertieValue': 'Nome da rota'
+                },
+                {
+                    'propertieName': 'Descrição: ',
+                    'propertiePlaceholder': 'Uma descrição aqui...',
+                    'propertieValue': ''
                 }
             ],
             'propertiesList': [
@@ -173,7 +221,13 @@ export class CONSTS {
         'staticPropertiesList': [
             {
                 'propertieName': 'Nome: ',
+                'propertiePlaceholder': 'Um nome aqui...',
                 'propertieValue': 'Services'
+            },
+            {
+                'propertieName': 'Descrição: ',
+                'propertiePlaceholder': 'Uma descrição aqui...',
+                'propertieValue': ''
             }
         ],
         'propertiesList': [
@@ -190,7 +244,13 @@ export class CONSTS {
             'staticPropertiesList': [
                 {
                     'propertieName': 'Nome: ',
+                    'propertiePlaceholder': 'Um nome aqui...',
                     'propertieValue': 'Nome do service'
+                },
+                {
+                    'propertieName': 'Descrição: ',
+                    'propertiePlaceholder': 'Uma descrição aqui...',
+                    'propertieValue': ''
                 }
             ],
             'propertiesList': [

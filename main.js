@@ -9,7 +9,7 @@ serve = args.some(function (val) { return val === '--serve'; });
 function createWindow() {
     var electronScreen = electron_1.screen;
     var size = electronScreen.getPrimaryDisplay().workAreaSize;
-    var appIcon = new electron_1.Tray(__dirname + '/src/assets/logo2.png');
+    var appIcon = new electron_1.Tray(__dirname + '/src/favicon.256x256.png');
     // Create the browser window.
     /* win = new BrowserWindow({
       x: 0,
@@ -29,7 +29,7 @@ function createWindow() {
         webPreferences: {
             nodeIntegration: true,
         },
-        icon: __dirname + '/src/assets/logo2.png'
+        icon: __dirname + '/src/favicon.256x256.png'
     });
     if (serve) {
         require('electron-reload')(__dirname, {
