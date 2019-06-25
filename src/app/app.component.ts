@@ -4,6 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { AppConfig } from '../environments/environment';
 
 import { CONSTS } from './share/services/consts/consts.service'
+import { ResourcesTreeInterface } from './share/services/resources-tree.interface';
 
 @Component({
   selector: 'app-root',
@@ -42,5 +43,18 @@ export class AppComponent {
     } catch (e) {
       localStorage.setItem(CONSTS.applicationResources.srcLocal, JSON.stringify(CONSTS.applicationResources.srcPadrao));
     }
+  }
+
+  private inicializaIndexPath(src: ResourcesTreeInterface[]): any {
+
+    for (let index = 0; index < src.length; index++) {
+      let resTree = src[index];
+      resTree.indexPath.push(index);
+      if(resTree.itemList.length > 0) {
+        resTree.itemList = this.inicializaIndexPath(resTree.itemList);
+      }
+    }
+
+    return src;
   }
 }

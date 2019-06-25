@@ -1,7 +1,7 @@
 export interface ResourcesTreeInterface {
     'isHaveChild': Boolean;
     'isSelected': Boolean;
-    'indexPath': [];
+    'indexPath': number[];
     'staticPropertiesList': [
         {
             'propertieName': '',
