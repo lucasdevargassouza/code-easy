@@ -31,6 +31,12 @@ export class PropertiesEditorComponent implements OnInit {
     this.inicializaEmissores();
   }
 
+  // Remove uma nova propriedade extendida no item.
+  public removeExtendedPropertie(index: number) {
+    this.srcLocal.propertiesList.splice(index, 1);
+    this.database.updateSrc(this.srcGlobal);
+  }
+
   // Adiciona uma nova propriedade extendida no item.
   public addExtendedPropertie() {
     this.srcLocal.propertiesList.push(

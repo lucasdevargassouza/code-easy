@@ -49,17 +49,23 @@
     padding-right: $size-2;
     padding-top: $size-1;
     padding-bottom: $size-1;
-
+    display: flex;
+    justify-content: space-between;
 }
 
 .extended:hover {
     .propertie input {
         background: $color-background-propertie-editor-exetended-hover;
     }
+
+    .mini-btn-remove {
+        display: block;
+    }
+    
     background: $color-background-propertie-editor;
 }
 
-.mini-btn-add {
+.mini-btn-add, .mini-btn-remove {
     outline: unset;
     background: transparent;
     border: none;
@@ -68,4 +74,18 @@
 
 .mini-btn-add:active {
     color: $font-color-input-propertie-editor-focus;
+}
+
+.mini-btn-remove {
+    display: none;
+}
+
+.mini-btn-remove:active {
+    color: $font-color-input-propertie-editor-focus;
+}
+
+.add-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
 }

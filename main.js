@@ -10,16 +10,6 @@ function createWindow() {
     var electronScreen = electron_1.screen;
     var size = electronScreen.getPrimaryDisplay().workAreaSize;
     var appIcon = new electron_1.Tray(__dirname + '/src/favicon.256x256.png');
-    // Create the browser window.
-    /* win = new BrowserWindow({
-      x: 0,
-      y: 0,
-      width: size.width,
-      height: size.height,
-      webPreferences: {
-        nodeIntegration: true,
-      },
-    }); */
     win = new electron_1.BrowserWindow({
         x: 0,
         y: 0,
@@ -27,7 +17,7 @@ function createWindow() {
         height: 600,
         frame: false,
         webPreferences: {
-            nodeIntegration: true,
+            nodeIntegration: true
         },
         icon: __dirname + '/src/favicon.256x256.png'
     });
@@ -45,7 +35,7 @@ function createWindow() {
         }));
     }
     if (serve) {
-        // win.webContents.openDevTools();
+        /* win.webContents.openDevTools(); */
     }
     // Emitted when the window is closed.
     win.on('closed', function () {

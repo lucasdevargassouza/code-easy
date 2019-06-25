@@ -19,6 +19,7 @@
   min-width: $size-38;
   max-width: $size-half;
   display: flex;
+  overflow-y: auto;
 }
 
 .col-center {
@@ -34,6 +35,7 @@
   min-width: $size-38;
   max-width: $size-half;
   display: flex;
+  overflow-y: auto;
 }
 
 .grabber-col-left:active, .grabber-col-right:active {

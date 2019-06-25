@@ -55,6 +55,7 @@ $color-white: #ffffff;
 $color-background-propertie-editor: #3C3C3C;
 $color-background-propertie-editor-exetended-hover: #525252;
 $color-top-bar: #3C3C3C;
+$color-top-bar-light: #4d4d4d;
 $color-botton-bar: #0F77BF;
 $color-background: #1E1E1E;
 $color-background-col: #252527;
@@ -83,22 +84,46 @@ $outline-padrao: 2px solid #f3f3f3;
 
 
 
-
-
+* {
+  margin: 0;
+  padding: 0;
+}
 
 html,
 body {
-  margin: 0;
-  padding: 0;
-
   height: 100%;
   font-family: Segoe UI, 'Courier New', monospace;
   overflow: hidden;
   color: white;
 }
 
-
 .item-com-erro {
   border: thin dotted red;
 }
+
+
+
+// Ajusta o scroll de todos os elementos.
+::-webkit-scrollbar {
+  width: 10px;
+  height: 100%;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $color-top-bar;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: $color-top-bar-light;
+}
+
+
 
