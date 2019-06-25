@@ -14,7 +14,6 @@ export class CONSTS {
 
   public static srcPadrao: ResourcesTreeInterface[] = [
     {
-      'itemName': 'Servidor',
       'isHaveChild': false,
       'isSelected': false,
       'indexPath': [0],
@@ -49,7 +48,6 @@ export class CONSTS {
       'itemList': []
     },
     {
-      'itemName': 'Models',
       'isHaveChild': true,
       'isSelected': false,
       'indexPath': [1],
@@ -73,7 +71,6 @@ export class CONSTS {
       ],
       'itemList': [
         {
-          'itemDescription': '',
           'isHaveChild': false,
           'isSelected': false,
           'indexPath': [1, 0],
