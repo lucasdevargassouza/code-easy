@@ -86,13 +86,18 @@ export class CONSTS {
               'propertieValue': ''
             },
             {
+              'propertieName': 'Requisição: ',
+              'propertiePlaceholder': '\'get\', \'post\', \'delete\', \'put\'...',
+              'propertieValue': ''
+            },
+            {
               'propertieName': 'Caminho: ',
               'propertiePlaceholder': 'Ex: \"/produtos\"',
               'propertieValue': ''
             },
             {
-              'propertieName': 'Metodo: ',
-              'propertiePlaceholder': 'Ação que será executada...',
+              'propertieName': 'Retorno: ',
+              'propertiePlaceholder': 'Tudo que será retornado...',
               'propertieValue': ''
             }
           ],

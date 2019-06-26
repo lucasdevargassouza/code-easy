@@ -1,10 +1,12 @@
-
 <!-- Para caso tenha itens a baixo -->
 <div *ngIf="objeto?.isHaveChild">
-  <div class="item-list-pai" (click)="toggleContent(); emiteCaminho()" title="{{ objeto.staticPropertiesList[1].propertieValue }}" > 
-    {{ objeto.staticPropertiesList[0].propertieValue }} 
-    
-    <button name="btn-add" class="mini-btn-add align-right" (click)="addItem()" title="Adicionar item na pasta!">+</button>
+  <div class="pai-filho" style="display: flex;">
+    <div class="item-list-pai" (click)="toggleContent(); emiteCaminho()"
+      title="{{ objeto.staticPropertiesList[1].propertieValue }}">
+      {{ objeto.staticPropertiesList[0].propertieValue }}
+
+    </div>
+    <button id="btn-add" name="btn-add" class="mini-btn-add btn-add-res-tree" (click)="addItem()" title="Adicionar item na pasta!">+</button>
 
   </div>
   <div *ngIf="objeto?.isSelected" class="item-list-filho">
@@ -13,10 +15,6 @@
 </div>
 
 <!-- Para caso não tenha itens a baixo -->
-<div *ngIf="!objeto?.isHaveChild" (click)="emiteCaminho()" class="item-list-pai" title="{{ objeto.staticPropertiesList[1].propertieValue }}" >
+<div *ngIf="!objeto?.isHaveChild" (click)="emiteCaminho()" class="item-list-pai" title="{{ objeto.staticPropertiesList[1].propertieValue }}">
   {{ objeto.staticPropertiesList[0].propertieValue }}
-    
-<!--   <button name="btn-add" class="mini-btn-add align-right" (click)="removeItem()" title="Adicionar item na pasta!">x</button>
- -->
 </div>
- 
