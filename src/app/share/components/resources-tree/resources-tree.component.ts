@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { ResourcesTreeInterface } from '../../services/resources-tree.interface';
 import { Emissor } from '../../services/emissor-eventos/emissor-eventos.service';
+import { DatabaseStorageService } from '../../services/database-storage/database-storage.service';
 
 @Component({
   selector: 'app-resources-tree',
@@ -12,7 +13,9 @@ export class ResourcesTreeComponent implements OnInit {
 
   @Input() objeto: ResourcesTreeInterface;
 
-  constructor() { }
+  constructor(
+    private database: DatabaseStorageService
+  ) { }
 
   ngOnInit() {
     if (this.objeto === undefined) {
@@ -20,19 +23,8 @@ export class ResourcesTreeComponent implements OnInit {
         isHaveChild: false,
         isSelected: false,
         indexPath: [],
-        staticPropertiesList: [
-          {
-            propertieName: '',
-            propertiePlaceholder: '',
-            propertieValue: ''
-          }
-        ],
-        propertiesList: [
-          {
-            propertieName: '',
-            propertieValue: ''
-          }
-        ],
+        staticPropertiesList: [],
+        propertiesList: [],
         itemList: []
       };
     }
@@ -44,6 +36,41 @@ export class ResourcesTreeComponent implements OnInit {
 
   public emiteCaminho() {
     Emissor.itemSelectedLocation.emit(this.objeto.indexPath);
+  }
+
+  public addItem() {
+    this.objeto.itemList.push({
+        'isHaveChild': false,
+        'isSelected': false,
+        'indexPath': [],
+        'staticPropertiesList': [
+          {
+            'propertieName': 'Nome: ',
+            'propertiePlaceholder': 'Um nome aqui...',
+            'propertieValue': 'Nome do item'
+          },
+          {
+            'propertieName': 'Descrição: ',
+            'propertiePlaceholder': 'Uma descrição aqui...',
+            'propertieValue': ''
+          }
+        ],
+        'propertiesList': [
+          {
+            'propertieName': '',
+            'propertieValue': ''
+          }
+        ],
+        'itemList': []
+    });
+
+    this.database.updateSrc();
+  }
+
+  public removeItem(teste: number) {
+    // this.objeto.itemList.splice()
+
+    this.database.updateSrc();
   }
 
 }

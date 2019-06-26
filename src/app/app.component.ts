@@ -3,8 +3,9 @@ import { ElectronService } from './share/services/electron.service';
 import { TranslateService } from '@ngx-translate/core';
 import { AppConfig } from '../environments/environment';
 
-import { CONSTS } from './share/services/consts/consts.service'
+import { CONSTS } from './share/services/consts/consts.service';
 import { ResourcesTreeInterface } from './share/services/resources-tree.interface';
+import { UtilsService } from './share/services/utils/utils.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,8 @@ import { ResourcesTreeInterface } from './share/services/resources-tree.interfac
 export class AppComponent {
   constructor(
     public electronService: ElectronService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private utils: UtilsService,
 
   ) {
     // Avisos padrões mostrados no console.>>
@@ -35,26 +37,15 @@ export class AppComponent {
   private inicializarVariaveisInternas() {
     let src = [];
     try {
-      src = JSON.parse(localStorage.getItem(CONSTS.applicationResources.srcLocal));
+      src = JSON.parse(localStorage.getItem(CONSTS.appResources.srcLocal));
+
       if (src === null) {
-        localStorage.setItem(CONSTS.applicationResources.srcLocal, JSON.stringify(CONSTS.applicationResources.srcPadrao));
-        src = JSON.parse(localStorage.getItem(CONSTS.applicationResources.srcLocal));
+        localStorage.setItem(CONSTS.appResources.srcLocal, JSON.stringify(this.utils.initIndexPath(CONSTS.appResources.srcPadrao)));
+        src = JSON.parse(localStorage.getItem(CONSTS.appResources.srcLocal));
       }
+
     } catch (e) {
-      localStorage.setItem(CONSTS.applicationResources.srcLocal, JSON.stringify(CONSTS.applicationResources.srcPadrao));
+      localStorage.setItem(CONSTS.appResources.srcLocal, JSON.stringify(CONSTS.appResources.srcPadrao));
     }
-  }
-
-  private inicializaIndexPath(src: ResourcesTreeInterface[]): any {
-
-    for (let index = 0; index < src.length; index++) {
-      let resTree = src[index];
-      resTree.indexPath.push(index);
-      if(resTree.itemList.length > 0) {
-        resTree.itemList = this.inicializaIndexPath(resTree.itemList);
-      }
-    }
-
-    return src;
   }
 }

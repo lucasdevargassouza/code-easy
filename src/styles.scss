@@ -83,7 +83,7 @@ $outline-padrao: 2px solid #f3f3f3;
 
 
 
-
+// Separar em arquivo para classes globais
 
 * {
   margin: 0;
@@ -102,7 +102,29 @@ body {
   border: thin dotted red;
 }
 
+.mini-btn-add, .mini-btn-remove {
+  color: $font-color-icon-add-remove-propertie-editor;
+  outline: unset;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
 
+.mini-btn-add:active {
+  color: $font-color-input-propertie-editor-focus;
+}
+
+.mini-btn-remove {
+  display: none;
+}
+
+.mini-btn-remove:active {
+  color: $font-color-input-propertie-editor-focus;
+}
+
+.align-right {
+  float: right;
+}
 
 // Ajusta o scroll de todos os elementos.
 ::-webkit-scrollbar {

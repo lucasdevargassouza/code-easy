@@ -35,9 +35,9 @@
 .propertie input:focus {
     .extended {
         background: $color-background-propertie-editor;
-        .propertie input {
-            background: $color-background-propertie-editor-exetended-hover;
-        }
+    }
+    .propertie input {
+        background: $color-background-propertie-editor-exetended-hover;
     }
     outline: auto;
     color: $font-color-input-propertie-editor-focus;
@@ -63,26 +63,6 @@
     }
     
     background: $color-background-propertie-editor;
-}
-
-.mini-btn-add, .mini-btn-remove {
-    color: $font-color-icon-add-remove-propertie-editor;
-    outline: unset;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-}
-
-.mini-btn-add:active {
-    color: $font-color-input-propertie-editor-focus;
-}
-
-.mini-btn-remove {
-    display: none;
-}
-
-.mini-btn-remove:active {
-    color: $font-color-input-propertie-editor-focus;
 }
 
 .add-container {

@@ -8,12 +8,12 @@ export interface ResourcesTreeInterface {
 }
 
 interface StaticPropertiesList {
-    'propertieName': String,
-    'propertiePlaceholder': String,
-    'propertieValue': String
+    'propertieName': String;
+    'propertiePlaceholder': String;
+    'propertieValue': String;
 }
 
 interface PropertiesList {
-    'propertieName': String,
-    'propertieValue': String
+    'propertieName': String;
+    'propertieValue': String;
 }

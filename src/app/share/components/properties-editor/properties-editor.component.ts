@@ -34,7 +34,7 @@ export class PropertiesEditorComponent implements OnInit {
   // Remove uma nova propriedade extendida no item.
   public removeExtendedPropertie(index: number) {
     this.srcLocal.propertiesList.splice(index, 1);
-    this.database.updateSrc(this.srcGlobal);
+    this.database.updateSrc();
   }
 
   // Adiciona uma nova propriedade extendida no item.
@@ -45,13 +45,13 @@ export class PropertiesEditorComponent implements OnInit {
         'propertieValue': ''
       }
     );
-    this.database.updateSrc(this.srcGlobal);
+    this.database.updateSrc();
   }
 
   // Em cada change salva os dados.
   public inputsOnChange() {
     setTimeout(() => {
-      this.database.updateSrc(this.srcGlobal);
+      this.database.updateSrc();
     }, 1);
   }
 
