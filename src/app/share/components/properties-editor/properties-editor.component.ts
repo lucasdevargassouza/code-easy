@@ -3,6 +3,7 @@ import { Emissor } from '../../services/emissor-eventos/emissor-eventos.service'
 import { ResourcesTreeInterface } from '../../services/resources-tree.interface';
 import { CONSTS } from '../../services/consts/consts.service';
 import { DatabaseStorageService } from '../../services/database-storage/database-storage.service';
+import { TranspilerService } from '../../services/transpiler/transpiler.service';
 
 
 /**
@@ -24,6 +25,7 @@ export class PropertiesEditorComponent implements OnInit {
 
   constructor(
     private database: DatabaseStorageService,
+    private traspiler: TranspilerService,
 
   ) { }
 
@@ -73,13 +75,16 @@ export class PropertiesEditorComponent implements OnInit {
   // Inicializa os amissores que recebem os dados.
   private inicializaEmissores() {
     Emissor.srcGlobal.subscribe(
-      data => this.srcGlobal = data,
+      data => { 
+        this.srcGlobal = data; 
+      },
       error => console.log(error)
-    );
-
-    Emissor.itemSelectedLocation.subscribe(
-      async data => {
-        this.srcLocal = await this.getItemAEditar(data);
+      );
+      
+      Emissor.itemSelectedLocation.subscribe(
+        async data => {
+          this.srcLocal = await this.getItemAEditar(data);
+          console.log(await this.traspiler.getContentRotas(this.srcGlobal[1]));
       },
       error => console.log(error)
     );

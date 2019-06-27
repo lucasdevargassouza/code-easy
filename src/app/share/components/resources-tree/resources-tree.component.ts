@@ -14,7 +14,7 @@ export class ResourcesTreeComponent implements OnInit {
   @Input() objeto: ResourcesTreeInterface;
 
   constructor(
-    private database: DatabaseStorageService
+    private database: DatabaseStorageService,
   ) { }
 
   ngOnInit() {
