@@ -75,16 +75,16 @@ export class PropertiesEditorComponent implements OnInit {
   // Inicializa os amissores que recebem os dados.
   private inicializaEmissores() {
     Emissor.srcGlobal.subscribe(
-      data => { 
-        this.srcGlobal = data; 
+      data => {
+        this.srcGlobal = data;
       },
       error => console.log(error)
       );
-      
+
       Emissor.itemSelectedLocation.subscribe(
         async data => {
           this.srcLocal = await this.getItemAEditar(data);
-          console.log(await this.traspiler.getContentRotas(this.srcGlobal[1]));
+          console.log(await this.traspiler.getContentRotas(this.srcGlobal));
       },
       error => console.log(error)
     );
@@ -97,6 +97,7 @@ export class PropertiesEditorComponent implements OnInit {
         isHaveChild: false,
         isSelected: false,
         indexPath: [],
+        tipoItem: '',
         staticPropertiesList: [
           {
             propertieName: '',

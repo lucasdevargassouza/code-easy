@@ -5,305 +5,367 @@ import { ResourcesTreeInterface } from '../resources-tree.interface';
   providedIn: 'root'
 })
 export class CONSTS {
-  constructor() { }
+  constructor() {}
 
   public static homeCollums = {
     widthColLeft: 'widthColLeft',
-    widthColRight: 'widthColRight',
+    widthColRight: 'widthColRight'
+  };
+
+  public static tiposItens = {
+    appConfig: 'appConfig',
+    pasta: 'pasta',
+    servidor: 'servidor',
+    rota: 'rota',
+    model: 'model',
+    controller: 'controller',
+    repository: 'repository',
+    services: 'services'
   };
 
   private static srcPadrao: ResourcesTreeInterface[] = [
     {
-      'isHaveChild': false,
-      'isSelected': false,
-      'indexPath': [],
-      'staticPropertiesList': [
+      isHaveChild: false,
+      isSelected: false,
+      indexPath: [],
+      tipoItem: CONSTS.tiposItens.appConfig,
+      staticPropertiesList: [
         {
-          'propertieName': 'Nome: ',
-          'propertiePlaceholder': 'Um nome aqui...',
-          'propertieValue': 'Servidor'
+          propertieName: 'Nome do projeto: ',
+          propertiePlaceholder: 'Um nome aqui...',
+          propertieValue: 'MinhaAPINode'
         },
         {
-          'propertieName': 'Descrição: ',
-          'propertiePlaceholder': 'Uma descrição aqui...',
-          'propertieValue': ''
+          propertieName: 'Descrição: ',
+          propertiePlaceholder: 'Uma descrição aqui...',
+          propertieValue: ''
         },
         {
-          'propertieName': 'Porta: ',
-          'propertiePlaceholder': 'A porta do servidor...',
-          'propertieValue': '3000'
+          propertieName: 'Autor: ',
+          propertiePlaceholder: 'Nome do autor...',
+          propertieValue: 'Code Easy'
         },
         {
-          'propertieName': 'Achar porta livre: ',
-          'propertiePlaceholder': '\'True\' ou \'False\'',
-          'propertieValue': 'False'
+          propertieName: 'Versão: ',
+          propertiePlaceholder: 'Ex: \'1.0.0\'',
+          propertieValue: '1.0.0'
+        },
+        {
+          propertieName: 'Caminho: ',
+          propertiePlaceholder: 'Ex: \'/home/user\'',
+          propertieValue: ''
         }
       ],
-      'propertiesList': [
+      propertiesList: [
         {
-          'propertieName': '',
-          'propertieValue': ''
+          propertieName: '',
+          propertieValue: ''
         }
       ],
-      'itemList': []
+      itemList: []
     },
     {
-      'isHaveChild': true,
-      'isSelected': false,
-      'indexPath': [],
-      'staticPropertiesList': [
+      isHaveChild: false,
+      isSelected: false,
+      indexPath: [],
+      tipoItem: CONSTS.tiposItens.servidor,
+      staticPropertiesList: [
         {
-          'propertieName': 'Nome: ',
-          'propertiePlaceholder': 'Um nome aqui...',
-          'propertieValue': 'Routers'
+          propertieName: 'Nome: ',
+          propertiePlaceholder: 'Um nome aqui...',
+          propertieValue: 'Servidor'
         },
         {
-          'propertieName': 'Descrição: ',
-          'propertiePlaceholder': 'Uma descrição aqui...',
-          'propertieValue': ''
+          propertieName: 'Descrição: ',
+          propertiePlaceholder: 'Uma descrição aqui...',
+          propertieValue: ''
+        },
+        {
+          propertieName: 'Porta: ',
+          propertiePlaceholder: 'A porta do servidor...',
+          propertieValue: '3000'
+        },
+        {
+          propertieName: 'Achar porta livre: ',
+          propertiePlaceholder: '\'True\' ou \'False\'',
+          propertieValue: 'False'
         }
       ],
-      'propertiesList': [
+      propertiesList: [
         {
-          'propertieName': '',
-          'propertieValue': ''
+          propertieName: '',
+          propertieValue: ''
         }
       ],
-      'itemList': [
+      itemList: []
+    },
+    {
+      isHaveChild: true,
+      isSelected: false,
+      indexPath: [],
+      tipoItem: CONSTS.tiposItens.pasta,
+      staticPropertiesList: [
         {
-          'isHaveChild': false,
-          'isSelected': false,
-          'indexPath': [],
-          'staticPropertiesList': [
+          propertieName: 'Nome: ',
+          propertiePlaceholder: 'Um nome aqui...',
+          propertieValue: 'Routers'
+        },
+        {
+          propertieName: 'Descrição: ',
+          propertiePlaceholder: 'Uma descrição aqui...',
+          propertieValue: ''
+        }
+      ],
+      propertiesList: [
+        {
+          propertieName: '',
+          propertieValue: ''
+        }
+      ],
+      itemList: [
+        {
+          isHaveChild: false,
+          isSelected: false,
+          indexPath: [],
+          tipoItem: CONSTS.tiposItens.rota,
+          staticPropertiesList: [
             {
-              'propertieName': 'Nome: ',
-              'propertiePlaceholder': 'Um nome aqui...',
-              'propertieValue': 'Nome da rota'
+              propertieName: 'Nome: ',
+              propertiePlaceholder: 'Um nome aqui...',
+              propertieValue: 'NomeRota'
             },
             {
-              'propertieName': 'Descrição: ',
-              'propertiePlaceholder': 'Uma descrição aqui...',
-              'propertieValue': ''
+              propertieName: 'Descrição: ',
+              propertiePlaceholder: 'Uma descrição aqui...',
+              propertieValue: ''
             },
             {
-              'propertieName': 'Requisição: ',
-              'propertiePlaceholder': '\'get\', \'post\', \'delete\', \'put\'...',
-              'propertieValue': ''
+              propertieName: 'Requisição: ',
+              propertiePlaceholder: '\'get\', \'post\', \'delete\', \'put\'...',
+              propertieValue: ''
             },
             {
-              'propertieName': 'Caminho: ',
-              'propertiePlaceholder': 'Ex: \"/produtos\"',
-              'propertieValue': ''
+              propertieName: 'Caminho: ',
+              propertiePlaceholder: 'Ex: "/produtos"',
+              propertieValue: ''
             },
             {
-              'propertieName': 'Retorno: ',
-              'propertiePlaceholder': 'Tudo que será retornado...',
-              'propertieValue': ''
+              propertieName: 'Retorno: ',
+              propertiePlaceholder: 'Tudo que será retornado...',
+              propertieValue: ''
             }
           ],
-          'propertiesList': [
+          propertiesList: [
             {
-              'propertieName': '',
-              'propertieValue': ''
+              propertieName: '',
+              propertieValue: ''
             }
           ],
-          'itemList': []
+          itemList: []
         }
       ]
     },
     {
-      'isHaveChild': true,
-      'isSelected': false,
-      'indexPath': [],
-      'staticPropertiesList': [
+      isHaveChild: true,
+      isSelected: false,
+      indexPath: [],
+      tipoItem: CONSTS.tiposItens.pasta,
+      staticPropertiesList: [
         {
-          'propertieName': 'Nome: ',
-          'propertiePlaceholder': 'Um nome aqui...',
-          'propertieValue': 'Models'
+          propertieName: 'Nome: ',
+          propertiePlaceholder: 'Um nome aqui...',
+          propertieValue: 'Models'
         },
         {
-          'propertieName': 'Descrição: ',
-          'propertiePlaceholder': 'Uma descrição aqui...',
-          'propertieValue': ''
+          propertieName: 'Descrição: ',
+          propertiePlaceholder: 'Uma descrição aqui...',
+          propertieValue: ''
         }
       ],
-      'propertiesList': [
+      propertiesList: [
         {
-          'propertieName': 'Nome: ',
-          'propertieValue': ''
+          propertieName: 'Nome: ',
+          propertieValue: ''
         }
       ],
-      'itemList': [
+      itemList: [
         {
-          'isHaveChild': false,
-          'isSelected': false,
-          'indexPath': [],
-          'staticPropertiesList': [
+          isHaveChild: false,
+          isSelected: false,
+          indexPath: [],
+          tipoItem: CONSTS.tiposItens.model,
+          staticPropertiesList: [
             {
-              'propertieName': 'Nome: ',
-              'propertiePlaceholder': 'Um nome aqui...',
-              'propertieValue': 'Nome do modelo'
+              propertieName: 'Nome: ',
+              propertiePlaceholder: 'Um nome aqui...',
+              propertieValue: 'NomeModelo'
             },
             {
-              'propertieName': 'Descrição: ',
-              'propertiePlaceholder': 'Uma descrição aqui...',
-              'propertieValue': ''
+              propertieName: 'Descrição: ',
+              propertiePlaceholder: 'Uma descrição aqui...',
+              propertieValue: ''
             }
           ],
-          'propertiesList': [
+          propertiesList: [
             {
-              'propertieName': '',
-              'propertieValue': ''
+              propertieName: '',
+              propertieValue: ''
             }
           ],
-          'itemList': []
+          itemList: []
         }
       ]
     },
     {
-      'isHaveChild': true,
-      'isSelected': false,
-      'indexPath': [],
-      'staticPropertiesList': [
+      isHaveChild: true,
+      isSelected: false,
+      indexPath: [],
+      tipoItem: CONSTS.tiposItens.pasta,
+      staticPropertiesList: [
         {
-          'propertieName': 'Nome: ',
-          'propertiePlaceholder': 'Um nome aqui...',
-          'propertieValue': 'Controllers'
+          propertieName: 'Nome: ',
+          propertiePlaceholder: 'Um nome aqui...',
+          propertieValue: 'Controllers'
         },
         {
-          'propertieName': 'Descrição: ',
-          'propertiePlaceholder': 'Uma descrição aqui...',
-          'propertieValue': ''
+          propertieName: 'Descrição: ',
+          propertiePlaceholder: 'Uma descrição aqui...',
+          propertieValue: ''
         }
       ],
-      'propertiesList': [
+      propertiesList: [
         {
-          'propertieName': '',
-          'propertieValue': ''
+          propertieName: '',
+          propertieValue: ''
         }
       ],
-      'itemList': [
+      itemList: [
         {
-          'isHaveChild': false,
-          'isSelected': false,
-          'indexPath': [],
-          'staticPropertiesList': [
+          isHaveChild: false,
+          isSelected: false,
+          indexPath: [],
+          tipoItem: CONSTS.tiposItens.controller,
+          staticPropertiesList: [
             {
-              'propertieName': 'Nome: ',
-              'propertiePlaceholder': 'Um nome aqui...',
-              'propertieValue': 'Nome da controler'
+              propertieName: 'Nome: ',
+              propertiePlaceholder: 'Um nome aqui...',
+              propertieValue: 'NomeControler'
             },
             {
-              'propertieName': 'Descrição: ',
-              'propertiePlaceholder': 'Uma descrição aqui...',
-              'propertieValue': ''
+              propertieName: 'Descrição: ',
+              propertiePlaceholder: 'Uma descrição aqui...',
+              propertieValue: ''
             }
           ],
-          'propertiesList': [
+          propertiesList: [
             {
-              'propertieName': '',
-              'propertieValue': ''
+              propertieName: '',
+              propertieValue: ''
             }
           ],
-          'itemList': []
+          itemList: []
         }
       ]
     },
     {
-      'isHaveChild': true,
-      'isSelected': false,
-      'indexPath': [],
-      'staticPropertiesList': [
+      isHaveChild: true,
+      isSelected: false,
+      indexPath: [],
+      tipoItem: CONSTS.tiposItens.pasta,
+      staticPropertiesList: [
         {
-          'propertieName': 'Nome: ',
-          'propertiePlaceholder': 'Um nome aqui...',
-          'propertieValue': 'Repository'
+          propertieName: 'Nome: ',
+          propertiePlaceholder: 'Um nome aqui...',
+          propertieValue: 'Repository'
         },
         {
-          'propertieName': 'Descrição: ',
-          'propertiePlaceholder': 'Uma descrição aqui...',
-          'propertieValue': ''
+          propertieName: 'Descrição: ',
+          propertiePlaceholder: 'Uma descrição aqui...',
+          propertieValue: ''
         }
       ],
-      'propertiesList': [
+      propertiesList: [
         {
-          'propertieName': '',
-          'propertieValue': ''
+          propertieName: '',
+          propertieValue: ''
         }
       ],
-      'itemList': [
+      itemList: [
         {
-          'isHaveChild': false,
-          'isSelected': false,
-          'indexPath': [],
-          'staticPropertiesList': [
+          isHaveChild: false,
+          isSelected: false,
+          indexPath: [],
+          tipoItem: CONSTS.tiposItens.repository,
+          staticPropertiesList: [
             {
-              'propertieName': 'Nome: ',
-              'propertiePlaceholder': 'Um nome aqui...',
-              'propertieValue': 'Nome do repositório'
+              propertieName: 'Nome: ',
+              propertiePlaceholder: 'Um nome aqui...',
+              propertieValue: 'NomeRepositorio'
             },
             {
-              'propertieName': 'Descrição: ',
-              'propertiePlaceholder': 'Uma descrição aqui...',
-              'propertieValue': ''
+              propertieName: 'Descrição: ',
+              propertiePlaceholder: 'Uma descrição aqui...',
+              propertieValue: ''
             }
           ],
-          'propertiesList': [
+          propertiesList: [
             {
-              'propertieName': '',
-              'propertieValue': ''
+              propertieName: '',
+              propertieValue: ''
             }
           ],
-          'itemList': []
+          itemList: []
         }
       ]
     },
     {
-      'isHaveChild': true,
-      'isSelected': false,
-      'indexPath': [],
-      'staticPropertiesList': [
+      isHaveChild: true,
+      isSelected: false,
+      indexPath: [],
+      tipoItem: CONSTS.tiposItens.pasta,
+      staticPropertiesList: [
         {
-          'propertieName': 'Nome: ',
-          'propertiePlaceholder': 'Um nome aqui...',
-          'propertieValue': 'Services'
+          propertieName: 'Nome: ',
+          propertiePlaceholder: 'Um nome aqui...',
+          propertieValue: 'Services'
         },
         {
-          'propertieName': 'Descrição: ',
-          'propertiePlaceholder': 'Uma descrição aqui...',
-          'propertieValue': ''
+          propertieName: 'Descrição: ',
+          propertiePlaceholder: 'Uma descrição aqui...',
+          propertieValue: ''
         }
       ],
-      'propertiesList': [
+      propertiesList: [
         {
-          'propertieName': 'Nome: ',
-          'propertieValue': ''
+          propertieName: 'Nome: ',
+          propertieValue: ''
         }
       ],
-      'itemList': [
+      itemList: [
         {
-          'isHaveChild': false,
-          'isSelected': false,
-          'indexPath': [],
-          'staticPropertiesList': [
+          isHaveChild: false,
+          isSelected: false,
+          indexPath: [],
+          tipoItem: CONSTS.tiposItens.services,
+          staticPropertiesList: [
             {
-              'propertieName': 'Nome: ',
-              'propertiePlaceholder': 'Um nome aqui...',
-              'propertieValue': 'Nome do service'
+              propertieName: 'Nome: ',
+              propertiePlaceholder: 'Um nome aqui...',
+              propertieValue: 'NomeService'
             },
             {
-              'propertieName': 'Descrição: ',
-              'propertiePlaceholder': 'Uma descrição aqui...',
-              'propertieValue': ''
+              propertieName: 'Descrição: ',
+              propertiePlaceholder: 'Uma descrição aqui...',
+              propertieValue: ''
             }
           ],
-          'propertiesList': [
+          propertiesList: [
             {
-              'propertieName': 'Nome: ',
-              'propertieValue': ''
+              propertieName: 'Nome: ',
+              propertieValue: ''
             }
           ],
-          'itemList': []
+          itemList: []
         }
       ]
     }
@@ -311,7 +373,6 @@ export class CONSTS {
 
   public static appResources = {
     srcLocal: 'srcLocal',
-    srcPadrao: CONSTS.srcPadrao,
+    srcPadrao: CONSTS.srcPadrao
   };
-
 }

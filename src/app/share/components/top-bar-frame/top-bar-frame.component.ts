@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { remote } from 'electron';
+import { Emissor } from '../../services/emissor-eventos/emissor-eventos.service';
 
 @Component({
   selector: 'app-top-bar-frame',

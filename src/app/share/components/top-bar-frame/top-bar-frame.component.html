@@ -2,6 +2,9 @@
   <div class="top-bar-main">
     <div class="left">
       <div class="frame-buttons">
+        <div class="frame-btn frame-btn-play" title="Iniciar API">
+          
+        </div>
         <div class="frame-btn">
           <!-- <mat-icon aria-hidden="false" aria-label="Code Easy">fiber_manual_record</mat-icon> -->
         </div>
@@ -12,15 +15,9 @@
     </div>
     <div class="right">
       <div class="frame-buttons">
-        <div
-          class="frame-btn frame-btn-minimizar"
-          (click)="minimizeIde()"
-        ></div>
-        <div
-          class="frame-btn frame-btn-maximizar"
-          (click)="toggleMaximizeIde()"
-        ></div>
-        <div class="frame-btn frame-btn-close" (click)="closeIde()"></div>
+        <div class="frame-btn frame-btn-minimizar" (click)="minimizeIde()" title="Minimizar"></div>
+        <div class="frame-btn frame-btn-maximizar" (click)="toggleMaximizeIde()" title=""></div>
+        <div class="frame-btn frame-btn-close" (click)="closeIde()" title="Fechar"></div>
       </div>
     </div>
   </div>

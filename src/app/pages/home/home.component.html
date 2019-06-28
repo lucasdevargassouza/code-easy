@@ -1,13 +1,13 @@
 <div class="main-page">
   <!-- Top bar frame -->
-  <app-top-bar-frame [tituloIde]="'Nome do projeto'"></app-top-bar-frame>
+  <app-top-bar-frame [tituloIde]="srcGlobal[0]?.staticPropertiesList[0]?.propertieValue"></app-top-bar-frame>
   <!-- Top bar frame -->
 
   <div class="application-body">
     <div class="col-left" [style.width.px]="widthColLeft">
       <div style="flex: 1">
 
-        <app-resources-tree *ngFor="let obj of src" [objeto]="obj"></app-resources-tree>
+        <app-resources-tree *ngFor="let obj of srcGlobal" [objeto]="obj"></app-resources-tree>
 
       </div>
       <div class="grabber-col-left" (mousedown)="onMouseDownColLeft($event)"></div>

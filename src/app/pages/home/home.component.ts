@@ -11,7 +11,7 @@ import { DatabaseStorageService } from '../../share/services/database-storage/da
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  public src = [];
+  public srcGlobal = [];
 
   private oldX = 0;
   private grabberColLeft = false;
@@ -29,10 +29,9 @@ export class HomeComponent implements OnInit {
     this.database.getSrc();
 
     Emissor.srcGlobal.subscribe(
-      data => this.src = data,
+      data => this.srcGlobal = data,
       error => console.log(error)
     );
-    console.log(this.src);
   }
 
   //#region Resize Divs
