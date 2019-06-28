@@ -52,6 +52,7 @@ export class PropertiesEditorComponent implements OnInit {
 
   // Em cada change salva os dados.
   public inputsOnChange() {
+    /* this.srcLocal.staticPropertiesList[0].propertieValue.replace(' ', ''); */
     setTimeout(() => {
       this.database.updateSrc();
     }, 1);

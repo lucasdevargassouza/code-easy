@@ -2,7 +2,7 @@
 <div class="propertie-list" *ngIf="srcLocal?.staticPropertiesList">
     <div class="propertie" *ngFor="let item of srcLocal.staticPropertiesList; index as i">
         <div> {{ item.propertieName }} </div>
-        <input type="text" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" placeholder="{{ item.propertiePlaceholder }}" [(ngModel)]="item.propertieValue" (ngModelChange)="inputsOnChange()" title=""/>
+        <input type="text" id="input-propertie-{{ i }}" (change)="inputsOnChange()" name="input-propertie-{{ i }}" placeholder="{{ item.propertiePlaceholder }}" [(ngModel)]="item.propertieValue" title=""/>
     </div>
 </div>
 

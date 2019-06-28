@@ -45,7 +45,21 @@ export class TranspilerService {
 
     const server: ResourcesTreeInterface = await this.getItemEspecifico(srcGlobal, CONSTS.tiposItens.servidor);
 
-    // let serverString =
+    let serverString = '' +
+    'const app = require(\'../src/app\'); ' +
+    'const debug = require(\'debug\')(\'balta:server\'); ' +
+    'const http = require(\'http\'); ' +
+      
+    'const port = normalizePort(process.env.PORT || \'3000\'); ' +
+    'app.set(\'port\', port); ' +
+      
+    'const server = http.createServer(app); ' +
+      
+    'server.listen(port); ' +
+    'server.on(\'error\', onError); ' +
+    'server.on(\'listening\', onListening); ' +
+    'console.log(\'API rodando na porta \' + port); ';
+
   }
 
   public async getPackageJson(srcGlobal: ResourcesTreeInterface[]): Promise<string> {
@@ -69,7 +83,6 @@ export class TranspilerService {
 
   private getItemEspecifico(resTree: ResourcesTreeInterface[], tipoItem: string): ResourcesTreeInterface {
     let retorno: ResourcesTreeInterface = null;
-
     resTree.forEach(item => {
       if (item.tipoItem === tipoItem) {
         retorno = item;
