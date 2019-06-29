@@ -86,6 +86,8 @@ export class PropertiesEditorComponent implements OnInit {
         async data => {
           this.srcLocal = await this.getItemAEditar(data);
           console.log(await this.traspiler.getContentRotas(this.srcGlobal));
+          console.log(await this.traspiler.getContentServidor(this.srcGlobal));
+          console.log(await this.traspiler.getPackageJson(this.srcGlobal));
       },
       error => console.log(error)
     );

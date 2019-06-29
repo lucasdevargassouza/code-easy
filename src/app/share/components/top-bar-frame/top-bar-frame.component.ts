@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { remote } from 'electron';
 import { Emissor } from '../../services/emissor-eventos/emissor-eventos.service';
+import { CompilerService } from '../../services/compiler/compiler.service';
 
 @Component({
   selector: 'app-top-bar-frame',
@@ -8,14 +9,28 @@ import { Emissor } from '../../services/emissor-eventos/emissor-eventos.service'
   styleUrls: ['./top-bar-frame.component.scss']
 })
 export class TopBarFrameComponent implements OnInit {
-
+  private srcGlobal;
   @Input() tituloIde: string;
 
   private window = remote.getCurrentWindow();
 
-  constructor() { }
+  constructor(
+    private compiler: CompilerService
+  ) { }
 
   ngOnInit() {
+    Emissor.srcGlobal.subscribe(
+      data => {
+        this.srcGlobal = data;
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  public play() {
+    this.compiler.iniciarAplicacao(this.srcGlobal);
   }
 
   public closeIde() {
