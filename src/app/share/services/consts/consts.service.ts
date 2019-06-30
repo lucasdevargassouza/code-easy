@@ -32,33 +32,52 @@ export class CONSTS {
       staticPropertiesList: [
         {
           propertieName: 'Nome do projeto: ',
+          propertieType: 'text',
+          propertieSugestions: [],
           propertiePlaceholder: 'Um nome aqui...',
           propertieValue: 'MinhaAPINode'
         },
         {
           propertieName: 'Descrição: ',
+          propertieType: 'text',
+          propertieSugestions: [],
           propertiePlaceholder: 'Uma descrição aqui...',
           propertieValue: ''
         },
         {
           propertieName: 'Autor: ',
+          propertieType: 'text',
+          propertieSugestions: [],
           propertiePlaceholder: 'Nome do autor...',
           propertieValue: 'Code Easy'
         },
         {
           propertieName: 'Versão: ',
+          propertieType: 'number',
+          propertieSugestions: [],
           propertiePlaceholder: 'Ex: \'1.0.0\'',
           propertieValue: '1.0.0'
         },
         {
           propertieName: 'Caminho: ',
+          propertieType: 'text',
+          propertieSugestions: [],
           propertiePlaceholder: 'Ex: \'/home/user\'',
           propertieValue: ''
-        }
+        },
+        {
+          propertieName: 'Processo atual: ',
+          propertieType: 'disabled',
+          propertieSugestions: [],
+          propertiePlaceholder: '',
+          propertieValue: '--'
+        },
       ],
       propertiesList: [
         {
           propertieName: '',
+          propertieType: 'text',
+          propertieSugestions: [],
           propertieValue: ''
         }
       ],
@@ -72,21 +91,38 @@ export class CONSTS {
       staticPropertiesList: [
         {
           propertieName: 'Nome: ',
+          propertieType: 'text',
+          propertieSugestions: [],
           propertiePlaceholder: 'Um nome aqui...',
           propertieValue: 'Servidor'
         },
         {
           propertieName: 'Descrição: ',
+          propertieType: 'text',
+          propertieSugestions: [],
           propertiePlaceholder: 'Uma descrição aqui...',
           propertieValue: ''
         },
         {
           propertieName: 'Porta: ',
+          propertieType: 'number',
+          propertieSugestions: [],
           propertiePlaceholder: 'A porta do servidor...',
           propertieValue: '3000'
         },
         {
           propertieName: 'Achar porta livre: ',
+          propertieType: 'select',
+          propertieSugestions: [
+            {
+              sugestionsName: 'true',
+              sugestionsValue: 'true'
+            },
+            {
+              sugestionsName: 'false',
+              sugestionsValue: 'false'
+            }
+          ],
           propertiePlaceholder: '\'True\' ou \'False\'',
           propertieValue: 'False'
         }
@@ -94,6 +130,8 @@ export class CONSTS {
       propertiesList: [
         {
           propertieName: '',
+          propertieType: 'select',
+          propertieSugestions: [],
           propertieValue: ''
         }
       ],
@@ -107,11 +145,15 @@ export class CONSTS {
       staticPropertiesList: [
         {
           propertieName: 'Nome: ',
+          propertieType: 'text',
+          propertieSugestions: [],
           propertiePlaceholder: 'Um nome aqui...',
           propertieValue: 'Routers'
         },
         {
           propertieName: 'Descrição: ',
+          propertieType: 'text',
+          propertieSugestions: [],
           propertiePlaceholder: 'Uma descrição aqui...',
           propertieValue: ''
         }
@@ -119,6 +161,8 @@ export class CONSTS {
       propertiesList: [
         {
           propertieName: '',
+          propertieType: 'text',
+          propertieSugestions: [],
           propertieValue: ''
         }
       ],
@@ -131,26 +175,53 @@ export class CONSTS {
           staticPropertiesList: [
             {
               propertieName: 'Nome: ',
+              propertieType: 'text',
+              propertieSugestions: [],
               propertiePlaceholder: 'Um nome aqui...',
               propertieValue: 'NomeRota'
             },
             {
               propertieName: 'Descrição: ',
+              propertieType: 'text',
+              propertieSugestions: [],
               propertiePlaceholder: 'Uma descrição aqui...',
               propertieValue: ''
             },
             {
               propertieName: 'Requisição: ',
+              propertieType: 'select',
+              propertieSugestions: [
+                {
+                  sugestionsName: 'get',
+                  sugestionsValue: 'get'
+                },
+                {
+                  sugestionsName: 'post',
+                  sugestionsValue: 'post'
+                },
+                {
+                  sugestionsName: 'put',
+                  sugestionsValue: 'put'
+                },
+                {
+                  sugestionsName: 'delete',
+                  sugestionsValue: 'delete'
+                },
+              ],
               propertiePlaceholder: '\'get\', \'post\', \'delete\', \'put\'...',
               propertieValue: ''
             },
             {
-              propertieName: 'Caminho: ',
+              propertieName: 'Url: ',
+              propertieType: 'text',
+              propertieSugestions: [],
               propertiePlaceholder: 'Ex: "/produtos"',
               propertieValue: ''
             },
             {
               propertieName: 'Retorno: ',
+              propertieType: 'text',
+              propertieSugestions: [],
               propertiePlaceholder: 'Tudo que será retornado...',
               propertieValue: ''
             }
@@ -158,6 +229,8 @@ export class CONSTS {
           propertiesList: [
             {
               propertieName: '',
+              propertieType: 'text',
+              propertieSugestions: [],
               propertieValue: ''
             }
           ],
@@ -173,11 +246,15 @@ export class CONSTS {
       staticPropertiesList: [
         {
           propertieName: 'Nome: ',
+          propertieType: 'text',
+          propertieSugestions: [],
           propertiePlaceholder: 'Um nome aqui...',
           propertieValue: 'Models'
         },
         {
           propertieName: 'Descrição: ',
+          propertieType: 'text',
+          propertieSugestions: [],
           propertiePlaceholder: 'Uma descrição aqui...',
           propertieValue: ''
         }
@@ -185,6 +262,8 @@ export class CONSTS {
       propertiesList: [
         {
           propertieName: 'Nome: ',
+          propertieType: 'text',
+          propertieSugestions: [],
           propertieValue: ''
         }
       ],
@@ -197,11 +276,15 @@ export class CONSTS {
           staticPropertiesList: [
             {
               propertieName: 'Nome: ',
+              propertieType: 'text',
+              propertieSugestions: [],
               propertiePlaceholder: 'Um nome aqui...',
               propertieValue: 'NomeModelo'
             },
             {
               propertieName: 'Descrição: ',
+              propertieType: 'text',
+              propertieSugestions: [],
               propertiePlaceholder: 'Uma descrição aqui...',
               propertieValue: ''
             }
@@ -209,6 +292,8 @@ export class CONSTS {
           propertiesList: [
             {
               propertieName: '',
+              propertieType: 'text',
+              propertieSugestions: [],
               propertieValue: ''
             }
           ],
@@ -224,11 +309,15 @@ export class CONSTS {
       staticPropertiesList: [
         {
           propertieName: 'Nome: ',
+          propertieType: 'text',
+          propertieSugestions: [],
           propertiePlaceholder: 'Um nome aqui...',
           propertieValue: 'Controllers'
         },
         {
           propertieName: 'Descrição: ',
+          propertieType: 'text',
+          propertieSugestions: [],
           propertiePlaceholder: 'Uma descrição aqui...',
           propertieValue: ''
         }
@@ -236,6 +325,8 @@ export class CONSTS {
       propertiesList: [
         {
           propertieName: '',
+          propertieType: 'text',
+          propertieSugestions: [],
           propertieValue: ''
         }
       ],
@@ -248,11 +339,15 @@ export class CONSTS {
           staticPropertiesList: [
             {
               propertieName: 'Nome: ',
+              propertieType: 'text',
+              propertieSugestions: [],
               propertiePlaceholder: 'Um nome aqui...',
               propertieValue: 'NomeControler'
             },
             {
               propertieName: 'Descrição: ',
+              propertieType: 'text',
+              propertieSugestions: [],
               propertiePlaceholder: 'Uma descrição aqui...',
               propertieValue: ''
             }
@@ -260,6 +355,8 @@ export class CONSTS {
           propertiesList: [
             {
               propertieName: '',
+              propertieType: 'text',
+              propertieSugestions: [],
               propertieValue: ''
             }
           ],
@@ -275,11 +372,15 @@ export class CONSTS {
       staticPropertiesList: [
         {
           propertieName: 'Nome: ',
+          propertieType: 'text',
+          propertieSugestions: [],
           propertiePlaceholder: 'Um nome aqui...',
           propertieValue: 'Repository'
         },
         {
           propertieName: 'Descrição: ',
+          propertieType: 'text',
+          propertieSugestions: [],
           propertiePlaceholder: 'Uma descrição aqui...',
           propertieValue: ''
         }
@@ -287,6 +388,8 @@ export class CONSTS {
       propertiesList: [
         {
           propertieName: '',
+          propertieType: 'text',
+          propertieSugestions: [],
           propertieValue: ''
         }
       ],
@@ -299,11 +402,15 @@ export class CONSTS {
           staticPropertiesList: [
             {
               propertieName: 'Nome: ',
+              propertieType: 'text',
+              propertieSugestions: [],
               propertiePlaceholder: 'Um nome aqui...',
               propertieValue: 'NomeRepositorio'
             },
             {
               propertieName: 'Descrição: ',
+              propertieType: 'text',
+              propertieSugestions: [],
               propertiePlaceholder: 'Uma descrição aqui...',
               propertieValue: ''
             }
@@ -311,6 +418,8 @@ export class CONSTS {
           propertiesList: [
             {
               propertieName: '',
+              propertieType: 'text',
+              propertieSugestions: [],
               propertieValue: ''
             }
           ],
@@ -326,11 +435,15 @@ export class CONSTS {
       staticPropertiesList: [
         {
           propertieName: 'Nome: ',
+          propertieType: 'text',
+          propertieSugestions: [],
           propertiePlaceholder: 'Um nome aqui...',
           propertieValue: 'Services'
         },
         {
           propertieName: 'Descrição: ',
+          propertieType: 'text',
+          propertieSugestions: [],
           propertiePlaceholder: 'Uma descrição aqui...',
           propertieValue: ''
         }
@@ -338,6 +451,8 @@ export class CONSTS {
       propertiesList: [
         {
           propertieName: 'Nome: ',
+          propertieType: 'text',
+          propertieSugestions: [],
           propertieValue: ''
         }
       ],
@@ -350,11 +465,15 @@ export class CONSTS {
           staticPropertiesList: [
             {
               propertieName: 'Nome: ',
+              propertieType: 'text',
+              propertieSugestions: [],
               propertiePlaceholder: 'Um nome aqui...',
               propertieValue: 'NomeService'
             },
             {
               propertieName: 'Descrição: ',
+              propertieType: 'text',
+              propertieSugestions: [],
               propertiePlaceholder: 'Uma descrição aqui...',
               propertieValue: ''
             }
@@ -362,6 +481,8 @@ export class CONSTS {
           propertiesList: [
             {
               propertieName: 'Nome: ',
+              propertieType: 'text',
+              propertieSugestions: [],
               propertieValue: ''
             }
           ],

@@ -48,11 +48,15 @@ export class ResourcesTreeComponent implements OnInit {
           staticPropertiesList: [
             {
               propertieName: 'Nome: ',
+              propertieType: 'text',
+              propertieSugestions: [],
               propertiePlaceholder: 'Um nome aqui...',
               propertieValue: 'Nome da ' + CONSTS.tiposItens.pasta
             },
             {
               propertieName: 'Descrição: ',
+              propertieType: 'text',
+              propertieSugestions: [],
               propertiePlaceholder: 'Uma descrição aqui...',
               propertieValue: ''
             }
@@ -70,26 +74,53 @@ export class ResourcesTreeComponent implements OnInit {
           staticPropertiesList: [
             {
               propertieName: 'Nome: ',
+              propertieType: 'text',
+              propertieSugestions: [],
               propertiePlaceholder: 'Um nome aqui...',
               propertieValue: 'Nome' + CONSTS.tiposItens.rota
             },
             {
               propertieName: 'Descrição: ',
+              propertieType: 'text',
+              propertieSugestions: [],
               propertiePlaceholder: 'Uma descrição aqui...',
               propertieValue: ''
             },
             {
               propertieName: 'Requisição: ',
+              propertieType: 'select',
+              propertieSugestions: [
+                {
+                  sugestionsName: 'get',
+                  sugestionsValue: 'get'
+                },
+                {
+                  sugestionsName: 'post',
+                  sugestionsValue: 'post'
+                },
+                {
+                  sugestionsName: 'put',
+                  sugestionsValue: 'put'
+                },
+                {
+                  sugestionsName: 'delete',
+                  sugestionsValue: 'delete'
+                },
+              ],
               propertiePlaceholder: '\'get\', \'post\', \'delete\', \'put\'...',
               propertieValue: ''
             },
             {
-              propertieName: 'Caminho: ',
+              propertieName: 'Url: ',
+              propertieType: 'text',
+              propertieSugestions: [],
               propertiePlaceholder: 'Ex: "/produtos"',
               propertieValue: ''
             },
             {
               propertieName: 'Retorno: ',
+              propertieType: 'text',
+              propertieSugestions: [],
               propertiePlaceholder: 'Tudo que será retornado...',
               propertieValue: ''
             }
@@ -97,6 +128,8 @@ export class ResourcesTreeComponent implements OnInit {
           propertiesList: [
             {
               propertieName: '',
+              propertieType: 'text',
+              propertieSugestions: [],
               propertieValue: ''
             }
           ],
@@ -112,11 +145,15 @@ export class ResourcesTreeComponent implements OnInit {
           staticPropertiesList: [
             {
               propertieName: 'Nome: ',
+              propertieType: 'text',
+              propertieSugestions: [],
               propertiePlaceholder: 'Um nome aqui...',
               propertieValue: 'Nome' + CONSTS.tiposItens.model
             },
             {
               propertieName: 'Descrição: ',
+              propertieType: 'text',
+              propertieSugestions: [],
               propertiePlaceholder: 'Uma descrição aqui...',
               propertieValue: ''
             }
@@ -124,6 +161,8 @@ export class ResourcesTreeComponent implements OnInit {
           propertiesList: [
             {
               propertieName: '',
+              propertieType: 'text',
+              propertieSugestions: [],
               propertieValue: ''
             }
           ],
@@ -139,11 +178,15 @@ export class ResourcesTreeComponent implements OnInit {
           staticPropertiesList: [
             {
               propertieName: 'Nome: ',
+              propertieType: 'text',
+              propertieSugestions: [],
               propertiePlaceholder: 'Um nome aqui...',
               propertieValue: 'Nome' + CONSTS.tiposItens.controller
             },
             {
               propertieName: 'Descrição: ',
+              propertieType: 'text',
+              propertieSugestions: [],
               propertiePlaceholder: 'Uma descrição aqui...',
               propertieValue: ''
             }
@@ -151,6 +194,8 @@ export class ResourcesTreeComponent implements OnInit {
           propertiesList: [
             {
               propertieName: '',
+              propertieType: 'text',
+              propertieSugestions: [],
               propertieValue: ''
             }
           ],
@@ -166,11 +211,15 @@ export class ResourcesTreeComponent implements OnInit {
           staticPropertiesList: [
             {
               propertieName: 'Nome: ',
+              propertieType: 'text',
+              propertieSugestions: [],
               propertiePlaceholder: 'Um nome aqui...',
               propertieValue: 'Nome' + CONSTS.tiposItens.repository
             },
             {
               propertieName: 'Descrição: ',
+              propertieType: 'text',
+              propertieSugestions: [],
               propertiePlaceholder: 'Uma descrição aqui...',
               propertieValue: ''
             }
@@ -178,6 +227,8 @@ export class ResourcesTreeComponent implements OnInit {
           propertiesList: [
             {
               propertieName: '',
+              propertieType: 'text',
+              propertieSugestions: [],
               propertieValue: ''
             }
           ],
@@ -193,11 +244,15 @@ export class ResourcesTreeComponent implements OnInit {
           staticPropertiesList: [
             {
               propertieName: 'Nome: ',
+              propertieType: 'text',
+              propertieSugestions: [],
               propertiePlaceholder: 'Um nome aqui...',
               propertieValue: 'Nome' + CONSTS.tiposItens.services
             },
             {
               propertieName: 'Descrição: ',
+              propertieType: 'text',
+              propertieSugestions: [],
               propertiePlaceholder: 'Uma descrição aqui...',
               propertieValue: ''
             }
@@ -205,6 +260,8 @@ export class ResourcesTreeComponent implements OnInit {
           propertiesList: [
             {
               propertieName: '',
+              propertieType: 'text',
+              propertieSugestions: [],
               propertieValue: ''
             }
           ],

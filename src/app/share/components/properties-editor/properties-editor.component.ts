@@ -20,7 +20,7 @@ import { TranspilerService } from '../../services/transpiler/transpiler.service'
   styleUrls: ['./properties-editor.component.scss']
 })
 export class PropertiesEditorComponent implements OnInit {
-  private srcLocal: ResourcesTreeInterface;
+  public srcLocal: ResourcesTreeInterface;
   private srcGlobal: ResourcesTreeInterface[];
 
   constructor(
@@ -44,6 +44,13 @@ export class PropertiesEditorComponent implements OnInit {
     this.srcLocal.propertiesList.push(
       {
         'propertieName': '',
+        'propertieType': '',
+        'propertieSugestions': [
+          {
+            'sugestionsName': '',
+            'sugestionsValue': ''
+          }
+        ],
         'propertieValue': ''
       }
     );
@@ -93,29 +100,4 @@ export class PropertiesEditorComponent implements OnInit {
     );
   }
 
-  // Usada apenas para iniciar o src e não apresentar erro.
-  private incializaSrc() {
-    if (this.srcLocal === undefined) {
-      this.srcLocal = {
-        isHaveChild: false,
-        isSelected: false,
-        indexPath: [],
-        tipoItem: '',
-        staticPropertiesList: [
-          {
-            propertieName: '',
-            propertiePlaceholder: '',
-            propertieValue: ''
-          }
-        ],
-        propertiesList: [
-          {
-            propertieName: '',
-            propertieValue: ''
-          }
-        ],
-        itemList: []
-      };
-    }
-  }
 }

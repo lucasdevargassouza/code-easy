@@ -3,18 +3,27 @@ export interface ResourcesTreeInterface {
     'isSelected': Boolean;
     'indexPath': number[];
     'tipoItem': string;
-    'staticPropertiesList': StaticPropertiesList[];
-    'propertiesList': PropertiesList[];
+    'staticPropertiesList': StaticProperties[];
+    'propertiesList': Properties[];
     'itemList': ResourcesTreeInterface[];
 }
 
-interface StaticPropertiesList {
-    'propertieName': String;
-    'propertiePlaceholder': String;
-    'propertieValue': String;
+interface StaticProperties {
+    'propertieName': string;
+    'propertieType': string;
+    'propertieSugestions': Sugestions[];
+    'propertiePlaceholder': string;
+    'propertieValue': string;
 }
 
-interface PropertiesList {
-    'propertieName': String;
-    'propertieValue': String;
+interface Properties {
+    'propertieName': string;
+    'propertieType': string;
+    'propertieSugestions': Sugestions[];
+    'propertieValue': string;
+}
+
+interface Sugestions {
+    'sugestionsName': string;
+    'sugestionsValue': string;
 }

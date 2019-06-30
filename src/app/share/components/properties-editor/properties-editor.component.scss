@@ -24,7 +24,7 @@
     border: 0.5px solid $color-top-bar;
 }
 
-.propertie input {
+.propertie input, .propertie select {
     background: $color-background-propertie-editor;
     border: $size-none solid $color-white;
     color: $font-color-input-propertie-editor;
