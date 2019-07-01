@@ -93,7 +93,9 @@ export class TranspilerService {
 
     'const server = http.createServer(app);\n\n' +
 
-    'server.listen(' + server.staticPropertiesList[2].propertieValue + ');\n\n';
+    'server.listen(' + server.staticPropertiesList[2].propertieValue + ');\n\n\n\n' +
+    '// Emit o pid do processo para a plataforma.\n' +
+    'console.log({\"process_pid\": process.pid});\n\n';
 
     return serverString;
   }

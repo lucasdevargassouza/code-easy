@@ -10,7 +10,7 @@ import { ResourcesTreeInterface } from '../../services/resources-tree.interface'
   styleUrls: ['./top-bar-frame.component.scss']
 })
 export class TopBarFrameComponent implements OnInit {
-  private srcGlobal: ResourcesTreeInterface[];
+  public srcGlobal: ResourcesTreeInterface[];
   @Input() tituloIde: string;
 
   private window = remote.getCurrentWindow();

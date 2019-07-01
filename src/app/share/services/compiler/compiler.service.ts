@@ -26,16 +26,14 @@ export class CompilerService {
     this.database.getSrc();
 
     setInterval(() => {
-      this.utils.getInfoAPI(
-        'http://localhost:' +
-        this.srcGlobal[1].staticPropertiesList[2].propertieValue +
-        '/process/pid'
-      ).subscribe(
-        (data: any) => {
-          this.srcGlobal[0].staticPropertiesList[5].propertieValue = data.process_pid;
-        },
-        error => {
-          this.srcGlobal[0].staticPropertiesList[5].propertieValue = '--';
+
+
+      fs.readFile(
+        this.srcGlobal[0].staticPropertiesList[4].propertieValue + '\\' +
+        this.srcGlobal[0].staticPropertiesList[0].propertieValue.toLocaleLowerCase().trim() + 
+        '.proj.json', 'UTF-8', function (err, data) {
+          if(err) throw err;
+          console.log(data.toString());
         }
       );
     }, 3000);
@@ -88,75 +86,40 @@ export class CompilerService {
   private async iniciarEscutaAPI(srcGlobal: ResourcesTreeInterface[]) {
     let temNodeModules: Boolean = false;
 
-    ps.addCommand('cd ' + srcGlobal[0].staticPropertiesList[4].propertieValue);
-    ps.invoke().then(() => {
-      ps.addCommand('ls');
-      ps.invoke().then((output) => {
-        const nodemodules = output.toString().indexOf('node_modules');
-        if (nodemodules !== -1) {
-          temNodeModules = true;
-        } else {
-          // Instala a pasta node_modules
-          ps.addCommand('npm i > logs.log');
-        }
+    // Usado para validar se já existe outro processo rodando na mesma porta.
+    const value = srcGlobal[0].staticPropertiesList[5].propertieValue;
+    if (value !== '' && value !== '--' && value !== undefined && value !== null) {
+      ps.addCommand('taskKill.exe /F /PID ' + srcGlobal[0].staticPropertiesList[5].propertieValue);
+      ps.invoke().then(() => this.iniciarEscutaAPI(srcGlobal)).catch(() => this.iniciarEscutaAPI(srcGlobal));
+    } else {
+      ps.addCommand('cd ' + srcGlobal[0].staticPropertiesList[4].propertieValue);
+      ps.invoke().then(() => {
+        ps.addCommand('ls');
+        ps.invoke().then((output) => {
 
-        // Executa npm i se nescessário
-        ps.invoke().then(() => {
-          console.log('Escuta da API iniciado!');
+          const nodemodules = output.toString().indexOf('node_modules');
+          if (nodemodules !== -1) {
+            temNodeModules = true;
+          } else {
+            // Instala a pasta node_modules
+            ps.addCommand('npm i > codeeasy.');
+          }
 
-          // Inicia novo processo
-          ps.addCommand('node server.js');
+          // Executa npm i se nescessário
           ps.invoke().then(() => {
+            console.log('Escuta da API iniciado!');
 
-            console.log('Processo finalizado!');
+            // Inicia novo processo
+            ps.addCommand('node server.js > ' + srcGlobal[0].staticPropertiesList[0].propertieValue.toLocaleLowerCase().trim() + '.proj.json');
+            ps.invoke().then(() => {
 
-          }).catch(err => {
+              console.log('Processo finalizado!');
 
-            this.utils.getInfoAPI(
-              'http://localhost:' +
-              srcGlobal[1].staticPropertiesList[2].propertieValue +
-              '/process/pid'
-            ).subscribe(
-              (data: any) => {
-                srcGlobal[0].staticPropertiesList[5].propertieValue = data.process_pid;
-              },
-              error => {
-                srcGlobal[0].staticPropertiesList[5].propertieValue = '--';
-              }
-            );
-
-            // Usado para validar se já existe outro processo rodando na mesma porta.
-            const value = srcGlobal[0].staticPropertiesList[5].propertieValue;
-            if (value !== '' && value !== '--' && value !== undefined && value !== null) {
-
-              ps.addCommand('taskKill.exe /F /PID ' + srcGlobal[0].staticPropertiesList[5].propertieValue);
-              ps.invoke().then(() => this.iniciarEscutaAPI(srcGlobal)).catch(() => this.iniciarEscutaAPI(srcGlobal));
-
-            } else {
-              this.iniciarEscutaAPI(srcGlobal);
-            }
-          });
+            }).catch(err => console.log('API não iniciada!'));
+          }).catch(err => console.log('API não iniciada!'));
         }).catch(err => console.log(err));
-
-        setInterval(() => {
-          this.utils.getInfoAPI(
-            'http://localhost:' +
-            srcGlobal[1].staticPropertiesList[2].propertieValue +
-            '/process/pid'
-          ).subscribe(
-            (data: any) => {
-              srcGlobal[0].staticPropertiesList[5].propertieValue = data.process_pid;
-            },
-            error => {
-              srcGlobal[0].staticPropertiesList[5].propertieValue = '--';
-            }
-          );
-        }, 3000);
-
-
       }).catch(err => console.log(err));
-    }).catch(err => console.log(err));
-
+    }
   }
 
   private async genereteFiles(srcGlobal: ResourcesTreeInterface[]): Promise<any> {
@@ -208,7 +171,7 @@ export class CompilerService {
           });
 
           // Criar ou recria arquivo de logs
-          fs.writeFile(caminhoSalvar + 'logs.log', '', (err) => { /* console.log(err) */ });
+          fs.writeFile(caminhoSalvar + '\\' + srcGlobal[0].staticPropertiesList[0].propertieValue.toLocaleLowerCase().trim() + '.proj.json', '', (err) => { /* console.log(err) */ });
         }
       });
     } else {
