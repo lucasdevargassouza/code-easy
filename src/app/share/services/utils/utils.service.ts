@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import { ResourcesTreeInterface } from '../resources-tree.interface';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UtilsService {
 
-  constructor() { }
+  constructor(
+    private http: HttpClient,
+  ) { }
 
   public initIndexPath(src: ResourcesTreeInterface[], indexPath?: number[]): ResourcesTreeInterface[] {
 
@@ -27,5 +30,10 @@ export class UtilsService {
     }
 
     return src;
+  }
+
+  public getInfoAPI(url) {
+    const res = this.http.get(url);
+    return res;
   }
 }

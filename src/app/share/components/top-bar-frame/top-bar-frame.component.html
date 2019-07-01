@@ -2,7 +2,6 @@
   <div class="top-bar-main">
     <div class="left">
       <div class="frame-buttons">
-        <div class="frame-btn frame-btn-play" (click)="play()" title="Iniciar API"></div>
         <div class="frame-btn">
           <!-- <mat-icon aria-hidden="false" aria-label="Code Easy">fiber_manual_record</mat-icon> -->
         </div>
@@ -12,6 +11,11 @@
       {{ tituloIde }}
     </div>
     <div class="right">
+        <div class="frame-buttons">
+          <div class="frame-btn frame-btn-play" *ngIf="srcGlobal[0].staticPropertiesList[5].propertieValue === '--'" (click)="play()" title="Iniciar API"></div>
+          <div class="frame-btn frame-btn-restart" *ngIf="srcGlobal[0].staticPropertiesList[5].propertieValue !== '--'" (click)="play()" title="Reiniciar API"></div>
+          <div class="frame-btn frame-btn-stop" *ngIf="srcGlobal[0].staticPropertiesList[5].propertieValue !== '--'" (click)="stop()" title="Parar API"></div>
+        </div>
       <div class="frame-buttons">
         <div class="frame-btn frame-btn-minimizar" (click)="minimizeIde()" title="Minimizar"></div>
         <div class="frame-btn frame-btn-maximizar" (click)="toggleMaximizeIde()" title=""></div>

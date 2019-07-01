@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { remote } from 'electron';
 import { Emissor } from '../../services/emissor-eventos/emissor-eventos.service';
 import { CompilerService } from '../../services/compiler/compiler.service';
+import { ResourcesTreeInterface } from '../../services/resources-tree.interface';
 
 @Component({
   selector: 'app-top-bar-frame',
@@ -9,7 +10,7 @@ import { CompilerService } from '../../services/compiler/compiler.service';
   styleUrls: ['./top-bar-frame.component.scss']
 })
 export class TopBarFrameComponent implements OnInit {
-  private srcGlobal;
+  private srcGlobal: ResourcesTreeInterface[];
   @Input() tituloIde: string;
 
   private window = remote.getCurrentWindow();
@@ -31,6 +32,10 @@ export class TopBarFrameComponent implements OnInit {
 
   public play() {
     this.compiler.iniciarAplicacao(this.srcGlobal);
+  }
+
+  public stop() {
+    this.compiler.pararAplicacao(this.srcGlobal);
   }
 
   public closeIde() {

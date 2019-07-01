@@ -29,6 +29,7 @@ export class TranspilerService {
     ' \"author\": \"' + appConfig.staticPropertiesList[2].propertieValue + '\",\n' +
     ' \"license\": \"ISC\",\n' +
     ' \"dependencies\": {\n' +
+    '   \"cors": "^2.8.5\",' +
     '   \"debug\": \"^4.1.1\",\n' +
     '   \"express\": \"^4.17.1\",\n' +
     '   \"http\": \"0.0.0\"\n' +
@@ -43,20 +44,17 @@ export class TranspilerService {
     const rotas: ResourcesTreeInterface = await this.getItemEspecifico(srcGlobal, CONSTS.tiposItens.rota);
     let listaRotas = '\n' +
     '/* Usada para identificar o processo ativo */\n' +
-    'const rota_emit_pid = router.get(\'/process/pid\', (req, res, next) => {\n' +
+    'app.get(\'/process/pid\', (req, res, next) => {\n' +
     '  res.send({\n        process_pid: process.pid\n    })\n' +
-    '});\n' +
-    'app.use(\'/process/pid\', rota_emit_pid);\n    ';
+    '});\n';
 
     rotas.itemList.forEach(rota => {
       listaRotas = listaRotas + '\n' +
       '/*' + rota.staticPropertiesList[1].propertieValue + '*/\n' +
-      'const rota_' + rota.staticPropertiesList[0].propertieValue + ' = router.' + rota.staticPropertiesList[2].propertieValue.trim() +
+      'app.' + rota.staticPropertiesList[2].propertieValue.trim() +
       '(\'' + rota.staticPropertiesList[3].propertieValue.trim() + '\', (req, res, next) => {\n' +
       '  res.send({\n        ' + rota.staticPropertiesList[4].propertieValue + '\n    })\n' +
-      '});\n' +
-      'app.use(\'' + rota.staticPropertiesList[3].propertieValue.trim() + '\', rota_' +
-                     rota.staticPropertiesList[0].propertieValue + ');\n    ';
+      '});\n';
     });
 
     const stringFile = '' +
@@ -65,6 +63,10 @@ export class TranspilerService {
       'const express = require(\'express\');\n' +
       'const router = express.Router();\n' +
       'const app = express();\n\n' +
+      'const cors = require(\'cors\');\n' +
+
+      '// Habilita o CORS\n' +
+      'app.use(cors());\n' +
 
       '/*---------------------------------- Rotas */\n'
       +
@@ -88,10 +90,10 @@ export class TranspilerService {
 
     'app.set(\'port\', ' + server.staticPropertiesList[2].propertieValue + ');\n\n' +
 
+
     'const server = http.createServer(app);\n\n' +
 
-    'server.listen(' + server.staticPropertiesList[2].propertieValue + ');\n\n' +
-    'console.log(\'processo-node: \' + process.pid);\n\n';
+    'server.listen(' + server.staticPropertiesList[2].propertieValue + ');\n\n';
 
     return serverString;
   }

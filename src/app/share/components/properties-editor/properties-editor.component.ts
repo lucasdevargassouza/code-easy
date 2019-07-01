@@ -4,6 +4,7 @@ import { ResourcesTreeInterface } from '../../services/resources-tree.interface'
 import { CONSTS } from '../../services/consts/consts.service';
 import { DatabaseStorageService } from '../../services/database-storage/database-storage.service';
 import { TranspilerService } from '../../services/transpiler/transpiler.service';
+import { UtilsService } from '../../services/utils/utils.service';
 
 
 /**
@@ -25,7 +26,6 @@ export class PropertiesEditorComponent implements OnInit {
 
   constructor(
     private database: DatabaseStorageService,
-    private traspiler: TranspilerService,
 
   ) { }
 
@@ -92,9 +92,9 @@ export class PropertiesEditorComponent implements OnInit {
       Emissor.itemSelectedLocation.subscribe(
         async data => {
           this.srcLocal = await this.getItemAEditar(data);
-          console.log(await this.traspiler.getContentRotas(this.srcGlobal));
+          /* console.log(await this.traspiler.getContentRotas(this.srcGlobal));
           console.log(await this.traspiler.getContentServidor(this.srcGlobal));
-          console.log(await this.traspiler.getPackageJson(this.srcGlobal));
+          console.log(await this.traspiler.getPackageJson(this.srcGlobal)); */
       },
       error => console.log(error)
     );
