@@ -42,11 +42,7 @@ export class TranspilerService {
   // Retorna as rotas
   public async getContentRotas(srcGlobal: ResourcesTreeInterface[]): Promise<String> {
     const rotas: ResourcesTreeInterface = await this.getItemEspecifico(srcGlobal, CONSTS.tiposItens.rota);
-    let listaRotas = '\n' +
-    '/* Usada para identificar o processo ativo */\n' +
-    'app.get(\'/process/pid\', (req, res, next) => {\n' +
-    '  res.send({\n        process_pid: process.pid\n    })\n' +
-    '});\n';
+    let listaRotas = '\n';
 
     rotas.itemList.forEach(rota => {
       listaRotas = listaRotas + '\n' +
@@ -91,11 +87,13 @@ export class TranspilerService {
     'app.set(\'port\', ' + server.staticPropertiesList[2].propertieValue + ');\n\n' +
 
 
-    'const server = http.createServer(app);\n\n' +
+    'const server = http.createServer(app);\n' +
 
-    'server.listen(' + server.staticPropertiesList[2].propertieValue + ');\n\n\n\n' +
+    'server.listen(' + server.staticPropertiesList[2].propertieValue + ');\n\n' +
+
+
     '// Emit o pid do processo para a plataforma.\n' +
-    'console.log({\"process_pid\": process.pid});\n\n';
+    'console.log([process.pid]);\n';
 
     return serverString;
   }

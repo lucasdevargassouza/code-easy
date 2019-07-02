@@ -25,18 +25,7 @@ export class CompilerService {
     Emissor.srcGlobal.subscribe(data => this.srcGlobal = data);
     this.database.getSrc();
 
-    setInterval(() => {
-
-
-      fs.readFile(
-        this.srcGlobal[0].staticPropertiesList[4].propertieValue + '\\' +
-        this.srcGlobal[0].staticPropertiesList[0].propertieValue.toLocaleLowerCase().trim() + 
-        '.proj.json', 'UTF-8', function (err, data) {
-          if(err) throw err;
-          console.log(data.toString());
-        }
-      );
-    }, 3000);
+    this.readFile();
   }
 
   public async iniciarAplicacao(srcGlobal: ResourcesTreeInterface[]) {
@@ -102,7 +91,7 @@ export class CompilerService {
             temNodeModules = true;
           } else {
             // Instala a pasta node_modules
-            ps.addCommand('npm i > codeeasy.');
+            ps.addCommand('npm i');
           }
 
           // Executa npm i se nescessário
@@ -110,13 +99,13 @@ export class CompilerService {
             console.log('Escuta da API iniciado!');
 
             // Inicia novo processo
-            ps.addCommand('node server.js > ' + srcGlobal[0].staticPropertiesList[0].propertieValue.toLocaleLowerCase().trim() + '.proj.json');
+            ps.addCommand('node server.js > ' + srcGlobal[0].staticPropertiesList[0].propertieValue.toLocaleLowerCase().trim() + '.json');
             ps.invoke().then(() => {
 
               console.log('Processo finalizado!');
 
             }).catch(err => console.log('API não iniciada!'));
-          }).catch(err => console.log('API não iniciada!'));
+          }).catch(err => console.log('Não instalou as dependências!'));
         }).catch(err => console.log(err));
       }).catch(err => console.log(err));
     }
@@ -171,7 +160,11 @@ export class CompilerService {
           });
 
           // Criar ou recria arquivo de logs
-          fs.writeFile(caminhoSalvar + '\\' + srcGlobal[0].staticPropertiesList[0].propertieValue.toLocaleLowerCase().trim() + '.proj.json', '', (err) => { /* console.log(err) */ });
+          fs.writeFile(
+            caminhoSalvar + '\\' + srcGlobal[0].staticPropertiesList[0].propertieValue.toLocaleLowerCase().trim() + '.json',
+            '',
+            () => {}
+          );
         }
       });
     } else {
@@ -187,8 +180,29 @@ export class CompilerService {
       });
 
       // Criar ou recria arquivo de logs
-      fs.writeFile(caminhoSalvar + 'logs.log', '', (err) => { /* console.log(err) */ });
+      fs.writeFile(
+        caminhoSalvar + '\\' + srcGlobal[0].staticPropertiesList[0].propertieValue.toLocaleLowerCase().trim() + '.json',
+        '',
+        () => {}
+      );
     }
     return;
+  }
+
+  private readFile() {
+    let pid = '--';
+    setInterval(() => {
+
+      fs.readFile(
+        this.srcGlobal[0].staticPropertiesList[4].propertieValue + '\\' +
+        this.srcGlobal[0].staticPropertiesList[0].propertieValue.toLocaleLowerCase().trim() +
+        '.json', 'utf16le', function (err, data) {
+          if (err) { pid = '--'; }
+          pid = data.split('[ ')[1].split(' ]')[0].toString();
+        }
+      );
+      this.srcGlobal[0].staticPropertiesList[5].propertieValue = pid;
+
+    }, 3000);
   }
 }
