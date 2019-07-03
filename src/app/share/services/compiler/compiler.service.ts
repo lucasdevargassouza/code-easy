@@ -4,6 +4,7 @@ import { ResourcesTreeInterface } from '../resources-tree.interface';
 import { UtilsService } from '../utils/utils.service';
 import { DatabaseStorageService } from '../database-storage/database-storage.service';
 import { Emissor } from '../emissor-eventos/emissor-eventos.service';
+import { HttpClient } from '@angular/common/http';
 
 const { dialog } = require('electron').remote;
 const fs = require('fs');
@@ -20,6 +21,7 @@ export class CompilerService {
     private transpiler: TranspilerService,
     private utils: UtilsService,
     private database: DatabaseStorageService,
+    private http: HttpClient,
 
   ) {
     Emissor.srcGlobal.subscribe(data => this.srcGlobal = data);
@@ -67,8 +69,9 @@ export class CompilerService {
       srcGlobal[0].staticPropertiesList[5].propertieValue !== undefined &&
       srcGlobal[0].staticPropertiesList[5].propertieValue !== null
     ) {
-      ps.addCommand('taskKill.exe /F /PID ' + srcGlobal[0].staticPropertiesList[5].propertieValue);
-      ps.invoke().then(() => {}).catch(err => console.log(err));
+      ps.addCommand(
+        'taskKill.exe /F /PID ' + srcGlobal[0].staticPropertiesList[5].propertieValue);
+      ps.invoke().then(() => console.log('Execução da API finalizada!')).catch(err => console.log(err));
     }
   }
 
@@ -189,20 +192,29 @@ export class CompilerService {
     return;
   }
 
-  private readFile() {
+  private async readFile() {
     let pid = '--';
-    setInterval(() => {
+    if (this.srcGlobal) {
+      if (this.srcGlobal[0].staticPropertiesList[4].propertieValue !== '') {
+        setInterval(() => {
 
-      fs.readFile(
-        this.srcGlobal[0].staticPropertiesList[4].propertieValue + '\\' +
-        this.srcGlobal[0].staticPropertiesList[0].propertieValue.toLocaleLowerCase().trim() +
-        '.json', 'utf16le', function (err, data) {
-          if (err) { pid = '--'; }
-          pid = data.split('[ ')[1].split(' ]')[0].toString();
-        }
-      );
-      this.srcGlobal[0].staticPropertiesList[5].propertieValue = pid;
+          fs.readFile(
+            this.srcGlobal[0].staticPropertiesList[4].propertieValue + '\\' +
+            this.srcGlobal[0].staticPropertiesList[0].propertieValue.toLocaleLowerCase().trim() +
+            '.json', 'utf16le', function (err, data) {
+              if (err) { pid = '--'; }
+              pid = data.split('[ ')[1].split(' ]')[0].toString();
+            }
+          );
 
-    }, 3000);
+          this.http.get('http://localhost:' + this.srcGlobal[1].staticPropertiesList[2].propertieValue).subscribe(
+            data => {},
+            error => pid = '--'
+          );
+
+          this.srcGlobal[0].staticPropertiesList[5].propertieValue = pid;
+        }, 3000);
+      }
+    }
   }
 }

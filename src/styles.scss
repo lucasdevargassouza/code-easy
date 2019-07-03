@@ -47,6 +47,7 @@ $font-size-7: 28px;
 $font-size-8: 32px;
 $font-size-9: 36px;
 $font-size-10: 40px;
+$font-size-17: 64px;
 
 
 // Colors -----------------
@@ -66,6 +67,7 @@ $color-top-bar-button-maximizar: #4d4848;
 $color-top-bar-button-minimizar: #4d4848;
 
 // Fonte colors
+$font-color-title: #333333;
 $font-color-label-propertie-editor: #adadad;
 $font-color-input-propertie-editor: #d8d8d8;
 $font-color-input-propertie-editor-focus: #f3f3f3;
@@ -124,6 +126,21 @@ body {
 
 .align-right {
   float: right;
+}
+
+.btn {
+  background: $color-background-propertie-editor;
+  border: $size-none solid $color-white;
+  color: $font-color-input-propertie-editor;
+  padding: $size-0-5;
+  padding-left: $size-1-5;
+  padding-right: $size-1-5;
+  font-family: Consolas, 'Courier New', monospace;
+  cursor: pointer;
+}
+
+.btn:focus {
+  outline: auto;
 }
 
 // Ajusta o scroll de todos os elementos.

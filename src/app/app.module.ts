@@ -58,6 +58,7 @@ import { PropertiesEditorComponent } from './share/components/properties-editor/
 import { Emissor } from './share/services/emissor-eventos/emissor-eventos.service';
 import { DatabaseStorageService } from './share/services/database-storage/database-storage.service';
 import { UtilsService } from './share/services/utils/utils.service';
+import { PaginaInicialComponent } from './pages/pagina-inicial/pagina-inicial.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -72,7 +73,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     TopBarFrameComponent,
     BottonBarStatusComponent,
     ResourcesTreeComponent,
-    PropertiesEditorComponent
+    PropertiesEditorComponent,
+    PaginaInicialComponent
   ],
   imports: [
     BrowserModule,

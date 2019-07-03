@@ -1,0 +1,105 @@
+@import "../../../styles.scss";
+
+.main-page {
+  height: $size-fill;
+  display: flex;
+  flex-direction: column;
+  background-color: $color-top-bar;
+}
+
+.frame-de-criacao {
+    width: 60%;
+    height: 60%;
+    min-width: 350px;
+    min-height: 400px;
+    max-width: 500px;
+    max-height: 500px;
+    background-color: $color-background-col;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.title-plataforma {
+    font-size: $font-size-10;
+    padding: $size-2;
+
+}
+.corpo-plataforma {
+    flex: 1;
+    padding: $size-3;
+}
+
+.propertie {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: $font-size-3;
+    margin-top: $size-0-5;
+    margin-bottom: $size-0-5;
+}
+
+.propertie div {
+    width: 30%;
+}
+
+.propertie .selectPath {
+    display: flex;
+    width: 70%;
+    justify-content: space-between;
+    input {
+        background: $color-background-propertie-editor;
+        border: $size-none solid $color-white;
+        color: $font-color-input-propertie-editor;
+        padding: $size-0-5;
+        padding-left: $size-1-5;
+        padding-right: $size-1-5;
+        width: 70%;
+        font-family: Consolas, 'Courier New', monospace;
+        max-height: $size-4;
+    }
+    button {
+        width: 18%;
+    }
+    button:focus {
+        outline: auto;
+    }
+}
+
+.propertie input, .propertie select {
+    background: $color-background-propertie-editor;
+    border: $size-none solid $color-white;
+    color: $font-color-input-propertie-editor;
+    padding: $size-0-5;
+    padding-left: $size-1-5;
+    padding-right: $size-1-5;
+    width: 70%;
+    font-family: Consolas, 'Courier New', monospace;
+    max-height: $size-4;
+}
+
+.propertie input:focus {
+    .extended {
+        background: $color-background-propertie-editor;
+    }
+    .propertie input {
+        background: $color-background-propertie-editor-exetended-hover;
+    }
+    outline: auto;
+    color: $font-color-input-propertie-editor-focus;
+}
+
+.div-criar {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.btn-criar-projeto {
+    padding: $size-5;
+    padding-top: $size-2;
+    padding-bottom: $size-2;
+    margin-top: $size-2;
+}
+

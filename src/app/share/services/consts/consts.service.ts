@@ -32,7 +32,7 @@ export class CONSTS {
       staticPropertiesList: [
         {
           propertieName: 'Nome do projeto: ',
-          propertieType: 'text',
+          propertieType: 'disabled',
           propertieSugestions: [],
           propertiePlaceholder: 'Um nome aqui...',
           propertieValue: 'MinhaAPINode'

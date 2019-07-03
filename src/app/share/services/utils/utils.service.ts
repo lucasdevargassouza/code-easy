@@ -8,7 +8,6 @@ import { HttpClient } from '@angular/common/http';
 export class UtilsService {
 
   constructor(
-    private http: HttpClient,
   ) { }
 
   public initIndexPath(src: ResourcesTreeInterface[], indexPath?: number[]): ResourcesTreeInterface[] {
@@ -32,8 +31,4 @@ export class UtilsService {
     return src;
   }
 
-  public getInfoAPI(url) {
-    const res = this.http.get(url);
-    return res;
-  }
 }

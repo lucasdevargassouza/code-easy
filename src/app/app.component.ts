@@ -6,6 +6,7 @@ import { AppConfig } from '../environments/environment';
 import { CONSTS } from './share/services/consts/consts.service';
 import { ResourcesTreeInterface } from './share/services/resources-tree.interface';
 import { UtilsService } from './share/services/utils/utils.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +18,7 @@ export class AppComponent {
     public electronService: ElectronService,
     private translate: TranslateService,
     private utils: UtilsService,
+    private router: Router,
 
   ) {
     // Avisos padrões mostrados no console.>>
@@ -36,12 +38,15 @@ export class AppComponent {
 
   private inicializarVariaveisInternas() {
     let src = [];
+
     try {
       src = JSON.parse(localStorage.getItem(CONSTS.appResources.srcLocal));
 
       if (src === null) {
-        localStorage.setItem(CONSTS.appResources.srcLocal, JSON.stringify(this.utils.initIndexPath(CONSTS.appResources.srcPadrao)));
-        src = JSON.parse(localStorage.getItem(CONSTS.appResources.srcLocal));
+        // localStorage.setItem(CONSTS.appResources.srcLocal, JSON.stringify(this.utils.initIndexPath(CONSTS.appResources.srcPadrao)));
+        // src = JSON.parse(localStorage.getItem(CONSTS.appResources.srcLocal));
+
+        this.router.navigate(['inicio']);
       }
 
     } catch (e) {

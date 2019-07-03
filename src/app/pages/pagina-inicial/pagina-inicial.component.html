@@ -1,0 +1,31 @@
+<div class="main-page">
+    <!-- Top bar frame -->
+    <app-top-bar-frame></app-top-bar-frame>
+    <!-- Top bar frame -->
+
+    <div class="frame-de-criacao">
+        <div class="title-plataforma">
+            Code Easy
+            <hr/>
+        </div>
+        <div class="corpo-plataforma">
+            <div class="propertie" *ngFor="let item of appConfig; index as i">
+                <div> {{ item.label }} </div>
+                <input *ngIf="item.type == 'text'" type="text" id="input-propertie-{{ i }}" (change)="inputsOnChange()" name="input-propertie-{{ i }}" placeholder="{{ item.placeholder }}" [(ngModel)]="item.value" title=""/>
+                <input *ngIf="item.type == 'number'" type="number" step="0.010" id="input-propertie-{{ i }}" (change)="inputsOnChange()" name="input-propertie-{{ i }}" placeholder="{{ item.placeholder }}" [(ngModel)]="item.value" title=""/>
+                <div *ngIf="item.type == 'selectPath'" class="selectPath">
+                    <input type="text" id="input-propertie-{{ i }}" (change)="inputsOnChange()" name="input-propertie-{{ i }}" placeholder="{{ item.placeholder }}" [(ngModel)]="item.value" title=""/>
+                    <button class="btn" (click)="selecionarCaminho(i)">...</button>
+                </div>
+                <input *ngIf="item.type == 'disabled'" type="text" disabled id="input-propertie-{{ i }}" (change)="inputsOnChange()" name="input-propertie-{{ i }}" placeholder="{{ item.placeholder }}" [(ngModel)]="item.value" title=""/>
+                <select *ngIf="item.type == 'select'" id="input-propertie-{{ i }}" (change)="inputsOnChange()" name="input-propertie-{{ i }}" [(ngModel)]="item.value" style="max-height: unset;">
+                    <option *ngFor="let sugest of item.propertieSugestions" value="{{ sugest.sugestionsValue }}">{{ sugest.sugestionsName }}</option>
+                </select>
+            </div>
+            <div class="div-criar">
+                <button class="btn btn-criar-projeto">Criar projeto</button>
+            </div>
+        </div>
+    </div>
+</div>
+
