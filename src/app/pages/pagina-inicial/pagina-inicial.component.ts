@@ -40,7 +40,8 @@ export class PaginaInicialComponent implements OnInit {
     }
   ];
 
-  constructor() { }
+  constructor(
+  ) { }
 
   ngOnInit() {
   }
@@ -57,6 +58,10 @@ export class PaginaInicialComponent implements OnInit {
         this.appConfig[i].value = path[0].toString();
       }
     });
+  }
+
+  public criarNovoProjeto() {
+
   }
 
 }
