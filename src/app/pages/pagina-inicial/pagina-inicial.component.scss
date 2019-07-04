@@ -56,7 +56,7 @@
         padding-left: $size-1-5;
         padding-right: $size-1-5;
         width: 70%;
-        font-family: Consolas, 'Courier New', monospace;
+        font-family: Arial, 'Courier New', monospace;
         max-height: $size-4;
     }
     button {
@@ -71,15 +71,15 @@
     background: $color-background-propertie-editor;
     border: $size-none solid $color-white;
     color: $font-color-input-propertie-editor;
-    padding: $size-0-5;
+    padding: $size-2;
     padding-left: $size-1-5;
     padding-right: $size-1-5;
     width: 70%;
-    font-family: Consolas, 'Courier New', monospace;
+    font-family: Arial, 'Courier New', monospace;
     max-height: $size-4;
 }
 
-.propertie input:focus {
+.propertie input:focus, .propertie select:focus {
     .extended {
         background: $color-background-propertie-editor;
     }
@@ -93,13 +93,13 @@
 .div-criar {
     display: flex;
     width: 100%;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
 
 .btn-criar-projeto {
     padding: $size-5;
-    padding-top: $size-1;
-    padding-bottom: $size-1;
+    padding-top: $size-2;
+    padding-bottom: $size-2;
     margin-top: $size-2;
 }
 

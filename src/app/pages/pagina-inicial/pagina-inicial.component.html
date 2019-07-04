@@ -5,24 +5,24 @@
 
     <div class="frame-de-criacao">
         <div class="title-plataforma">
-            Code Easy
+            Criar novo projeto
             <hr/>
         </div>
         <div class="corpo-plataforma">
             <div class="propertie" *ngFor="let item of appConfig; index as i">  
                 <div> {{ item.label }} </div>
-                <input *ngIf="item.type == 'text'" type="text" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" placeholder="{{ item.placeholder }}" [(ngModel)]="item.value" title=""/>
-                <input *ngIf="item.type == 'number'" type="number" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" placeholder="{{ item.placeholder }}" [(ngModel)]="item.value" title=""/>
-                <div *ngIf="item.type == 'selectPath'" class="selectPath">
-                    <input type="text" [(ngModel)]="item.value" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" placeholder="{{ item.placeholder }}"/>
-                    <button name="button-propertie-{{ i }}" class="btn" (click)="selecionarCaminho(i)">...</button>
-                </div>
-                <input *ngIf="item.type == 'disabled'" type="text" disabled id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" placeholder="{{ item.placeholder }}" [(ngModel)]="item.value" title=""/>
-                <select *ngIf="item.type == 'select'" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.value" style="max-height: unset;">
-                    <option *ngFor="let sugest of item.propertieSugestions" value="{{ sugest.sugestionsValue }}">{{ sugest.sugestionsName }}</option>
+                <input  *ngIf="item.type == 'text'"          type="text"                id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.value" placeholder="{{ item.placeholder }}" />
+                <input  *ngIf="item.type == 'textMultiline'" type="text"                id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.value" placeholder="{{ item.placeholder }}" />
+                <input  *ngIf="item.type == 'selectPath'"    type="text"                id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.value" placeholder="{{ item.placeholder }}" (click)="selecionarCaminho(i)" />
+                <input  *ngIf="item.type == 'number'"        type="number"              id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.value" placeholder="{{ item.placeholder }}" disabled />
+                <input  *ngIf="item.type == 'disabled'"      type="text"                id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.value" placeholder="{{ item.placeholder }}" />
+                <select *ngIf="item.type == 'select'"        style="max-height: unset;" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.value" >
+                    <option value="0">{{ item.placeholder }}</option>
+                    <option *ngFor="let sugest of item.sugestions" value="{{ sugest.value }}">{{ sugest.label }}</option>
                 </select>
             </div>
             <div class="div-criar">
+                <button class="btn btn-criar-projeto" (click)="closeIde()">Sair</button>
                 <button class="btn btn-criar-projeto" (click)="criarNovoProjeto()">Criar projeto</button>
             </div>
         </div>

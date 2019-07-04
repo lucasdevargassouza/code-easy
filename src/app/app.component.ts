@@ -17,7 +17,6 @@ export class AppComponent {
   constructor(
     public electronService: ElectronService,
     private translate: TranslateService,
-    private utils: UtilsService,
     private router: Router,
 
   ) {

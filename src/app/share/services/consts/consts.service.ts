@@ -55,8 +55,8 @@ export class CONSTS {
           propertieName: 'Versão: ',
           propertieType: 'number',
           propertieSugestions: [],
-          propertiePlaceholder: 'Ex: \'1.0.0\'',
-          propertieValue: '1.0.0'
+          propertiePlaceholder: 'Ex: \'100\'',
+          propertieValue: '100'
         },
         {
           propertieName: 'Caminho: ',

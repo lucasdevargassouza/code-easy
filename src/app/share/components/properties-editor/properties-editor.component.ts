@@ -91,6 +91,7 @@ export class PropertiesEditorComponent implements OnInit {
 
       Emissor.itemSelectedLocation.subscribe(
         async data => {
+        console.log(data);
           this.srcLocal = await this.getItemAEditar(data);
           /* console.log(await this.traspiler.getContentRotas(this.srcGlobal));
           console.log(await this.traspiler.getContentServidor(this.srcGlobal));

@@ -70,3 +70,13 @@
 .frame-btn-close:hover {
   background-color: $color-top-bar-button-close;
 }
+
+.btn-menu {
+  width: auto;
+  display: flex;
+  align-items: center;
+  padding-left: $size-1-5;
+  padding-right: $size-1-5;
+  font-size: $font-size-3;
+  color: $font-color-input-propertie-editor;
+}

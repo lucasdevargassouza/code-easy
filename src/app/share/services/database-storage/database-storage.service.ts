@@ -29,4 +29,9 @@ export class DatabaseStorageService {
 
     localStorage.setItem(CONSTS.appResources.srcLocal, JSON.stringify(this.srcGlobal));
   }
+
+  public criarSrc(srcGlobal: ResourcesTreeInterface[]) {
+    this.srcGlobal = srcGlobal;
+    this.updateSrc();
+  }
 }
