@@ -5,6 +5,8 @@ import { UtilsService } from '../utils/utils.service';
 import { DatabaseStorageService } from '../database-storage/database-storage.service';
 import { Emissor } from '../emissor-eventos/emissor-eventos.service';
 import { HttpClient } from '@angular/common/http';
+import { MatDialog } from '@angular/material';
+import { LoadingModalComponent } from '../../components/loading-modal/loading-modal.component';
 
 const { dialog } = require('electron').remote;
 const fs = require('fs');
@@ -22,6 +24,7 @@ export class CompilerService {
     private utils: UtilsService,
     private database: DatabaseStorageService,
     private http: HttpClient,
+    public dialog: MatDialog,
 
   ) {
     Emissor.srcGlobal.subscribe(data => this.srcGlobal = data);
@@ -75,6 +78,40 @@ export class CompilerService {
     }
   }
 
+  public async instalaNodeModules(caminho: string) {
+    const dialogRef = this.dialog.open(LoadingModalComponent, {
+      id: 'loading-modal',
+      width: '250px',
+      disableClose: true,
+      data: {}
+    });
+
+    setTimeout(() => {
+      console.log('mas já');
+      ps.addCommand('cd ' + caminho);
+      ps.invoke().then(output => {
+        ps.addCommand('git init');
+        ps.addCommand('git add .');
+        ps.addCommand('git commit " Commit automático! "');
+        ps.invoke().then(output => {
+          ps.addCommand('npm i');
+          ps.invoke().then(output => {
+            this.dialog.closeAll();
+          }).catch(err => {
+            console.log(err);
+            this.dialog.closeAll();
+          });
+        }).catch(err => {
+          console.log(err);
+          this.dialog.closeAll();
+        });
+      }).catch(err => {
+        console.log(err);
+        this.dialog.closeAll();
+      });
+    }, 2000);
+  }
+
   private async iniciarEscutaAPI(srcGlobal: ResourcesTreeInterface[]) {
     let temNodeModules: Boolean = false;
 
@@ -114,7 +151,7 @@ export class CompilerService {
     }
   }
 
-  private async genereteFiles(srcGlobal: ResourcesTreeInterface[]): Promise<any> {
+  public async genereteFiles(srcGlobal: ResourcesTreeInterface[]): Promise<any> {
     const files = [
       {
         fileName: 'package',
@@ -130,6 +167,11 @@ export class CompilerService {
         fileName: 'rotas',
         extensao: 'js',
         content: await this.transpiler.getContentRotas(srcGlobal)
+      },
+      {
+        fileName: '',
+        extensao: 'gitignore',
+        content: await this.transpiler.getGitIgnore()
       }
     ];
     console.log(files);
@@ -186,10 +228,11 @@ export class CompilerService {
       fs.writeFile(
         caminhoSalvar + '\\' + srcGlobal[0].staticPropertiesList[0].propertieValue.toLocaleLowerCase().trim() + '.json',
         '',
-        () => {}
+        () => {
+        }
       );
+      return true;
     }
-    return;
   }
 
   private async readFile() {

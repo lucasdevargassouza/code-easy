@@ -98,6 +98,13 @@ export class TranspilerService {
     return serverString;
   }
 
+  public getGitIgnore(): string {
+
+    let ignore: string = '/node_modules';
+
+    return ignore;
+  }
+
   private getItemEspecifico(resTree: ResourcesTreeInterface[], tipoItem: string): ResourcesTreeInterface {
     let retorno: ResourcesTreeInterface = null;
     resTree.forEach(item => {

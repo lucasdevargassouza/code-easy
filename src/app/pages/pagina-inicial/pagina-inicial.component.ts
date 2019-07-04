@@ -4,8 +4,11 @@ import { DatabaseStorageService } from '../../share/services/database-storage/da
 import { ResourcesTreeInterface } from '../../share/services/resources-tree.interface';
 import { CONSTS } from '../../share/services/consts/consts.service';
 import { Router } from '@angular/router';
+import { TranspilerService } from '../../share/services/transpiler/transpiler.service';
+import { CompilerService } from '../../share/services/compiler/compiler.service';
 
-const { dialog } = require('electron').remote;
+const dialog = remote.dialog;
+const fs = require('fs');
 
 @Component({
   selector: 'app-pagina-inicial',
@@ -62,6 +65,8 @@ export class PaginaInicialComponent implements OnInit {
   constructor(
     private database: DatabaseStorageService,
     private router: Router,
+    private transpiler: TranspilerService,
+    private compiler: CompilerService,
   ) { }
 
   ngOnInit() { }
@@ -98,15 +103,36 @@ export class PaginaInicialComponent implements OnInit {
     this.srcGlobal[0].staticPropertiesList[0].propertieValue = this.appConfig[0].value;
     this.srcGlobal[0].staticPropertiesList[1].propertieValue = this.appConfig[1].value;
     this.srcGlobal[0].staticPropertiesList[2].propertieValue = this.appConfig[2].value;
-    this.srcGlobal[0].staticPropertiesList[4].propertieValue = this.appConfig[3].value;
+    this.srcGlobal[0].staticPropertiesList[4].propertieValue = this.appConfig[3].value + '\\' + this.appConfig[0].value.toLocaleLowerCase().trim();
 
     this.database.criarSrc(this.srcGlobal);
 
-    this.router.navigate(['']);
+    this.inicializaDiretorio();
+
   }
 
   public closeIde() {
     this.window.close();
+  }
+
+  private async inicializaDiretorio() {
+    let packageJson: any = await this.transpiler.getPackageJson(this.srcGlobal);
+
+    if (
+      !fs.existsSync(
+        this.srcGlobal[0].staticPropertiesList[4].propertieValue
+      )
+    ) {
+      fs.mkdirSync(
+        this.srcGlobal[0].staticPropertiesList[4].propertieValue
+      );
+    }
+
+    await this.compiler.genereteFiles(this.srcGlobal);
+
+    await this.compiler.instalaNodeModules(this.srcGlobal[0].staticPropertiesList[4].propertieValue);
+    
+    this.router.navigate(['']);
   }
 
 }

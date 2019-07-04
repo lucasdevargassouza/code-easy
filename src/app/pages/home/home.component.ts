@@ -1,7 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { remote } from 'electron';
 
-import { CONSTS } from './../../share/services/consts/consts.service';
 import { Emissor } from '../../share/services/emissor-eventos/emissor-eventos.service';
 import { DatabaseStorageService } from '../../share/services/database-storage/database-storage.service';
 

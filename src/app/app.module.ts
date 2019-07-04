@@ -59,6 +59,7 @@ import { Emissor } from './share/services/emissor-eventos/emissor-eventos.servic
 import { DatabaseStorageService } from './share/services/database-storage/database-storage.service';
 import { UtilsService } from './share/services/utils/utils.service';
 import { PaginaInicialComponent } from './pages/pagina-inicial/pagina-inicial.component';
+import { LoadingModalComponent } from './share/components/loading-modal/loading-modal.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -74,7 +75,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     BottonBarStatusComponent,
     ResourcesTreeComponent,
     PropertiesEditorComponent,
-    PaginaInicialComponent
+    PaginaInicialComponent,
+    LoadingModalComponent
   ],
   imports: [
     BrowserModule,
@@ -125,6 +127,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     })
   ],
   providers: [ElectronService, CONSTS, Emissor, DatabaseStorageService, UtilsService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, LoadingModalComponent]
 })
 export class AppModule {}
