@@ -3,6 +3,7 @@ import { remote } from 'electron';
 import { Emissor } from '../../services/emissor-eventos/emissor-eventos.service';
 import { CompilerService } from '../../services/compiler/compiler.service';
 import { ResourcesTreeInterface } from '../../services/resources-tree.interface';
+import { DatabaseStorageService } from '../../services/database-storage/database-storage.service';
 
 @Component({
   selector: 'app-top-bar-frame',
@@ -16,7 +17,8 @@ export class TopBarFrameComponent implements OnInit {
   private window = remote.getCurrentWindow();
 
   constructor(
-    private compiler: CompilerService
+    private compiler: CompilerService,
+    private database: DatabaseStorageService,
   ) { }
 
   ngOnInit() {
@@ -52,6 +54,11 @@ export class TopBarFrameComponent implements OnInit {
     } else {
       this.window.maximize();
     }
+  }
+
+  public descartarProjeto() {
+    console.log('aqui');
+    this.database.removeSrc();
   }
 
 }

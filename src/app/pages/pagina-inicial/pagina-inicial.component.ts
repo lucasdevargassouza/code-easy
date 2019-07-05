@@ -43,7 +43,7 @@ export class PaginaInicialComponent implements OnInit {
     },
     {
       label: 'Caminho: ',
-      placeholder: 'Onde salvar o projeto? *',
+      placeholder: 'Clique para escolher onde salvar... *',
       value: '',
       sugestions: [],
       type: 'selectPath'
@@ -92,6 +92,7 @@ export class PaginaInicialComponent implements OnInit {
     }
     if (this.appConfig[3].value === '' || this.appConfig[3].value === null || this.appConfig[3].value === undefined) {
       document.getElementById('input-propertie-3').focus();
+      document.getElementById('input-propertie-3').click();
       return;
     }
     if (Number(this.appConfig[4].value) === 0) {
