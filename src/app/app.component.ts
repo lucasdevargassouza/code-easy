@@ -5,8 +5,10 @@ import { AppConfig } from '../environments/environment';
 
 import { CONSTS } from './share/services/consts/consts.service';
 import { ResourcesTreeInterface } from './share/services/resources-tree.interface';
-import { UtilsService } from './share/services/utils/utils.service';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+
+const fs = require('fs');
 
 @Component({
   selector: 'app-root',
@@ -14,10 +16,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  private srcGlobal: ResourcesTreeInterface[];
+
   constructor(
     public electronService: ElectronService,
     private translate: TranslateService,
     private router: Router,
+    private http: HttpClient,
 
   ) {
     // Avisos padrões mostrados no console.>>
@@ -37,7 +42,6 @@ export class AppComponent {
 
   private inicializarVariaveisInternas() {
     let src = [];
-
     try {
       src = JSON.parse(localStorage.getItem(CONSTS.appResources.srcLocal));
 

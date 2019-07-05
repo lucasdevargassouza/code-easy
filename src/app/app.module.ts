@@ -60,6 +60,7 @@ import { DatabaseStorageService } from './share/services/database-storage/databa
 import { UtilsService } from './share/services/utils/utils.service';
 import { PaginaInicialComponent } from './pages/pagina-inicial/pagina-inicial.component';
 import { LoadingModalComponent } from './share/components/loading-modal/loading-modal.component';
+import { CurrentStatusComponent } from './share/components/current-status/current-status.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -76,7 +77,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ResourcesTreeComponent,
     PropertiesEditorComponent,
     PaginaInicialComponent,
-    LoadingModalComponent
+    LoadingModalComponent,
+    CurrentStatusComponent
   ],
   imports: [
     BrowserModule,

@@ -21,16 +21,12 @@ export class CompilerService {
 
   constructor(
     private transpiler: TranspilerService,
-    private utils: UtilsService,
     private database: DatabaseStorageService,
-    private http: HttpClient,
     public dialog: MatDialog,
 
   ) {
     Emissor.srcGlobal.subscribe(data => this.srcGlobal = data);
     this.database.getSrc();
-
-    this.readFile();
   }
 
   public async iniciarAplicacao(srcGlobal: ResourcesTreeInterface[]) {
@@ -73,13 +69,15 @@ export class CompilerService {
       srcGlobal[0].staticPropertiesList[5].propertieValue !== null
     ) {
       ps.addCommand(
-        'taskKill.exe /F /PID ' + srcGlobal[0].staticPropertiesList[5].propertieValue);
-      ps.invoke().then(() => console.log('Execução da API finalizada!')).catch(err => console.log(err));
+        'taskKill.exe /F /PID ' + srcGlobal[0].staticPropertiesList[5].propertieValue + ' > ' +
+        srcGlobal[0].staticPropertiesList[0].propertieValue.toLocaleLowerCase().trim() + '.json'
+      );
+      ps.invoke().then(() => Emissor.currentStatus.emit('Execução da API finalizada!')).catch(err => console.log(err));
     }
   }
 
   public async instalaNodeModules(caminho: string) {
-    const dialogRef = this.dialog.open(LoadingModalComponent, {
+    this.dialog.open(LoadingModalComponent, {
       id: 'loading-modal',
       width: '250px',
       disableClose: true,
@@ -87,24 +85,25 @@ export class CompilerService {
     });
 
     setTimeout(() => {
-      console.log('mas já');
+      Emissor.currentStatus.emit('Entrando na pasta');
       ps.addCommand('cd ' + caminho);
       ps.invoke().then(output => {
-        ps.addCommand('git init');
-        ps.addCommand('git add .');
-        ps.addCommand('git commit " Commit automático! "');
+
+
+        Emissor.currentStatus.emit('Rodando npm install');
+        ps.addCommand('npm i');
         ps.invoke().then(output => {
-          ps.addCommand('npm i');
-          ps.invoke().then(output => {
-            this.dialog.closeAll();
-          }).catch(err => {
-            console.log(err);
-            this.dialog.closeAll();
-          });
+
+          Emissor.currentStatus.emit('npm install executado com sucesso');
+          this.dialog.closeAll();
+
         }).catch(err => {
           console.log(err);
+          Emissor.currentStatus.emit('npm install executado com avisos');
           this.dialog.closeAll();
         });
+
+
       }).catch(err => {
         console.log(err);
         this.dialog.closeAll();
@@ -118,8 +117,12 @@ export class CompilerService {
     // Usado para validar se já existe outro processo rodando na mesma porta.
     const value = srcGlobal[0].staticPropertiesList[5].propertieValue;
     if (value !== '' && value !== '--' && value !== undefined && value !== null) {
+      Emissor.currentStatus.emit('Finalizando processo anterior');
       ps.addCommand('taskKill.exe /F /PID ' + srcGlobal[0].staticPropertiesList[5].propertieValue);
-      ps.invoke().then(() => this.iniciarEscutaAPI(srcGlobal)).catch(() => this.iniciarEscutaAPI(srcGlobal));
+      ps.invoke().then(() => this.iniciarEscutaAPI(srcGlobal)).catch(() => {
+        Emissor.currentStatus.emit('Processo anteriror finalizado');
+        this.iniciarEscutaAPI(srcGlobal);
+      });
     } else {
       ps.addCommand('cd ' + srcGlobal[0].staticPropertiesList[4].propertieValue);
       ps.invoke().then(() => {
@@ -132,20 +135,21 @@ export class CompilerService {
           } else {
             // Instala a pasta node_modules
             ps.addCommand('npm i');
+            Emissor.currentStatus.emit('Instalando dependências');
           }
 
           // Executa npm i se nescessário
           ps.invoke().then(() => {
-            console.log('Escuta da API iniciado!');
+            Emissor.currentStatus.emit('Escutando API');
 
             // Inicia novo processo
             ps.addCommand('node server.js > ' + srcGlobal[0].staticPropertiesList[0].propertieValue.toLocaleLowerCase().trim() + '.json');
             ps.invoke().then(() => {
 
-              console.log('Processo finalizado!');
+              Emissor.currentStatus.emit('Processo finalizado!');
 
-            }).catch(err => console.log('API não iniciada!'));
-          }).catch(err => console.log('Não instalou as dependências!'));
+            }).catch(err => {Emissor.currentStatus.emit('API não iniciada!'); console.log(err);});
+          }).catch(err => {Emissor.currentStatus.emit('Não instalou as dependências!'); console.log(err);});
         }).catch(err => console.log(err));
       }).catch(err => console.log(err));
     }
@@ -192,15 +196,15 @@ export class CompilerService {
           srcGlobal[0].staticPropertiesList[4].propertieValue = path.toString();
           this.database.updateSrc();
 
-          console.log('Salvando em: \"' + path + '\"');
+          Emissor.currentStatus.emit('Salvando em: \"' + path + '\"');
           files.forEach(file => {
             try {
-              console.log(path + '\\' + file.fileName + '.' + file.extensao);
+              Emissor.currentStatus.emit(path + '\\' + file.fileName + '.' + file.extensao);
               fs.writeFile(path + '\\' + file.fileName + '.' + file.extensao, file.content, () => {
-                console.log(file.fileName + ' salvo!');
+                Emissor.currentStatus.emit(file.fileName + ' salvo!');
               });
             } catch (e) {
-              console.log('Failed to save the file! Erro:' + e);
+              Emissor.currentStatus.emit('Falha ao salvar o arquivo');
             }
           });
 
@@ -213,51 +217,24 @@ export class CompilerService {
         }
       });
     } else {
-      console.log('Salvando em: \"' + caminhoSalvar + '\"');
+      Emissor.currentStatus.emit('Salvando em: \"' + caminhoSalvar + '\"');
       files.forEach(file => {
         try {
           fs.writeFile(caminhoSalvar + '\\' + file.fileName + '.' + file.extensao, file.content, (err) => {
-            console.log(file.fileName + '.' + file.extensao + ' salvo!');
+            Emissor.currentStatus.emit(file.fileName + '.' + file.extensao + ' salvo!');
           });
         } catch (e) {
-          console.log('Failed to save the file! Erro:' + e);
+          Emissor.currentStatus.emit('Erro aosalvar o arquivo: \"' + file.fileName + '.' + file.extensao);
         }
       });
 
-      // Criar ou recria arquivo de logs
+      // Criar ou recria arquivo de configurações
       fs.writeFile(
         caminhoSalvar + '\\' + srcGlobal[0].staticPropertiesList[0].propertieValue.toLocaleLowerCase().trim() + '.json',
         '',
-        () => {
-        }
+        () => { }
       );
       return true;
-    }
-  }
-
-  private async readFile() {
-    let pid = '--';
-    if (this.srcGlobal) {
-      if (this.srcGlobal[0].staticPropertiesList[4].propertieValue !== '') {
-        setInterval(() => {
-
-          fs.readFile(
-            this.srcGlobal[0].staticPropertiesList[4].propertieValue + '\\' +
-            this.srcGlobal[0].staticPropertiesList[0].propertieValue.toLocaleLowerCase().trim() +
-            '.json', 'utf16le', function (err, data) {
-              if (err) { pid = '--'; }
-              pid = data.split('[ ')[1].split(' ]')[0].toString();
-            }
-          );
-
-          this.http.get('http://localhost:' + this.srcGlobal[1].staticPropertiesList[2].propertieValue).subscribe(
-            data => {},
-            error => pid = '--'
-          );
-
-          this.srcGlobal[0].staticPropertiesList[5].propertieValue = pid;
-        }, 3000);
-      }
     }
   }
 }

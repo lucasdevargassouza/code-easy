@@ -69,7 +69,7 @@ export class PaginaInicialComponent implements OnInit {
     private compiler: CompilerService,
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   public selecionarCaminho(i: number) {
     dialog.showOpenDialog({properties: ['openDirectory']}, (path) => {
@@ -103,7 +103,8 @@ export class PaginaInicialComponent implements OnInit {
     this.srcGlobal[0].staticPropertiesList[0].propertieValue = this.appConfig[0].value;
     this.srcGlobal[0].staticPropertiesList[1].propertieValue = this.appConfig[1].value;
     this.srcGlobal[0].staticPropertiesList[2].propertieValue = this.appConfig[2].value;
-    this.srcGlobal[0].staticPropertiesList[4].propertieValue = this.appConfig[3].value + '\\' + this.appConfig[0].value.toLocaleLowerCase().trim();
+    this.srcGlobal[0].staticPropertiesList[4].propertieValue = this.appConfig[3].value + '\\' +
+          this.appConfig[0].value.toLocaleLowerCase().trim();
 
     this.database.criarSrc(this.srcGlobal);
 
@@ -116,23 +117,14 @@ export class PaginaInicialComponent implements OnInit {
   }
 
   private async inicializaDiretorio() {
-    let packageJson: any = await this.transpiler.getPackageJson(this.srcGlobal);
-
-    if (
-      !fs.existsSync(
-        this.srcGlobal[0].staticPropertiesList[4].propertieValue
-      )
-    ) {
-      fs.mkdirSync(
-        this.srcGlobal[0].staticPropertiesList[4].propertieValue
-      );
+    if (!fs.existsSync(this.srcGlobal[0].staticPropertiesList[4].propertieValue)) {
+      fs.mkdirSync(this.srcGlobal[0].staticPropertiesList[4].propertieValue);
     }
 
     await this.compiler.genereteFiles(this.srcGlobal);
 
     await this.compiler.instalaNodeModules(this.srcGlobal[0].staticPropertiesList[4].propertieValue);
-    
+
     this.router.navigate(['']);
   }
-
 }
