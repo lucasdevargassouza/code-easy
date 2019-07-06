@@ -4,6 +4,7 @@ import { Emissor } from '../../services/emissor-eventos/emissor-eventos.service'
 import { CompilerService } from '../../services/compiler/compiler.service';
 import { ResourcesTreeInterface } from '../../services/resources-tree.interface';
 import { DatabaseStorageService } from '../../services/database-storage/database-storage.service';
+import { CurrentStatus } from '../../services/emissor-eventos/interfaces.interface';
 
 @Component({
   selector: 'app-top-bar-frame',
@@ -12,6 +13,7 @@ import { DatabaseStorageService } from '../../services/database-storage/database
 })
 export class TopBarFrameComponent implements OnInit {
   public srcGlobal: ResourcesTreeInterface[];
+  public currentStatus: CurrentStatus;
   @Input() tituloIde: string;
 
   private window = remote.getCurrentWindow();
@@ -22,14 +24,7 @@ export class TopBarFrameComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    Emissor.srcGlobal.subscribe(
-      data => {
-        this.srcGlobal = data;
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    this.inicializaEmissores();
   }
 
   public play() {
@@ -57,8 +52,38 @@ export class TopBarFrameComponent implements OnInit {
   }
 
   public descartarProjeto() {
-    console.log('aqui');
     this.database.removeSrc();
   }
 
+  private inicializaEmissores() {
+
+    this.currentStatus = {
+      message: '',
+      color: '',
+      isShowLoadingBar: false
+    };
+
+    Emissor.srcGlobal.subscribe(
+      data => {
+        this.srcGlobal = data;
+      },
+      error => {
+        console.log(error);
+      }
+    );
+
+    Emissor.currentStatus.subscribe(
+      (data: CurrentStatus) => {
+        this.currentStatus = data;
+      },
+      error => {
+        console.log(error);
+        this.currentStatus = {
+          message: '',
+          color: '',
+          isShowLoadingBar: false
+        };
+      }
+    );
+  }
 }

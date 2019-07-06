@@ -45,7 +45,7 @@ export class DatabaseStorageService {
 
   public removeSrc() {
     localStorage.setItem(CONSTS.appResources.srcLocal, JSON.stringify(null));
-    this.router.navigate(['']);
+    this.router.navigate(['/inicio']);
     return;
   }
 }

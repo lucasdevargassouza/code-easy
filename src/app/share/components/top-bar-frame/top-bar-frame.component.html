@@ -27,9 +27,12 @@
     </div>
     <div class="right">
         <div class="frame-buttons" *ngIf="srcGlobal">
-          <div class="frame-btn frame-btn-play" *ngIf="srcGlobal[0]?.staticPropertiesList[5]?.propertieValue === '--'" (click)="play()" title="Iniciar API"></div>
-          <div class="frame-btn frame-btn-restart" *ngIf="srcGlobal[0]?.staticPropertiesList[5]?.propertieValue !== '--'" (click)="play()" title="Reiniciar API"></div>
-          <div class="frame-btn frame-btn-stop" *ngIf="srcGlobal[0]?.staticPropertiesList[5]?.propertieValue !== '--'" (click)="stop()" title="Parar API"></div>
+          <div class="frame-btn frame-load-bar" *ngIf="currentStatus.isShowLoadingBar" title="Carregando...">
+              <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+          </div>
+          <div class="frame-btn frame-btn-play" *ngIf="srcGlobal[0]?.staticPropertiesList[5]?.propertieValue === '--' && currentStatus.isShowLoadingBar == false" (click)="play()" title="Iniciar API"></div>
+          <div class="frame-btn frame-btn-restart" *ngIf="srcGlobal[0]?.staticPropertiesList[5]?.propertieValue !== '--' && currentStatus.isShowLoadingBar == false" (click)="play()" title="Reiniciar API"></div>
+          <div class="frame-btn frame-btn-stop" *ngIf="srcGlobal[0]?.staticPropertiesList[5]?.propertieValue !== '--' && currentStatus.isShowLoadingBar == false" (click)="stop()" title="Parar API"></div>
         </div>
       <div class="frame-buttons">
         <div class="frame-btn frame-btn-minimizar" (click)="minimizeIde()" title="Minimizar"></div>

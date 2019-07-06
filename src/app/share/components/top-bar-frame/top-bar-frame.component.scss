@@ -40,6 +40,11 @@
   width: $size-13;
 }
 
+.frame-load-bar {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
 .frame-btn-minimizar {
   content: url(assets/icons/btn-minimizar.svg);
 }

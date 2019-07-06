@@ -51,7 +51,7 @@ export class PaginaInicialComponent implements OnInit {
     {
       label: 'Tipo de projeto: ',
       placeholder: 'Escolha um tipo de projeto? *',
-      value: '0',
+      value: 'apinode',
       sugestions: [
         {
           label: 'API com nodejs',

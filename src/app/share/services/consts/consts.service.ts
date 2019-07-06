@@ -124,7 +124,7 @@ export class CONSTS {
             }
           ],
           propertiePlaceholder: '\'True\' ou \'False\'',
-          propertieValue: 'False'
+          propertieValue: 'false'
         }
       ],
       propertiesList: [
@@ -209,21 +209,21 @@ export class CONSTS {
                 },
               ],
               propertiePlaceholder: '\'get\', \'post\', \'delete\', \'put\'...',
-              propertieValue: ''
+              propertieValue: 'get'
             },
             {
               propertieName: 'Url: ',
               propertieType: 'text',
               propertieSugestions: [],
               propertiePlaceholder: 'Ex: "/produtos"',
-              propertieValue: ''
+              propertieValue: '/'
             },
             {
               propertieName: 'Retorno: ',
               propertieType: 'text',
               propertieSugestions: [],
               propertiePlaceholder: 'Tudo que será retornado...',
-              propertieValue: ''
+              propertieValue: 'title: \'ok\''
             }
           ],
           propertiesList: [
