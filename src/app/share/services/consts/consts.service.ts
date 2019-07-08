@@ -220,73 +220,10 @@ export class CONSTS {
             },
             {
               propertieName: 'Retorno: ',
-              propertieType: 'text',
+              propertieType: 'select',
               propertieSugestions: [],
               propertiePlaceholder: 'Tudo que será retornado...',
               propertieValue: 'title: \'ok\''
-            }
-          ],
-          propertiesList: [
-            {
-              propertieName: '',
-              propertieType: 'text',
-              propertieSugestions: [],
-              propertieValue: ''
-            }
-          ],
-          itemList: []
-        }
-      ]
-    },
-    {
-      isHaveChild: true,
-      isSelected: false,
-      indexPath: [],
-      tipoItem: CONSTS.tiposItens.pasta,
-      staticPropertiesList: [
-        {
-          propertieName: 'Nome: ',
-          propertieType: 'text',
-          propertieSugestions: [],
-          propertiePlaceholder: 'Um nome aqui...',
-          propertieValue: 'Models'
-        },
-        {
-          propertieName: 'Descrição: ',
-          propertieType: 'text',
-          propertieSugestions: [],
-          propertiePlaceholder: 'Uma descrição aqui...',
-          propertieValue: ''
-        }
-      ],
-      propertiesList: [
-        {
-          propertieName: 'Nome: ',
-          propertieType: 'text',
-          propertieSugestions: [],
-          propertieValue: ''
-        }
-      ],
-      itemList: [
-        {
-          isHaveChild: false,
-          isSelected: false,
-          indexPath: [],
-          tipoItem: CONSTS.tiposItens.model,
-          staticPropertiesList: [
-            {
-              propertieName: 'Nome: ',
-              propertieType: 'text',
-              propertieSugestions: [],
-              propertiePlaceholder: 'Um nome aqui...',
-              propertieValue: 'NomeModelo'
-            },
-            {
-              propertieName: 'Descrição: ',
-              propertieType: 'text',
-              propertieSugestions: [],
-              propertiePlaceholder: 'Uma descrição aqui...',
-              propertieValue: ''
             }
           ],
           propertiesList: [
@@ -343,6 +280,69 @@ export class CONSTS {
               propertieSugestions: [],
               propertiePlaceholder: 'Um nome aqui...',
               propertieValue: 'NomeControler'
+            },
+            {
+              propertieName: 'Descrição: ',
+              propertieType: 'text',
+              propertieSugestions: [],
+              propertiePlaceholder: 'Uma descrição aqui...',
+              propertieValue: ''
+            }
+          ],
+          propertiesList: [
+            {
+              propertieName: '',
+              propertieType: 'text',
+              propertieSugestions: [],
+              propertieValue: ''
+            }
+          ],
+          itemList: []
+        }
+      ]
+    },
+    {
+      isHaveChild: true,
+      isSelected: false,
+      indexPath: [],
+      tipoItem: CONSTS.tiposItens.pasta,
+      staticPropertiesList: [
+        {
+          propertieName: 'Nome: ',
+          propertieType: 'text',
+          propertieSugestions: [],
+          propertiePlaceholder: 'Um nome aqui...',
+          propertieValue: 'Models'
+        },
+        {
+          propertieName: 'Descrição: ',
+          propertieType: 'text',
+          propertieSugestions: [],
+          propertiePlaceholder: 'Uma descrição aqui...',
+          propertieValue: ''
+        }
+      ],
+      propertiesList: [
+        {
+          propertieName: 'Nome: ',
+          propertieType: 'text',
+          propertieSugestions: [],
+          propertieValue: ''
+        }
+      ],
+      itemList: [
+        {
+          isHaveChild: false,
+          isSelected: false,
+          indexPath: [],
+          tipoItem: CONSTS.tiposItens.model,
+          staticPropertiesList: [
+            {
+              propertieName: 'Nome: ',
+              propertieType: 'text',
+              propertieSugestions: [],
+              propertiePlaceholder: 'Um nome aqui...',
+              propertieValue: 'NomeModelo'
             },
             {
               propertieName: 'Descrição: ',

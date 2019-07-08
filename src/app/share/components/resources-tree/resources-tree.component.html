@@ -6,7 +6,7 @@
       {{ objeto.staticPropertiesList[0].propertieValue }}
 
     </div>
-    <button id="btn-add" name="btn-add" class="mini-btn-add btn-add-res-tree" (click)="addItem(objeto.itemList[0].tipoItem)" title="Adicionar item na pasta!">+</button>
+    <button id="btn-add" name="btn-add" class="mini-btn-add btn-add-res-tree" (click)="addItem(objeto?.itemList[0]?.tipoItem)" title="Adicionar item na pasta!">+</button>
 
   </div>
   <div *ngIf="objeto?.isSelected" class="item-list-filho">

@@ -14,7 +14,7 @@ export class DatabaseStorageService {
   constructor(
     private utils: UtilsService,
     private router: Router,
-    
+
     ) {
     Emissor.srcGlobal.subscribe(
       data => (this.srcGlobal = data),
@@ -32,6 +32,7 @@ export class DatabaseStorageService {
 
   public updateSrc() {
     this.srcGlobal = this.utils.initIndexPath(this.srcGlobal);
+    this.srcGlobal = this.utils.initSugestions(this.srcGlobal);
 
     localStorage.setItem(CONSTS.appResources.srcLocal, JSON.stringify(this.srcGlobal));
     return;

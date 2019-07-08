@@ -31,7 +31,6 @@ export class UtilsService {
         src[index].itemList = this.initIndexPath(src[index].itemList, src[index].indexPath);
       }
     }
-
     return src;
   }
 
@@ -74,5 +73,22 @@ export class UtilsService {
       console.log(error);
       Emissor.pidProcessoAtual.emit('--');
     });
+  }
+
+  public initSugestions(src: ResourcesTreeInterface[]): ResourcesTreeInterface[] {
+
+    src[2].itemList.forEach(rota => {
+      rota.staticPropertiesList[4].propertieSugestions = [];
+    });
+    src[3].itemList.forEach(controller => {
+      src[2].itemList.forEach(rota => {
+        rota.staticPropertiesList[4].propertieSugestions.push({
+            'sugestionsName': controller.staticPropertiesList[0].propertieValue,
+            'sugestionsValue': controller.staticPropertiesList[0].propertieValue
+        });
+      });
+    });
+
+    return src;
   }
 }
