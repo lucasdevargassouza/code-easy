@@ -1,0 +1,8 @@
+
+<div> {{ propertieName }} </div>
+<input *ngIf="propertieType == 'text'" type="text" id="input-propertie-{{ index }}" (change)="inputsOnChange()" name="input-propertie-{{ index }}" placeholder="{{ propertiePlaceholder }}" [(ngModel)]="propertieValue" title=""/>
+<input *ngIf="propertieType == 'number'" type="number" id="input-propertie-{{ index }}" (change)="inputsOnChange()" name="input-propertie-{{ index }}" placeholder="{{ propertiePlaceholder }}" [(ngModel)]="propertieValue" title=""/>
+<input *ngIf="propertieType == 'disabled'" type="text" disabled id="input-propertie-{{ index }}" (change)="inputsOnChange()" name="input-propertie-{{ index }}" placeholder="{{ propertiePlaceholder }}" [(ngModel)]="propertieValue" title=""/>
+<select *ngIf="propertieType == 'select'" id="input-propertie-{{ index }}" (change)="inputsOnChange()" name="input-propertie-{{ index }}" [(ngModel)]="propertieValue" style="max-height: unset;">
+    <option *ngFor="let sugest of propertieSugestions" value="{{ sugest.sugestionsValue }}">{{ sugest.sugestionsName }}</option>
+</select>

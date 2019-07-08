@@ -72,6 +72,13 @@ export class CONSTS {
           propertiePlaceholder: '',
           propertieValue: '--'
         },
+        {
+          propertieName: 'Dependências: ',
+          propertieType: 'selectDialog',
+          propertieSugestions: [],
+          propertiePlaceholder: 'Abrir',
+          propertieValue: ''
+        },
       ],
       propertiesList: [
         {

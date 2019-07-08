@@ -61,6 +61,7 @@ import { UtilsService } from './share/services/utils/utils.service';
 import { PaginaInicialComponent } from './pages/pagina-inicial/pagina-inicial.component';
 import { LoadingModalComponent } from './share/components/loading-modal/loading-modal.component';
 import { CurrentStatusComponent } from './share/components/current-status/current-status.component';
+import { InputLabelTypeComponent } from './share/components/input-label-type/input-label-type.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -78,7 +79,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     PropertiesEditorComponent,
     PaginaInicialComponent,
     LoadingModalComponent,
-    CurrentStatusComponent
+    CurrentStatusComponent,
+    InputLabelTypeComponent
   ],
   imports: [
     BrowserModule,

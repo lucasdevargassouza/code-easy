@@ -49,7 +49,7 @@ export class TranspilerService {
       '/*' + rota.staticPropertiesList[1].propertieValue + '*/\n' +
       'app.' + rota.staticPropertiesList[2].propertieValue.trim() +
       '(\'' + rota.staticPropertiesList[3].propertieValue.trim() + '\', (req, res, next) => {\n' +
-      '  res.send({\n        ' + rota.staticPropertiesList[4].propertieValue + '\n    })\n' +
+      '  res.send({\n        ' + rota.staticPropertiesList[4].propertieValue + '\n: \'ok\'    })\n' +
       '});\n';
     });
 

@@ -57,14 +57,6 @@ export class PropertiesEditorComponent implements OnInit {
     this.database.updateSrc();
   }
 
-  // Em cada change salva os dados.
-  public inputsOnChange() {
-    /* this.srcLocal.staticPropertiesList[0].propertieValue.replace(' ', ''); */
-    setTimeout(() => {
-      this.database.updateSrc();
-    }, 1);
-  }
-
   // Sempre retorna o item que deve ser editado.
   private getItemAEditar(itemAtual: []) {
     let itemCurrent: any = this.srcGlobal;
