@@ -2,8 +2,14 @@
   <!-- Top bar frame -->
   <app-top-bar-frame [tituloIde]="srcGlobal[0]?.staticPropertiesList[0]?.propertieValue"></app-top-bar-frame>
   <!-- Top bar frame -->
-
+  
+  
   <div class="application-body">
+    <div class="barra-lateral">
+      
+    </div>
+
+
     <div class="col-left" [style.width.px]="widthColLeft">
       <div style="flex: 1">
 
@@ -13,11 +19,7 @@
       <div class="grabber-col-left" (mousedown)="onMouseDownColLeft($event)"></div>
     </div>
 
-
-
     <div class="col-center" contenteditable="false"></div>
-
-
 
     <div class="col-right" [style.width.px]="widthColRight">
         <div class="grabber-col-right" (mousedown)="onMouseDownColRight($event)"></div>
