@@ -162,6 +162,27 @@ body {
   outline: auto;
 }
 
+.input-padrao {
+  background: $color-background-propertie-editor;
+  border: $size-none solid $color-white;
+  color: $font-color-input-propertie-editor;
+  padding: $size-0-5;
+  padding-left: $size-1-5;
+  padding-right: $size-1-5;
+  font-family: Arial, 'Courier New', monospace;
+  max-height: $size-4;
+}
+
+.input-large {
+  padding: $size-2;
+  padding-left: $size-1-5;
+  padding-right: $size-1-5;
+}
+
+.input-fill {
+  width: -webkit-fill-available;
+}
+
 // Ajusta o scroll de todos os elementos.
 ::-webkit-scrollbar {
   width: 10px;

@@ -15,16 +15,15 @@
             </div>
 
 
-
             <div class="corpo-plataforma" *ngIf="isNovoProjeto == true">
                 <div class="propertie" *ngFor="let item of appConfig; index as i">  
                     <div> {{ item.label }} </div>
-                    <input  *ngIf="item.type == 'text'"          type="text"                id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.value" placeholder="{{ item.placeholder }}" />
-                    <input  *ngIf="item.type == 'textMultiline'" type="text"                id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.value" placeholder="{{ item.placeholder }}" />
-                    <input  *ngIf="item.type == 'selectPath'"    type="text"                id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.value" placeholder="{{ item.placeholder }}" (click)="selecionarCaminho(i)" />
-                    <input  *ngIf="item.type == 'number'"        type="number"              id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.value" placeholder="{{ item.placeholder }}" disabled />
-                    <input  *ngIf="item.type == 'disabled'"      type="text"                id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.value" placeholder="{{ item.placeholder }}" />
-                    <select *ngIf="item.type == 'select'"        style="max-height: unset;" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.value" >
+                    <input  *ngIf="item.type == 'text'"          type="text"                class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.value" placeholder="{{ item.placeholder }}" />
+                    <input  *ngIf="item.type == 'textMultiline'" type="text"                class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.value" placeholder="{{ item.placeholder }}" />
+                    <input  *ngIf="item.type == 'selectPath'"    type="text"                class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.value" placeholder="{{ item.placeholder }}" (click)="selecionarCaminho(i)" />
+                    <input  *ngIf="item.type == 'number'"        type="number"              class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.value" placeholder="{{ item.placeholder }}" disabled />
+                    <input  *ngIf="item.type == 'disabled'"      type="text"                class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.value" placeholder="{{ item.placeholder }}" />
+                    <select *ngIf="item.type == 'select'"        style="max-height: unset;" class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.value" >
                         <option value="0">{{ item.placeholder }}</option>
                         <option *ngFor="let sugest of item.sugestions" value="{{ sugest.value }}">{{ sugest.label }}</option>
                     </select>
@@ -35,8 +34,17 @@
                 </div>
             </div>
 
-            <div class="corpo-plataforma" *ngIf="isNovoProjeto == false">
-                
+
+            <input type="text" (click)="toggleTabs(false)" class="input-padrao input-large input-fill" style="margin-bottom: 14px;" id="input-busca" name="input-busca" placeholder="Buscar projeto..." />
+            <div class="corpo-plataforma" *ngIf="isNovoProjeto == false"><!--  [(ngModel)]="item.value" -->
+                <div class="resultado-busca">
+                    <div *ngFor="let i of appConfig" class="item-lista">
+                        <div style="flex: 1; align-self: center;">http</div>
+                        <div style="flex: 1; align-self: center;">0.0.0</div>
+                        <div style="flex: 1; align-self: center;">11/07/2019</div>
+                        <img src="./assets/icons/btn-trash.svg"/>
+                    </div>
+                </div>
             </div>
 
         </div>

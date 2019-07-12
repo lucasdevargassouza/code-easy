@@ -19,7 +19,7 @@ export class PaginaInicialComponent implements OnInit {
   private window = remote.getCurrentWindow();
   private srcGlobal: ResourcesTreeInterface[];
 
-  public isNovoProjeto: Boolean = true;
+  public isNovoProjeto: Boolean = false;
   public appConfig = [
     {
       label: 'Nome do projeto: ',
