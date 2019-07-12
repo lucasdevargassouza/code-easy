@@ -19,6 +19,7 @@ export class PaginaInicialComponent implements OnInit {
   private window = remote.getCurrentWindow();
   private srcGlobal: ResourcesTreeInterface[];
 
+  public isNovoProjeto: Boolean = true;
   public appConfig = [
     {
       label: 'Nome do projeto: ',
@@ -115,6 +116,10 @@ export class PaginaInicialComponent implements OnInit {
 
   public closeIde() {
     this.window.close();
+  }
+
+  public toggleTabs(value: boolean) {
+    this.isNovoProjeto = value;
   }
 
   private async inicializaDiretorio() {

@@ -3,28 +3,42 @@
     <app-top-bar-frame></app-top-bar-frame>
     <!-- Top bar frame -->
 
-    <div class="frame-de-criacao">
-        <div class="title-plataforma">
-            Criar novo projeto
-            <hr/>
-        </div>
-        <div class="corpo-plataforma">
-            <div class="propertie" *ngFor="let item of appConfig; index as i">  
-                <div> {{ item.label }} </div>
-                <input  *ngIf="item.type == 'text'"          type="text"                id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.value" placeholder="{{ item.placeholder }}" />
-                <input  *ngIf="item.type == 'textMultiline'" type="text"                id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.value" placeholder="{{ item.placeholder }}" />
-                <input  *ngIf="item.type == 'selectPath'"    type="text"                id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.value" placeholder="{{ item.placeholder }}" (click)="selecionarCaminho(i)" />
-                <input  *ngIf="item.type == 'number'"        type="number"              id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.value" placeholder="{{ item.placeholder }}" disabled />
-                <input  *ngIf="item.type == 'disabled'"      type="text"                id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.value" placeholder="{{ item.placeholder }}" />
-                <select *ngIf="item.type == 'select'"        style="max-height: unset;" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.value" >
-                    <option value="0">{{ item.placeholder }}</option>
-                    <option *ngFor="let sugest of item.sugestions" value="{{ sugest.value }}">{{ sugest.label }}</option>
-                </select>
+    <div class="main-frame">
+        <div class="main-frame" style="margin-top: 0px; margin-bottom: 0px; height: 100%; max-width: 600px;">
+            <div class="title-plataforma">
+                Seus projetos
+                <hr/>
             </div>
-            <div class="div-criar">
-                <button class="btn btn-criar-projeto" (click)="closeIde()">Sair</button>
-                <button class="btn btn-criar-projeto" (click)="criarNovoProjeto()">Criar projeto</button>
+            <div class="btns-toggle">
+                <button class="btn btn-toggle" (click)="toggleTabs(false)">Listagem de projetos</button>
+                <button class="btn btn-toggle" (click)="toggleTabs(true)">Novo projeto</button>
             </div>
+
+
+
+            <div class="corpo-plataforma" *ngIf="isNovoProjeto == true">
+                <div class="propertie" *ngFor="let item of appConfig; index as i">  
+                    <div> {{ item.label }} </div>
+                    <input  *ngIf="item.type == 'text'"          type="text"                id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.value" placeholder="{{ item.placeholder }}" />
+                    <input  *ngIf="item.type == 'textMultiline'" type="text"                id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.value" placeholder="{{ item.placeholder }}" />
+                    <input  *ngIf="item.type == 'selectPath'"    type="text"                id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.value" placeholder="{{ item.placeholder }}" (click)="selecionarCaminho(i)" />
+                    <input  *ngIf="item.type == 'number'"        type="number"              id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.value" placeholder="{{ item.placeholder }}" disabled />
+                    <input  *ngIf="item.type == 'disabled'"      type="text"                id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.value" placeholder="{{ item.placeholder }}" />
+                    <select *ngIf="item.type == 'select'"        style="max-height: unset;" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.value" >
+                        <option value="0">{{ item.placeholder }}</option>
+                        <option *ngFor="let sugest of item.sugestions" value="{{ sugest.value }}">{{ sugest.label }}</option>
+                    </select>
+                </div>
+                <div class="div-criar">
+                    <button class="btn btn-criar-projeto" (click)="closeIde()">Cancelar</button>
+                    <button class="btn btn-criar-projeto" (click)="criarNovoProjeto()">Criar projeto</button>
+                </div>
+            </div>
+
+            <div class="corpo-plataforma" *ngIf="isNovoProjeto == false">
+                
+            </div>
+
         </div>
     </div>
 </div>
