@@ -133,6 +133,10 @@ export class PaginaInicialComponent implements OnInit {
     this.inicializaDiretorio();
   }
 
+  public removeProjeto(i) {
+    this.listaProjetos.splice(i, 1);
+  }
+
   // Responsável por inicializar os arquivos e suas dependências nas pastas do dispositivo.
   private async inicializaDiretorio() {
     if (!fs.existsSync(this.srcGlobal[0].staticPropertiesList[4].propertieValue)) {
