@@ -501,6 +501,9 @@ export class CONSTS {
 
   public static appResources = {
     srcLocal: 'srcLocal',
-    srcPadrao: CONSTS.srcPadrao
+    srcPadrao: CONSTS.srcPadrao,
+    listaProjetos: 'lista-projetos',
+    
   };
+
 }

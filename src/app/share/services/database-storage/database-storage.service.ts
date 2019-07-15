@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class DatabaseStorageService {
+  private listaprojetos: ResourcesTreeInterface[][];
   private srcGlobal: ResourcesTreeInterface[];
 
   constructor(
@@ -30,11 +31,39 @@ export class DatabaseStorageService {
     return;
   }
 
+  public getListaProjetos(): ResourcesTreeInterface[][] {
+    return JSON.parse(localStorage.getItem(CONSTS.appResources.listaProjetos));
+  }
+
   public updateSrc() {
+
+    // Salva o srcPadrao
     this.srcGlobal = this.utils.initIndexPath(this.srcGlobal);
     this.srcGlobal = this.utils.initSugestions(this.srcGlobal);
 
     localStorage.setItem(CONSTS.appResources.srcLocal, JSON.stringify(this.srcGlobal));
+    // ---
+
+    // Atualiza a lista de projetos -- Ataliza um projeto que ja existe ou adiciona ele a lista.
+    if (localStorage.getItem(CONSTS.appResources.listaProjetos) === null) {
+      localStorage.setItem(CONSTS.appResources.listaProjetos, JSON.stringify([ this.srcGlobal ]));
+    } else {
+      let listaProjetos: ResourcesTreeInterface[][] = JSON.parse(localStorage.getItem(CONSTS.appResources.listaProjetos));
+      let atualizouProjeto = false;
+      for (let i = 0; i < listaProjetos.length; i++) {
+        listaProjetos[i];
+        if (listaProjetos[i][0].staticPropertiesList[0].propertieValue ===  this.srcGlobal[0].staticPropertiesList[0].propertieValue) {
+          listaProjetos[i] = this.srcGlobal;
+          atualizouProjeto = true;
+        }
+      }
+      if (!atualizouProjeto) {
+        listaProjetos.push(this.srcGlobal);
+      }
+      localStorage.setItem(CONSTS.appResources.listaProjetos, JSON.stringify(listaProjetos));
+    }
+    // ---
+
     return;
   }
 

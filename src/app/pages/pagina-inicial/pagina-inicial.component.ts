@@ -18,7 +18,8 @@ const fs = require('fs');
 export class PaginaInicialComponent implements OnInit {
   private window = remote.getCurrentWindow();
   private srcGlobal: ResourcesTreeInterface[];
-
+  
+  public listaProjetos: ResourcesTreeInterface[][];
   public isNovoProjeto: Boolean = false;
   public appConfig = [
     {
@@ -66,11 +67,12 @@ export class PaginaInicialComponent implements OnInit {
   constructor(
     private database: DatabaseStorageService,
     private router: Router,
-    private transpiler: TranspilerService,
     private compiler: CompilerService,
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.listaProjetos = this.database.getListaProjetos();
+  }
 
   public selecionarCaminho(i: number) {
     dialog.showOpenDialog({properties: ['openDirectory']}, (path) => {
@@ -82,6 +84,7 @@ export class PaginaInicialComponent implements OnInit {
     });
   }
 
+  // Instancia todo o projeto no localstorage 
   public criarNovoProjeto() {
     if (this.appConfig[0].value === '' || this.appConfig[0].value === null || this.appConfig[0].value === undefined) {
       document.getElementById('input-propertie-0').focus();
@@ -114,14 +117,23 @@ export class PaginaInicialComponent implements OnInit {
 
   }
 
+  // Apenas fecha a IDE.
   public closeIde() {
     this.window.close();
   }
 
+  // Alterna entre abas na pagina inicial.
   public toggleTabs(value: boolean) {
     this.isNovoProjeto = value;
   }
 
+  public abrirProjeto(i) {
+    this.srcGlobal = this.listaProjetos[i];
+    this.database.criarSrc(this.srcGlobal);
+    this.inicializaDiretorio();
+  }
+
+  // Responsável por inicializar os arquivos e suas dependências nas pastas do dispositivo.
   private async inicializaDiretorio() {
     if (!fs.existsSync(this.srcGlobal[0].staticPropertiesList[4].propertieValue)) {
       fs.mkdirSync(this.srcGlobal[0].staticPropertiesList[4].propertieValue);

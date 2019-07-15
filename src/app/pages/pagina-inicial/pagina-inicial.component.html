@@ -38,10 +38,14 @@
             <input type="text" (click)="toggleTabs(false)" class="input-padrao input-large input-fill" style="margin-bottom: 14px;" id="input-busca" name="input-busca" placeholder="Buscar projeto..." />
             <div class="corpo-plataforma" *ngIf="isNovoProjeto == false"><!--  [(ngModel)]="item.value" -->
                 <div class="resultado-busca">
-                    <div *ngFor="let i of appConfig" class="item-lista">
-                        <div style="flex: 1; align-self: center;">http</div>
-                        <div style="flex: 1; align-self: center;">0.0.0</div>
-                        <div style="flex: 1; align-self: center;">11/07/2019</div>
+                    <div *ngFor="let projeto of listaProjetos; index as i" class="item-lista" (click)="abrirProjeto(i)">
+                        <div style="flex: 1; align-self: center;">{{ projeto[0].staticPropertiesList[0].propertieValue }}</div>
+                        <div style="flex: 1; align-self: center;">{{ 
+                            projeto[0].staticPropertiesList[3].propertieValue.split('', 3)[0] + "." +
+                            projeto[0].staticPropertiesList[3].propertieValue.split('', 3)[1] + "." +
+                            projeto[0].staticPropertiesList[3].propertieValue.split('', 3)[2]
+                         }}</div>
+                        <!-- <div style="flex: 1; align-self: center;">{{ projeto }}</div> -->
                         <img src="./assets/icons/btn-trash.svg"/>
                     </div>
                 </div>
