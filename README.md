@@ -9,17 +9,17 @@
 [![Star on GitHub][github-star-badge]][github-star]
 [![Tweet][twitter-badge]][twitter]
 
-# Introduction
+# Introdução
 
 Desenvolva suas APIs de uma forma simples e direta com a melhor plataforma de low-code.
 
-Currently runs with:
+Atualmente roda com esta tecnologias:
 
 - Angular v8.0.0
 - Electron v5.0.2
 - Electron Builder v20.41.0
 
-With this sample, you can :
+Você já pode roda APIs simples de teste com retornos estáticos:
 
 - Run your app in a local development environment with Electron & Hot reload
 - Run your app in a production environment
