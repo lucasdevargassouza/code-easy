@@ -11,7 +11,7 @@
 
 # Introduction
 
-Bootstrap and package your project with Angular 8 and Electron (Typescript + SASS + Hot Reload) for creating Desktop applications.
+Desenvolva suas APIs de uma forma simples e direta com a melhor plataforma de low-code.
 
 Currently runs with:
 

@@ -34,15 +34,12 @@
                 </div>
             </div>
 
-
-            <input type="text" (click)="toggleTabs(false)" class="input-padrao input-large input-fill" style="margin-bottom: 14px;" id="input-busca" name="input-busca" placeholder="Buscar projeto..." />
+<!--             <input type="text" [(ngModel)]="busca" (click)="toggleTabs(false)" class="input-padrao input-large input-fill" style="margin-bottom: 14px;" id="input-busca" name="input-busca" placeholder="Buscar projeto..." />
+ -->
             <div class="corpo-plataforma" *ngIf="isNovoProjeto == false"><!--  [(ngModel)]="item.value" -->
                 <div class="resultado-busca">
-
-
-                    <div *ngFor="let projeto of listaProjetos; index as i" (click)="abrirProjeto(i)">
-                        
-                        <div class="item-lista">
+                    <div style="display: flex; align-items: center;" *ngFor="let projeto of listaProjetos; index as i">
+                        <div class="item-lista" (click)="abrirProjeto(i)">
                             <div style="flex: 1; align-self: center;">{{ projeto[0].staticPropertiesList[0].propertieValue }}</div>
                             <div style="flex: 1; align-self: center;">{{ 
                                 projeto[0].staticPropertiesList[3].propertieValue.split('', 3)[0] + "." +
@@ -51,15 +48,10 @@
                              }}</div>
                             <!-- <div style="flex: 1; align-self: center;">{{ projeto }}</div> -->
                         </div>
-                        
-                        <img class="item-lista" class="item-lista" src="./assets/icons/btn-trash.svg" (click)="removeProjeto()"/>
-                    
+                        <div class="frame-btn-trash-projeto" (click)="removeProjeto(i)"></div>                 
                     </div>
-
-
                 </div>
             </div>
-
         </div>
     </div>
 </div>

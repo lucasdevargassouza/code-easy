@@ -4,7 +4,6 @@ import { DatabaseStorageService } from '../../share/services/database-storage/da
 import { ResourcesTreeInterface } from '../../share/services/resources-tree.interface';
 import { CONSTS } from '../../share/services/consts/consts.service';
 import { Router } from '@angular/router';
-import { TranspilerService } from '../../share/services/transpiler/transpiler.service';
 import { CompilerService } from '../../share/services/compiler/compiler.service';
 
 const dialog = remote.dialog;
@@ -18,7 +17,8 @@ const fs = require('fs');
 export class PaginaInicialComponent implements OnInit {
   private window = remote.getCurrentWindow();
   private srcGlobal: ResourcesTreeInterface[];
-  
+
+  public busca = '';
   public listaProjetos: ResourcesTreeInterface[][];
   public isNovoProjeto: Boolean = false;
   public appConfig = [
@@ -84,7 +84,7 @@ export class PaginaInicialComponent implements OnInit {
     });
   }
 
-  // Instancia todo o projeto no localstorage 
+  // Instancia todo o projeto no localstorage
   public criarNovoProjeto() {
     if (this.appConfig[0].value === '' || this.appConfig[0].value === null || this.appConfig[0].value === undefined) {
       document.getElementById('input-propertie-0').focus();
@@ -135,7 +135,16 @@ export class PaginaInicialComponent implements OnInit {
 
   public removeProjeto(i) {
     this.listaProjetos.splice(i, 1);
+    this.database.setListaProjetos(this.listaProjetos);
   }
+
+/*   public busca() {
+    this.listaProjetos.filter((value) => {
+      if (value[0].staticPropertiesList[0].propertieValue.indexOf(this.busca)) {
+
+      }
+    });
+  } */
 
   // Responsável por inicializar os arquivos e suas dependências nas pastas do dispositivo.
   private async inicializaDiretorio() {

@@ -35,6 +35,10 @@ export class DatabaseStorageService {
     return JSON.parse(localStorage.getItem(CONSTS.appResources.listaProjetos));
   }
 
+  public setListaProjetos(listaProjetos: ResourcesTreeInterface[][]) {
+    localStorage.setItem(CONSTS.appResources.listaProjetos, JSON.stringify(listaProjetos));
+  }
+
   public updateSrc() {
 
     // Salva o srcPadrao
@@ -48,10 +52,9 @@ export class DatabaseStorageService {
     if (localStorage.getItem(CONSTS.appResources.listaProjetos) === null) {
       localStorage.setItem(CONSTS.appResources.listaProjetos, JSON.stringify([ this.srcGlobal ]));
     } else {
-      let listaProjetos: ResourcesTreeInterface[][] = JSON.parse(localStorage.getItem(CONSTS.appResources.listaProjetos));
+      const listaProjetos: ResourcesTreeInterface[][] = JSON.parse(localStorage.getItem(CONSTS.appResources.listaProjetos));
       let atualizouProjeto = false;
       for (let i = 0; i < listaProjetos.length; i++) {
-        listaProjetos[i];
         if (listaProjetos[i][0].staticPropertiesList[0].propertieValue ===  this.srcGlobal[0].staticPropertiesList[0].propertieValue) {
           listaProjetos[i] = this.srcGlobal;
           atualizouProjeto = true;
