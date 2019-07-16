@@ -1,7 +1,6 @@
 [![Angular Logo](https://www.vectorlogo.zone/logos/angular/angular-icon.svg)](https://angular.io/) [![Electron Logo](https://www.vectorlogo.zone/logos/electronjs/electronjs-icon.svg)](https://electronjs.org/)
 
 [![Travis Build Status][build-badge]][build]
-[![Dependencies Status][dependencyci-badge]][dependencyci]
 [![Make a pull request][prs-badge]][prs]
 [![License](http://img.shields.io/badge/Licence-MIT-brightgreen.svg)](LICENSE.md)
 
@@ -19,23 +18,23 @@ Atualmente roda com esta tecnologias:
 - Electron v5.0.2
 - Electron Builder v20.41.0
 
-Você já pode roda APIs simples de teste com retornos estáticos:
+Você pode executar esta aplicação:
 
-- Run your app in a local development environment with Electron & Hot reload
-- Run your app in a production environment
-- Package your app into an executable file for Linux, Windows & Mac
+- Rode a aplicação em ambiente local e com Hot reload.
+- Rode sua aplicação em ambiente de produção.
+- Crie executáveis para windows, mac e linux.
 
-/!\ Angular 8.0 CLI needs Node 10.9 or later to work.
+/!\ Angular 8.0 CLI preciza do Node 10.9 ou superior para funcionar.
 
-## Getting Started
+## Como iniciar
 
-Clone this repository locally :
+Clone este repositório na sua maquina :
 
 ``` bash
 git clone https://github.com/maximegris/angular-electron.git
 ```
 
-Install dependencies with npm :
+instale as dependências com o npm :
 
 ``` bash
 npm install

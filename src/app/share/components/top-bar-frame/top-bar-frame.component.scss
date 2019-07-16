@@ -48,6 +48,12 @@
 .frame-btn-minimizar {
   content: url(assets/icons/btn-minimizar.svg);
 }
+.frame-btn-maximizar {
+  content: url(assets/icons/btn-maximizar.svg);
+}
+.frame-btn-close {
+  content: url(assets/icons/btn-close.svg);
+}
 .frame-btn-play {
   content: url(assets/icons/btn-play.svg);
 }
@@ -56,12 +62,6 @@
 }
 .frame-btn-restart {
   content: url(assets/icons/btn-restart.svg);
-}
-.frame-btn-maximizar {
-  content: url(assets/icons/btn-maximizar.svg);
-}
-.frame-btn-close {
-  content: url(assets/icons/btn-close.svg);
 }
 
 .frame-btn:hover {

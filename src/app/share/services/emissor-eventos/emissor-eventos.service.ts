@@ -2,6 +2,7 @@ import { Injectable, EventEmitter  } from '@angular/core';
 import { ResourcesTreeInterface } from '../resources-tree.interface';
 import { CurrentStatus } from './interfaces.interface';
 
+
 @Injectable({
   providedIn: 'root'
 })
