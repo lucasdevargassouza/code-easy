@@ -18,6 +18,10 @@ export class ToolBarComponent implements OnInit {
     this.inicializaEmissores();
   }
 
+  public changeCurrentTab(value: string) {
+    Emissor.currentTab.emit(value);
+  }
+
   private inicializaEmissores() {
 
     this.currentStatus = {
@@ -26,14 +30,7 @@ export class ToolBarComponent implements OnInit {
       isShowLoadingBar: false
     };
 
-    Emissor.srcGlobal.subscribe(
-      data => {
-        this.srcGlobal = data;
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    Emissor.srcGlobal.subscribe(data => this.srcGlobal = data);
 
     Emissor.currentStatus.subscribe(
       (data: CurrentStatus) => {

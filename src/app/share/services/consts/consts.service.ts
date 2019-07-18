@@ -23,6 +23,12 @@ export class CONSTS {
     services: 'services'
   };
 
+  public static editorTabs = {
+    editor: 'editor',
+    plugins: 'plugins',
+    propriedades: 'propriedades'
+  };
+
   private static srcPadrao: ResourcesTreeInterface[] = [
     {
       isHaveChild: false,
@@ -502,8 +508,7 @@ export class CONSTS {
   public static appResources = {
     srcLocal: 'srcLocal',
     srcPadrao: CONSTS.srcPadrao,
-    listaProjetos: 'lista-projetos',
-    
+    listaProjetos: 'lista-projetos'
   };
 
 }

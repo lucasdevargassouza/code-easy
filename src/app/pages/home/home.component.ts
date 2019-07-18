@@ -2,8 +2,8 @@ import { Component, OnInit, HostListener } from '@angular/core';
 
 import { Emissor } from '../../share/services/emissor-eventos/emissor-eventos.service';
 import { DatabaseStorageService } from '../../share/services/database-storage/database-storage.service';
-import { HttpClient } from '@angular/common/http';
 import { UtilsService } from '../../share/services/utils/utils.service';
+import { CONSTS } from '../../share/services/consts/consts.service';
 
 const fs = require('fs');
 
@@ -21,23 +21,17 @@ export class HomeComponent implements OnInit {
   private grabberColRight = false;
   public widthColLeft = 300;
   public widthColRight = 300;
+  public currentTab = CONSTS.editorTabs.editor;
 
   constructor(
     private database: DatabaseStorageService,
-    private http: HttpClient,
     private utils: UtilsService,
   ) {}
 
   ngOnInit() {
     this.database.getSrc();
 
-    Emissor.srcGlobal.subscribe(
-      data => this.srcGlobal = data
-    );
-
-    Emissor.pidProcessoAtual.subscribe(
-      data => this.srcGlobal[0].staticPropertiesList[5].propertieValue = data
-    );
+    this.inicializaEmissores();
 
     this.inicializaPid();
   }
@@ -84,5 +78,14 @@ export class HomeComponent implements OnInit {
         }
       }
     }, 3000);
+  }
+
+  private inicializaEmissores() {
+    Emissor.srcGlobal.subscribe(data => this.srcGlobal = data);
+    Emissor.currentTab.subscribe(data => this.currentTab = data);
+
+    Emissor.pidProcessoAtual.subscribe(
+      data => this.srcGlobal[0].staticPropertiesList[5].propertieValue = data
+    );
   }
 }

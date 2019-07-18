@@ -3,12 +3,18 @@
   <app-top-bar-frame [tituloIde]="srcGlobal[0]?.staticPropertiesList[0]?.propertieValue"></app-top-bar-frame>
   <!-- Top bar frame -->
   
+  <!-- Tool bar -->
   <app-tool-bar></app-tool-bar>
-  <div class="application-body">
-    <div class="barra-lateral">
-      
-    </div>
+  <!-- Tool bar -->
 
+
+  <div class="application-body" *ngIf="currentTab == 'propriedades'">
+    Propriedades
+  </div>
+  <div class="application-body" *ngIf="currentTab == 'plugins'">
+    Dependências
+  </div>
+  <div class="application-body" *ngIf="currentTab == 'editor'">
 
     <div class="col-left" [style.width.px]="widthColLeft">
       <div style="flex: 1">
@@ -23,13 +29,22 @@
 
     <div class="col-right" [style.width.px]="widthColRight">
         <div class="grabber-col-right" (mousedown)="onMouseDownColRight($event)"></div>
-        <div style="flex: 1">
-
-          <app-properties-editor></app-properties-editor>
+        
+        <div style="display: flex; flex-direction: column; width: 100%;">
+          <div style="flex: 1; min-height: min-content;">
+            <app-resources-tree *ngFor="let obj of srcGlobal" [objeto]="obj"></app-resources-tree>
+            <hr>
+          </div>
             
+          <div style="flex: 1; overflow: -webkit-paged-x;">
+            <app-properties-editor></app-properties-editor>
+          </div>
         </div>
+
+
     </div>
   </div>
+
 
   <!-- Status bar -->
   <app-botton-bar-status></app-botton-bar-status>

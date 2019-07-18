@@ -8,7 +8,26 @@
 }
 
 .sistem-tabs {
-    padding: 3px;
+  padding: 3px;
+  display: flex;
+}
+
+.btn-editor:hover {
+  background-color: $color-top-bar-button-maximizar;
+  cursor: pointer;
+}
+.btn-editor:active {
+  opacity: 0.5;
+  color: $color-white;
+}
+.btn-open-editor-tab {
+  content: url(assets/icons/btn-open-editor-tab.svg);
+}
+.btn-open-plugins-tab {
+  content: url(assets/icons/btn-open-plugins-tab.svg);
+}
+.btn-open-properties-tab {
+  content: url(assets/icons/btn-open-properties-tab.svg);
 }
 
 .btn-api-controls {

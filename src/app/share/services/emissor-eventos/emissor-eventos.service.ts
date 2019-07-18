@@ -11,6 +11,7 @@ export class Emissor {
   public static itemSelectedLocation = new EventEmitter<number[]>();
   public static srcGlobal = new EventEmitter<ResourcesTreeInterface>();
   public static currentStatus = new EventEmitter<CurrentStatus>();
+  public static currentTab = new EventEmitter<string>();
   public static pidProcessoAtual = new EventEmitter<any>();
 
   constructor() {}
