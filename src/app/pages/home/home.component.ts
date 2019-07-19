@@ -4,6 +4,7 @@ import { Emissor } from '../../share/services/emissor-eventos/emissor-eventos.se
 import { DatabaseStorageService } from '../../share/services/database-storage/database-storage.service';
 import { UtilsService } from '../../share/services/utils/utils.service';
 import { CONSTS } from '../../share/services/consts/consts.service';
+import { ResourcesTreeInterface } from '../../share/services/resources-tree.interface';
 
 const fs = require('fs');
 
@@ -21,19 +22,20 @@ export class HomeComponent implements OnInit {
   private grabberColRight = false;
   public widthColLeft = 300;
   public widthColRight = 300;
-  public currentTab = CONSTS.editorTabs.editor;
+  public currentTab = CONSTS.editorTabs.propriedades;
 
   constructor(
     private database: DatabaseStorageService,
     private utils: UtilsService,
   ) {}
-
+  
   ngOnInit() {
     this.database.getSrc();
 
     this.inicializaEmissores();
 
     this.inicializaPid();
+    console.log(this.srcGlobal);
   }
 
   //#region Resize Divs
@@ -81,7 +83,10 @@ export class HomeComponent implements OnInit {
   }
 
   private inicializaEmissores() {
-    Emissor.srcGlobal.subscribe(data => this.srcGlobal = data);
+    Emissor.srcGlobal.subscribe(data => {
+      this.srcGlobal = data;
+      console.log(this.srcGlobal);
+    });
     Emissor.currentTab.subscribe(data => this.currentTab = data);
 
     Emissor.pidProcessoAtual.subscribe(

@@ -66,7 +66,7 @@ export class CONSTS {
         },
         {
           propertieName: 'Caminho: ',
-          propertieType: 'text',
+          propertieType: 'selectPath',
           propertieSugestions: [],
           propertiePlaceholder: 'Ex: \'/home/user\'',
           propertieValue: ''

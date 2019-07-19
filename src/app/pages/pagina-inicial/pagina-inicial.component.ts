@@ -16,7 +16,7 @@ const fs = require('fs');
 })
 export class PaginaInicialComponent implements OnInit {
   private window = remote.getCurrentWindow();
-  private srcGlobal: ResourcesTreeInterface[];
+  private srcGlobal: ResourcesTreeInterface[] = [];
 
   public busca = '';
   public listaProjetos: ResourcesTreeInterface[][];

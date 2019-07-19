@@ -63,3 +63,42 @@
   background-color: $color-tool-bar;
 }
 
+// Relacionado a tab de properties ----------------------------
+.properties-main {
+  height: $size-fill;
+  width: $size-half-70;
+  min-width: $size-75;
+  max-width: $size-150;
+  margin: auto;
+  background-color: $color-background-tab-properties;
+  padding: $size-6;
+  .title-properties-main {
+    font-size: $size-6;
+  }
+  .body-properties-main {
+    padding: $size-14;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    .propertie {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      font-size: $font-size-3;
+      margin-top: $size-0-5;
+      margin-bottom: $size-0-5;
+    }
+  }
+}
+
+.propertie input, .propertie select {
+  background: $color-background-propertie-editor;
+  border: $size-none solid $color-white;
+  color: $font-color-input-propertie-editor;
+  padding: $size-2;
+  padding-left: $size-1-5;
+  padding-right: $size-1-5;
+  font-family: Arial, 'Courier New', monospace;
+  max-height: $size-4;
+}

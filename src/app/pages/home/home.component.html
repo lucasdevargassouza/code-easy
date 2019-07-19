@@ -8,9 +8,43 @@
   <!-- Tool bar -->
 
 
+
+
+
+
+
+
+
   <div class="application-body" *ngIf="currentTab == 'propriedades'">
-    Propriedades
+    <div class="properties-main">
+      <div class="title-properties-main">
+        Propriedades do projeto
+        <hr>
+      </div>
+      <div class="body-properties-main">
+        <div class="propertie" *ngFor="let item of srcGlobal[0]?.staticPropertiesList; index as i">  
+          <div> {{ item.propertieName }} </div>
+          <input  *ngIf="item.propertieType === 'text'"          type="text"                class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.propertieValue" placeholder="{{ item.propertiePlaceholder }}" />
+          <input  *ngIf="item.propertieType === 'textMultiline'" type="text"                class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.propertieValue" placeholder="{{ item.propertiePlaceholder }}" />
+          <input  *ngIf="item.propertieType === 'selectPath'"    type="text"                class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.propertieValue" placeholder="{{ item.propertiePlaceholder }}" (click)="selecionarCaminho(i)" />
+          <input  *ngIf="item.propertieType === 'number'"        type="number"              class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.propertieValue" placeholder="{{ item.propertiePlaceholder }}" disabled />
+          <input  *ngIf="item.propertieType === 'disabled'"      type="text"                class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.propertieValue" placeholder="{{ item.propertiePlaceholder }}" />
+          <select *ngIf="item.propertieType === 'select'"        style="max-height: unset;" class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.propertieValue" >
+              <option value="0">{{ item.placeholder }}</option>
+              <option *ngFor="let sugest of item.sugestions" value="{{ sugest.value }}">{{ sugest.label }}</option>
+          </select>
+        </div>
+      </div>
+    </div>
   </div>
+
+
+
+
+
+
+
+
   <div class="application-body" *ngIf="currentTab == 'plugins'">
     Dependências
   </div>
