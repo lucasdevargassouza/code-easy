@@ -7,14 +7,7 @@
   <app-tool-bar></app-tool-bar>
   <!-- Tool bar -->
 
-
-
-
-
-
-
-
-
+  <!-- Properties tab -->
   <div class="application-body" *ngIf="currentTab == 'propriedades'">
     <div class="properties-main">
       <div class="title-properties-main">
@@ -24,16 +17,66 @@
       <div class="body-properties-main">
         <div class="propertie" *ngFor="let item of srcGlobal[0]?.staticPropertiesList; index as i">  
           <div> {{ item.propertieName }} </div>
-          <input  *ngIf="item.propertieType === 'text'"          type="text"                class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.propertieValue" placeholder="{{ item.propertiePlaceholder }}" />
-          <input  *ngIf="item.propertieType === 'textMultiline'" type="text"                class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.propertieValue" placeholder="{{ item.propertiePlaceholder }}" />
-          <input  *ngIf="item.propertieType === 'selectPath'"    type="text"                class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.propertieValue" placeholder="{{ item.propertiePlaceholder }}" (click)="selecionarCaminho(i)" />
-          <input  *ngIf="item.propertieType === 'number'"        type="number"              class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.propertieValue" placeholder="{{ item.propertiePlaceholder }}" disabled />
-          <input  *ngIf="item.propertieType === 'disabled'"      type="text"                class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.propertieValue" placeholder="{{ item.propertiePlaceholder }}" />
+          <input  *ngIf="item.propertieType === 'openDependencias'" type="button"           class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" value="{{ item.propertiePlaceholder }}" (click)="changeCurrentTab('plugins')"   style="max-height: unset;"/>
+          <input  *ngIf="item.propertieType === 'text'"          type="text"                class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.propertieValue" placeholder="{{ item.propertiePlaceholder }}" (change)="inputsOnChange()" />
+          <input  *ngIf="item.propertieType === 'textMultiline'" type="text"                class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.propertieValue" placeholder="{{ item.propertiePlaceholder }}" (change)="inputsOnChange()" />
+          <input  *ngIf="item.propertieType === 'selectPath'"    type="text"                class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.propertieValue" placeholder="{{ item.propertiePlaceholder }}" (change)="inputsOnChange()" (click)="selecionarCaminho(i)" />
+          <input  *ngIf="item.propertieType === 'number'"        type="number"              class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.propertieValue" placeholder="{{ item.propertiePlaceholder }}" (change)="inputsOnChange()" />
+          <input  *ngIf="item.propertieType === 'disabled'"      type="text"                class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.propertieValue" placeholder="{{ item.propertiePlaceholder }}" (change)="inputsOnChange()" disabled />
           <select *ngIf="item.propertieType === 'select'"        style="max-height: unset;" class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.propertieValue" >
               <option value="0">{{ item.placeholder }}</option>
               <option *ngFor="let sugest of item.sugestions" value="{{ sugest.value }}">{{ sugest.label }}</option>
           </select>
         </div>
+      </div>
+    </div>
+  </div>
+  <!-- Properties tab -->
+
+
+
+
+
+
+
+
+  <div class="application-body" *ngIf="currentTab == 'plugins'">
+    <div class="dependences-main">
+      <div class="dependences-list">
+        <div class="title-dependences-list">
+          Dependências do projeto
+          <hr>
+        </div>
+        <div class="btns-toggle">
+          <button class="btn btn-toggle" (click)="toggleTabs(false)">Listagem de projetos</button>
+          <button class="btn btn-toggle" (click)="toggleTabs(true)">Novo projeto</button>
+        </div>
+
+        <div class="corpo-dependences-list">
+          <div class="resultado-busca">
+            <div style="display: flex; align-items: center;">
+                <div class="item-lista" (click)="abrirProjeto(i)">
+                    <div style="flex: 1; align-self: center;">teste</div>
+                    <div style="flex: 1; align-self: center;">tese</div>
+                    <!-- <div style="flex: 1; align-self: center;">{{ projeto }}</div> -->
+                </div>
+                <div class="frame-btn-trash-projeto" (click)="removeProjeto(i)"></div>                 
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+      <div class="dependences-details">
+        <div class="title-dependences-details">
+          http
+        </div>
+
+
+
+
+
       </div>
     </div>
   </div>
@@ -45,17 +88,12 @@
 
 
 
-  <div class="application-body" *ngIf="currentTab == 'plugins'">
-    Dependências
-  </div>
+
+
   <div class="application-body" *ngIf="currentTab == 'editor'">
 
     <div class="col-left" [style.width.px]="widthColLeft">
-      <div style="flex: 1">
-
-        <app-resources-tree *ngFor="let obj of srcGlobal" [objeto]="obj"></app-resources-tree>
-
-      </div>
+      <div style="flex: 1"></div>
       <div class="grabber-col-left" (mousedown)="onMouseDownColLeft($event)"></div>
     </div>
 

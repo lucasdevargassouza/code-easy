@@ -80,9 +80,9 @@ export class CONSTS {
         },
         {
           propertieName: 'Dependências: ',
-          propertieType: 'selectDialog',
+          propertieType: 'openDependencias',
           propertieSugestions: [],
-          propertiePlaceholder: 'Abrir',
+          propertiePlaceholder: 'Abrir dependências',
           propertieValue: ''
         },
       ],

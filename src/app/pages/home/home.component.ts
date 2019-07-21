@@ -1,11 +1,12 @@
 import { Component, OnInit, HostListener } from '@angular/core';
+import { remote } from 'electron';
 
 import { Emissor } from '../../share/services/emissor-eventos/emissor-eventos.service';
 import { DatabaseStorageService } from '../../share/services/database-storage/database-storage.service';
 import { UtilsService } from '../../share/services/utils/utils.service';
 import { CONSTS } from '../../share/services/consts/consts.service';
-import { ResourcesTreeInterface } from '../../share/services/resources-tree.interface';
 
+const dialog = remote.dialog;
 const fs = require('fs');
 
 
@@ -22,13 +23,13 @@ export class HomeComponent implements OnInit {
   private grabberColRight = false;
   public widthColLeft = 300;
   public widthColRight = 300;
-  public currentTab = CONSTS.editorTabs.propriedades;
+  public currentTab = CONSTS.editorTabs.plugins;
 
   constructor(
     private database: DatabaseStorageService,
     private utils: UtilsService,
   ) {}
-  
+
   ngOnInit() {
     this.database.getSrc();
 
@@ -68,6 +69,27 @@ export class HomeComponent implements OnInit {
   }
 
   //#endregion
+
+  public selecionarCaminho(i: number) {
+    dialog.showOpenDialog({properties: ['openDirectory']}, (path) => {
+      console.log(path[0]);
+      if (path === undefined) {} else {
+        this.srcGlobal[i].value = path[0].toString();
+        document.getElementById('input-propertie-4').focus();
+      }
+    });
+  }
+
+  // Em cada change salva os dados.
+  public inputsOnChange() {
+    setTimeout(() => {
+      this.database.updateSrc();
+    }, 100);
+  }
+
+  public changeCurrentTab(value: string) {
+    Emissor.currentTab.emit(value);
+  }
 
   private async inicializaPid() {
     let pid = '--';
