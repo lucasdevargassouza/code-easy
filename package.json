@@ -89,6 +89,7 @@
     "@angular/cdk": "github:angular/cdk-builds",
     "@angular/material": "github:angular/material2-builds",
     "hammerjs": "^2.0.8",
+    "libnpmsearch": "^2.0.2",
     "node-powershell": "^4.0.0",
     "npm": "^6.9.0"
   }

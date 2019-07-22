@@ -48,19 +48,28 @@
           <hr>
         </div>
         <div class="btns-toggle">
-          <button class="btn btn-toggle" (click)="toggleTabs(false)">Listagem de projetos</button>
-          <button class="btn btn-toggle" (click)="toggleTabs(true)">Novo projeto</button>
+          <button class="btn btn-toggle" (click)="toggleTab = true">Instaladas</button>
+          <button class="btn btn-toggle" (click)="toggleTab = false">Instalar</button>
         </div>
 
-        <div class="corpo-dependences-list">
+        <div class="corpo-dependences-list" *ngIf="toggleTab == true">
           <div class="resultado-busca">
-            <div style="display: flex; align-items: center;">
-                <div class="item-lista" (click)="abrirProjeto(i)">
-                    <div style="flex: 1; align-self: center;">teste</div>
-                    <div style="flex: 1; align-self: center;">tese</div>
-                    <!-- <div style="flex: 1; align-self: center;">{{ projeto }}</div> -->
+            <div style="display: flex; flex-direction: column;" *ngFor="let dependence of dependencesList; index as i">
+                <div class="item-lista" (click)="abrirDependencia(i)">
+                    <div style="flex: 1; align-self: center;">{{ dependence.name }}</div>
+                    <div style="flex: 1; align-self: center;">{{ dependence.version }}</div>
                 </div>
-                <div class="frame-btn-trash-projeto" (click)="removeProjeto(i)"></div>                 
+            </div>
+          </div>
+        </div>
+
+        <div class="corpo-dependences-list" *ngIf="toggleTab == false">
+          <div class="resultado-busca">
+            <div style="display: flex; flex-direction: column;" *ngFor="let dependence of installDependencesList; index as i">
+                <div class="item-lista" (click)="abrirDependencia(i)">
+                    <div style="flex: 1; align-self: center;">{{ dependence.name }}</div>
+                    <div style="flex: 1; align-self: center;">{{ dependence.version }}</div>
+                </div>
             </div>
           </div>
         </div>
@@ -70,7 +79,7 @@
       </div>
       <div class="dependences-details">
         <div class="title-dependences-details">
-          http
+          {{ dependencesList[dependenciaIndex].name }}
         </div>
 
 

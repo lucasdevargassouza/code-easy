@@ -29,6 +29,13 @@ export class CONSTS {
     propriedades: 'propriedades'
   };
 
+  private static dependencesList = [
+    {name: "cors", version: "^2.8.5"},
+    {name: "debug", version: "^4.1.1"},
+    {name: "express", version: "^4.17.1"},
+    {name: "http", version: "0.0.0"}
+  ]
+
   private static srcPadrao: ResourcesTreeInterface[] = [
     {
       isHaveChild: false,
@@ -83,7 +90,7 @@ export class CONSTS {
           propertieType: 'openDependencias',
           propertieSugestions: [],
           propertiePlaceholder: 'Abrir dependências',
-          propertieValue: ''
+          propertieValue: JSON.stringify(CONSTS.dependencesList)
         },
       ],
       propertiesList: [

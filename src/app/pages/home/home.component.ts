@@ -6,6 +6,7 @@ import { DatabaseStorageService } from '../../share/services/database-storage/da
 import { UtilsService } from '../../share/services/utils/utils.service';
 import { CONSTS } from '../../share/services/consts/consts.service';
 
+// const search = require('libnpmsearch');
 const dialog = remote.dialog;
 const fs = require('fs');
 
@@ -17,13 +18,17 @@ const fs = require('fs');
 })
 export class HomeComponent implements OnInit {
   public srcGlobal = [];
+  public widthColLeft = 300;
+  public widthColRight = 300;
+  public currentTab = CONSTS.editorTabs.plugins;
+  public dependencesList: [];
+  public installDependencesList: [];
+  public dependenciaIndex: Number = 0;
+  public toggleTab: Boolean = true;
 
   private oldX = 0;
   private grabberColLeft = false;
   private grabberColRight = false;
-  public widthColLeft = 300;
-  public widthColRight = 300;
-  public currentTab = CONSTS.editorTabs.plugins;
 
   constructor(
     private database: DatabaseStorageService,
@@ -32,10 +37,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.database.getSrc();
-
     this.inicializaEmissores();
-
     this.inicializaPid();
+    this.inicializaNpmSearch();
     console.log(this.srcGlobal);
   }
 
@@ -91,6 +95,10 @@ export class HomeComponent implements OnInit {
     Emissor.currentTab.emit(value);
   }
 
+  public abrirDependencia(index: Number) {
+    this.dependenciaIndex = index;
+  }
+
   private async inicializaPid() {
     let pid = '--';
     setInterval(async () => {
@@ -108,11 +116,22 @@ export class HomeComponent implements OnInit {
     Emissor.srcGlobal.subscribe(data => {
       this.srcGlobal = data;
       console.log(this.srcGlobal);
+      try {
+        this.dependencesList = JSON.parse(this.srcGlobal[0].staticPropertiesList[6].propertieValue);
+      } catch(e) {
+        this.dependencesList = [];
+      }
+      console.log(this.dependencesList);
     });
     Emissor.currentTab.subscribe(data => this.currentTab = data);
 
     Emissor.pidProcessoAtual.subscribe(
       data => this.srcGlobal[0].staticPropertiesList[5].propertieValue = data
     );
+  }
+
+  private async inicializaNpmSearch() {
+    // console.log(await search('libnpm'))
+    // this.installDependencesList = await search('http');
   }
 }
