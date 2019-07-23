@@ -1,12 +1,12 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { remote } from 'electron';
+import { searchByKeywords } from 'search-packages';
 
 import { Emissor } from '../../share/services/emissor-eventos/emissor-eventos.service';
 import { DatabaseStorageService } from '../../share/services/database-storage/database-storage.service';
 import { UtilsService } from '../../share/services/utils/utils.service';
 import { CONSTS } from '../../share/services/consts/consts.service';
 
-// const search = require('libnpmsearch');
 const dialog = remote.dialog;
 const fs = require('fs');
 
@@ -131,7 +131,7 @@ export class HomeComponent implements OnInit {
   }
 
   private async inicializaNpmSearch() {
-    // console.log(await search('libnpm'))
+    console.log(await searchByKeywords(['http']))
     // this.installDependencesList = await search('http');
   }
 }

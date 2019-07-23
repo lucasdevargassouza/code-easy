@@ -1,30 +1,20 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add npm i search-packages
 
 PATH: 
-  C:\Users\lvargas\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\lvargas\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn;C:\Program Files\Microsoft SQL Server\140\Tools\Binn;C:\Program Files (x86)\Microsoft SQL Server\140\DTS\Binn;C:\Program Files\Microsoft SQL Server\140\DTS\Binn;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn;C:\Program Files (x86)\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\ManagementStudio;C:\Program Files\Git\cmd;C:\WINDOWS\System32\OpenSSH;C:\Program Files\dotnet;C:\Program Files\Microsoft SQL Server\130\Tools\Binn;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\nodejs;C:\Users\lvargas\AppData\Roaming\npm\node_modules\@angular\cli\bin\ng;C:\ProgramData\chocolatey\bin;C:\Program Files\Java\jdk1.8.0_201\bin;C:\Android\android-sdk\tools;C:\Android\android-sdk\platform-tools;C:\Android\android-sdk\tools\bin;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn;C:\Program Files (x86)\Yarn\bin;C:\Users\lvargas\AppData\Local\Programs\Python\Python37\Scripts;C:\Users\lvargas\AppData\Local\Programs\Python\Python37;C:\Users\lvargas\AppData\Roaming\npm;C:\Users\lvargas\AppData\Roaming\npm\node_modules\@angular\cli\bin\ng;C:\Users\lvargas\.dotnet\tools;C:\Users\lvargas\AppData\Local\Yarn\bin;C:\flutter\bin;C:\Users\lvargas\AppData\Local\Programs\Azure Data Studio\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+  C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\ManagementStudio\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Program Files (x86)\Yarn\bin\;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps;C:\Users\lvargas\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\lvargas\AppData\Local\Programs\Azure Data Studio\bin;C:\Users\lvargas\AppData\Roaming\npm;C:\Users\lvargas\AppData\Local\Yarn\bin;C:\Users\lvargas\AppData\Local\hyper\app-3.0.2\resources\bin
 
 Yarn version: 
-  1.16.0
+  1.17.3
 
 Node version: 
-  10.13.0
+  10.16.0
 
 Platform: 
   win32 x64
 
 Trace: 
-  Error: https://codeload.github.com/angular/material2-builds/tar.gz/d9618994570b7e1993455c8344cce0f9719b5a41: ESOCKETTIMEDOUT
-      at ClientRequest.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:130217:19)
-      at Object.onceWrapper (events.js:273:13)
-      at ClientRequest.emit (events.js:182:13)
-      at TLSSocket.emitRequestTimeout (_http_client.js:661:40)
-      at Object.onceWrapper (events.js:273:13)
-      at TLSSocket.emit (events.js:182:13)
-      at TLSSocket.Socket._onTimeout (net.js:449:8)
-      at ontimeout (timers.js:436:11)
-      at tryOnTimeout (timers.js:300:5)
-      at listOnTimeout (timers.js:263:5)
+  Error: EBUSY: resource busy or locked, unlink 'C:\Users\lvargas\Documents\Meus_Projetos\code-easy\node_modules\electron\dist\chrome_200_percent.pak'
 
 npm manifest: 
   {
@@ -2870,7 +2860,7 @@ Lockfile:
     dependencies:
       ms "^2.1.1"
   
-  debuglog@*, debuglog@^1.0.1:
+  debuglog@^1.0.1:
     version "1.0.1"
     resolved "https://registry.yarnpkg.com/debuglog/-/debuglog-1.0.1.tgz#aa24ffb9ac3df9a2351837cfb2d279360cd78492"
     integrity sha1-qiT/uaw9+aI1GDfPstJ5NgzXhJI=
@@ -4657,7 +4647,7 @@ Lockfile:
       pkg-dir "^3.0.0"
       resolve-cwd "^2.0.0"
   
-  imurmurhash@*, imurmurhash@^0.1.4:
+  imurmurhash@^0.1.4:
     version "0.1.4"
     resolved "https://registry.yarnpkg.com/imurmurhash/-/imurmurhash-0.1.4.tgz#9218b9b2b928a238b13dc4fb6b6d576f231453ea"
     integrity sha1-khi5srkoojixPcT7a21XbyMUU+o=
@@ -5612,7 +5602,7 @@ Lockfile:
       read-package-json "^2.0.13"
       stringify-package "^1.0.0"
   
-  libnpmaccess@*, libnpmaccess@^3.0.1:
+  libnpmaccess@^3.0.1:
     version "3.0.1"
     resolved "https://registry.yarnpkg.com/libnpmaccess/-/libnpmaccess-3.0.1.tgz#5b3a9de621f293d425191aa2e779102f84167fa8"
     integrity sha512-RlZ7PNarCBt+XbnP7R6PoVgOq9t+kou5rvhaInoNibhPO7eMlRfS0B8yjatgn2yaHIwWNyoJDolC/6Lc5L/IQA==
@@ -5641,7 +5631,7 @@ Lockfile:
       get-stream "^4.0.0"
       npm-registry-fetch "^3.8.0"
   
-  libnpmorg@*, libnpmorg@^1.0.0:
+  libnpmorg@^1.0.0:
     version "1.0.0"
     resolved "https://registry.yarnpkg.com/libnpmorg/-/libnpmorg-1.0.0.tgz#979b868c48ba28c5820e3bb9d9e73c883c16a232"
     integrity sha512-o+4eVJBoDGMgRwh2lJY0a8pRV2c/tQM/SxlqXezjcAg26Qe9jigYVs+Xk0vvlYDWCDhP0g74J8UwWeAgsB7gGw==
@@ -5675,7 +5665,7 @@ Lockfile:
       get-stream "^4.0.0"
       npm-registry-fetch "^3.8.0"
   
-  libnpmteam@*, libnpmteam@^1.0.1:
+  libnpmteam@^1.0.1:
     version "1.0.1"
     resolved "https://registry.yarnpkg.com/libnpmteam/-/libnpmteam-1.0.1.tgz#ff704b1b6c06ea674b3b1101ac3e305f5114f213"
     integrity sha512-gDdrflKFCX7TNwOMX1snWojCoDE5LoRWcfOC0C/fqF7mBq8Uz9zWAX4B2RllYETNO7pBupBaSyBDkTAC15cAMg==
@@ -5773,11 +5763,6 @@ Lockfile:
     dependencies:
       signal-exit "^3.0.2"
   
-  lodash._baseindexof@*:
-    version "3.1.0"
-    resolved "https://registry.yarnpkg.com/lodash._baseindexof/-/lodash._baseindexof-3.1.0.tgz#fe52b53a1c6761e42618d654e4a25789ed61822c"
-    integrity sha1-/lK1OhxnYeQmGNZU5KJXie1hgiw=
-  
   lodash._baseuniq@~4.6.0:
     version "4.6.0"
     resolved "https://registry.yarnpkg.com/lodash._baseuniq/-/lodash._baseuniq-4.6.0.tgz#0ebb44e456814af7905c6212fa2c9b2d51b841e8"
@@ -5786,32 +5771,10 @@ Lockfile:
       lodash._createset "~4.0.0"
       lodash._root "~3.0.0"
   
-  lodash._bindcallback@*:
-    version "3.0.1"
-    resolved "https://registry.yarnpkg.com/lodash._bindcallback/-/lodash._bindcallback-3.0.1.tgz#e531c27644cf8b57a99e17ed95b35c748789392e"
-    integrity sha1-5THCdkTPi1epnhftlbNcdIeJOS4=
-  
-  lodash._cacheindexof@*:
-    version "3.0.2"
-    resolved "https://registry.yarnpkg.com/lodash._cacheindexof/-/lodash._cacheindexof-3.0.2.tgz#3dc69ac82498d2ee5e3ce56091bafd2adc7bde92"
-    integrity sha1-PcaayCSY0u5ePOVgkbr9Ktx73pI=
-  
-  lodash._createcache@*:
-    version "3.1.2"
-    resolved "https://registry.yarnpkg.com/lodash._createcache/-/lodash._createcache-3.1.2.tgz#56d6a064017625e79ebca6b8018e17440bdcf093"
-    integrity sha1-VtagZAF2JeeevKa4AY4XRAvc8JM=
-    dependencies:
-      lodash._getnative "^3.0.0"
-  
   lodash._createset@~4.0.0:
     version "4.0.3"
     resolved "https://registry.yarnpkg.com/lodash._createset/-/lodash._createset-4.0.3.tgz#0f4659fbb09d75194fa9e2b88a6644d363c9fe26"
     integrity sha1-D0ZZ+7CddRlPqeK4imZE02PJ/iY=
-  
-  lodash._getnative@*, lodash._getnative@^3.0.0:
-    version "3.9.1"
-    resolved "https://registry.yarnpkg.com/lodash._getnative/-/lodash._getnative-3.9.1.tgz#570bc7dede46d61cdcde687d65d3eecbaa3aaff5"
-    integrity sha1-VwvH3t5G1hzc3mh9ZdPuy6o6r/U=
   
   lodash._reinterpolate@^3.0.0:
     version "3.0.0"
@@ -5832,11 +5795,6 @@ Lockfile:
     version "4.4.0"
     resolved "https://registry.yarnpkg.com/lodash.ismatch/-/lodash.ismatch-4.4.0.tgz#756cb5150ca3ba6f11085a78849645f188f85f37"
     integrity sha1-dWy1FQyjum8RCFp4hJZF8Yj4Xzc=
-  
-  lodash.restparam@*:
-    version "3.6.1"
-    resolved "https://registry.yarnpkg.com/lodash.restparam/-/lodash.restparam-3.6.1.tgz#936a4e309ef330a7645ed4145986c85ae5b20805"
-    integrity sha1-k2pOMJ7zMKdkXtQUWYbIWuWyCAU=
   
   lodash.tail@^4.1.1:
     version "4.1.1"
@@ -6649,7 +6607,7 @@ Lockfile:
       npm-package-arg "^6.0.0"
       semver "^5.4.1"
   
-  npm-profile@*, npm-profile@^4.0.1:
+  npm-profile@^4.0.1:
     version "4.0.1"
     resolved "https://registry.yarnpkg.com/npm-profile/-/npm-profile-4.0.1.tgz#d350f7a5e6b60691c7168fbb8392c3603583f5aa"
     integrity sha512-NQ1I/1Q7YRtHZXkcuU1/IyHeLy6pd+ScKg4+DQHdfsm769TGq6HPrkbuNJVJS4zwE+0mvvmeULzQdWn2L2EsVA==
