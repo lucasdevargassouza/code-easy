@@ -15,7 +15,7 @@ export class TerminalAccessService {
    * Busca por pacotes npm disponíveis.
    *
    * @param keyword string Palavra chave do pacote npm.
-   * @returns Promisse<[]> Retorna uma Promisse para.
+   * @returns Promisse<[]> Retorna uma Promisse, user await para obter apenas o resultado.
    *
    */
   public async npmSearch(keyword: string): Promise<[]> {

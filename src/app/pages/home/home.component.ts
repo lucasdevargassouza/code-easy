@@ -109,6 +109,7 @@ export class HomeComponent implements OnInit {
   }
 
   public async inicializaNpmSearch() {
+    console.log(await this.shell.npmSearch(this.dependenciaSearch));
     this.installDependencesList = await this.shell.npmSearch(this.dependenciaSearch);
   }
 

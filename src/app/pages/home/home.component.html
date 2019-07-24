@@ -78,9 +78,26 @@
       <div class="dependences-details">
         <div class="title-dependences-details">
           {{ dependenciaDetalhe.name }}
+          <div class="version-dependences">
+            {{ dependenciaDetalhe.version }}
+          </div>
         </div>
-        <div>
-          {{ dependenciaDetalhe.version }}
+        <div class="dependences-details-main">
+          <div style="padding: 10px;">
+            Autor: <div style="font-size: 14px;">{{ dependenciaDetalhe?.author?.name }}</div>
+          </div>
+          <div style="padding: 10px;">
+            Data: <div style="font-size: 14px;">{{ dependenciaDetalhe?.date }}</div>
+          </div>
+          <div style="padding: 10px;">
+            Descrição: <div style="font-size: 14px;">{{ dependenciaDetalhe?.description }}</div>
+          </div>
+          <div style="padding: 10px;">
+            Palavras chave: 
+            <div style="font-size: 14px; display: flex; flex-wrap: wrap;">
+              <div style="padding-left: 5px;" *ngFor="let keyword of dependenciaDetalhe.keywords">{{ keyword + ", " }}</div>
+            </div>
+          </div>
         </div>
 
 

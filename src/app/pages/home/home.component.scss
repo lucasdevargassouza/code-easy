@@ -146,9 +146,19 @@
     flex: 1;
     max-width: $size-38;
     max-width: $size-75;
-  }
-  .title-dependences-details {
-    font-size: $size-4;
+    .title-dependences-details {
+      font-size: $size-4;
+      padding: $size-1;
+      min-height: $size-9;
+    }
+    .version-dependences {
+      font-size: $size-3;
+    }
+    .dependences-details-main {
+      border: 1px solid $color-border-light-gray;
+      padding: $size-1;
+      height: -webkit-fill-available;
+    }
   }
   .body-dependences-main {
     padding: $size-14;

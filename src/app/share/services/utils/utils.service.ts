@@ -13,7 +13,16 @@ export class UtilsService {
 
   constructor(
   ) { }
-
+  
+  /**
+   * Serve para inicializar o indexPath de cada elemento passado.
+   * 
+   * 
+   * @param src ResourcesTreeInterface[] Basicamento todo o código do projeto atual.
+   * @param indexPath number[] Opcional, serve para verificar se já não existe um path, evitando gerar outro.
+   * 
+   * @returns ResourcesTreeInterface[] Retorna todo que foi passado por parâmetro, mas com os indexPaths atualizados.
+   */
   public initIndexPath(src: ResourcesTreeInterface[], indexPath?: number[]): ResourcesTreeInterface[] {
 
     for (let index = 0; index < src.length; index++) {
