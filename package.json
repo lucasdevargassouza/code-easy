@@ -90,6 +90,7 @@
     "@angular/material": "github:angular/material2-builds",
     "hammerjs": "^2.0.8",
     "node-powershell": "^4.0.0",
-    "npm": "^6.9.0"
+    "npm": "^6.9.0",
+    "utf8": "^3.0.0"
   }
 }

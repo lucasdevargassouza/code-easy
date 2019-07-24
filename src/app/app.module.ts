@@ -63,6 +63,7 @@ import { LoadingModalComponent } from './share/components/loading-modal/loading-
 import { CurrentStatusComponent } from './share/components/current-status/current-status.component';
 import { InputLabelTypeComponent } from './share/components/input-label-type/input-label-type.component';
 import { ToolBarComponent } from './share/components/tool-bar/tool-bar.component';
+import { TerminalAccessService } from './share/services/terminal-access/terminal-access.service';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -132,7 +133,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     })
   ],
-  providers: [ElectronService, CONSTS, Emissor, DatabaseStorageService, UtilsService],
+  providers: [ElectronService, CONSTS, Emissor, DatabaseStorageService, UtilsService, TerminalAccessService],
   bootstrap: [AppComponent, /* LoadingModalComponent */]
 })
 export class AppModule {}

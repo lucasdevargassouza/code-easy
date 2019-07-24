@@ -9,10 +9,22 @@ export class TranspilerService {
 
   constructor() { }
 
-  // Retorna o Package.json
+  /**
+   * Retorna o conteúdo que deve estar contido dentro do arquivo "package.json".
+   *
+   * @param srcGlobal ResourcesTreeInterface[] Deve ser passado o projeto em que se esta trabalhando.
+   * @returns Promise<string> Retorna a promessa de uma string. Usar 'await' para receber o retorno com o conteúdo final.
+   */
   public async getPackageJson(srcGlobal: ResourcesTreeInterface[]): Promise<string> {
 
     const appConfig: ResourcesTreeInterface =  await this.getItemEspecifico(srcGlobal, CONSTS.tiposItens.appConfig);
+
+    let dependences = ' \"dependencies\": {\n';
+    JSON.parse(appConfig.staticPropertiesList[6].propertieValue).forEach(dependencia => {
+      dependences = dependences + '  \"' + dependencia.name + '\": \"' + dependencia.version + '\", \n';
+    });
+    dependences = dependences + ' }\n';
+    console.log(dependences);
 
     const packagejson = '{\n' +
     ' \"name\": \"' + appConfig.staticPropertiesList[0].propertieValue.toLowerCase() + '\",\n' +
@@ -28,12 +40,7 @@ export class TranspilerService {
     ' }, \n' +
     ' \"author\": \"' + appConfig.staticPropertiesList[2].propertieValue + '\",\n' +
     ' \"license\": \"ISC\",\n' +
-    ' \"dependencies\": {\n' +
-    '   \"cors": "^2.8.5\",' +
-    '   \"debug\": \"^4.1.1\",\n' +
-    '   \"express\": \"^4.17.1\",\n' +
-    '   \"http\": \"0.0.0\"\n' +
-    ' }\n' +
+    dependences +
     '}\n';
 
     return packagejson;
@@ -98,11 +105,13 @@ export class TranspilerService {
     return serverString;
   }
 
+  /**
+   * Apenas retorna o .gitignore.
+   *
+   * @returns string Retorna o conteúdo que deve estar contido no arquivo ".gitignore".
+   */
   public getGitIgnore(): string {
-
-    let ignore: string = '/node_modules';
-
-    return ignore;
+    return '/node_modules';
   }
 
   private getItemEspecifico(resTree: ResourcesTreeInterface[], tipoItem: string): ResourcesTreeInterface {

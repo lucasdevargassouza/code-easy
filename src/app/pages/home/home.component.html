@@ -55,31 +55,32 @@
         <div class="corpo-dependences-list" *ngIf="toggleTab == true">
           <div class="resultado-busca">
             <div style="display: flex; flex-direction: column;" *ngFor="let dependence of dependencesList; index as i">
-                <div class="item-lista" (click)="abrirDependencia(i)">
+                <div class="item-lista" (click)="abrirDependencia(i, 'instaladas')">
                     <div style="flex: 1; align-self: center;">{{ dependence.name }}</div>
-                    <div style="flex: 1; align-self: center;">{{ dependence.version }}</div>
+                    <div style="flex: 1; align-self: center; text-align: right;">{{ dependence.version }}</div>
                 </div>
             </div>
           </div>
         </div>
 
+        <input type="text" (keypress)="inicializaNpmSearch()" *ngIf="toggleTab == false" [(ngModel)]="dependenciaSearch" class="input-padrao input-large input-fill" style="margin-bottom: 14px;" id="input-busca" name="input-busca" placeholder="Buscar pacote npm..." />
         <div class="corpo-dependences-list" *ngIf="toggleTab == false">
           <div class="resultado-busca">
             <div style="display: flex; flex-direction: column;" *ngFor="let dependence of installDependencesList; index as i">
-                <div class="item-lista" (click)="abrirDependencia(i)">
+                <div class="item-lista" (click)="abrirDependencia(i, 'instalar')">
                     <div style="flex: 1; align-self: center;">{{ dependence.name }}</div>
-                    <div style="flex: 1; align-self: center;">{{ dependence.version }}</div>
+                    <div style="flex: 1; align-self: center; text-align: right;">{{ dependence.version }}</div>
                 </div>
             </div>
           </div>
         </div>
-
-
-
       </div>
       <div class="dependences-details">
         <div class="title-dependences-details">
-          {{ dependencesList[dependenciaIndex].name }}
+          {{ dependenciaDetalhe.name }}
+        </div>
+        <div>
+          {{ dependenciaDetalhe.version }}
         </div>
 
 

@@ -1,11 +1,11 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { remote } from 'electron';
-import { searchByKeywords } from 'search-packages';
 
 import { Emissor } from '../../share/services/emissor-eventos/emissor-eventos.service';
 import { DatabaseStorageService } from '../../share/services/database-storage/database-storage.service';
 import { UtilsService } from '../../share/services/utils/utils.service';
 import { CONSTS } from '../../share/services/consts/consts.service';
+import { TerminalAccessService } from '../../share/services/terminal-access/terminal-access.service';
 
 const dialog = remote.dialog;
 const fs = require('fs');
@@ -24,6 +24,8 @@ export class HomeComponent implements OnInit {
   public dependencesList: [];
   public installDependencesList: [];
   public dependenciaIndex: Number = 0;
+  public dependenciaDetalhe = {name: '', version: ''};
+  public dependenciaSearch: string;
   public toggleTab: Boolean = true;
 
   private oldX = 0;
@@ -33,6 +35,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private database: DatabaseStorageService,
     private utils: UtilsService,
+    private shell: TerminalAccessService,
+
   ) {}
 
   ngOnInit() {
@@ -95,8 +99,17 @@ export class HomeComponent implements OnInit {
     Emissor.currentTab.emit(value);
   }
 
-  public abrirDependencia(index: Number) {
+  public abrirDependencia(index, tipo) {
     this.dependenciaIndex = index;
+    if (tipo === 'instaladas') {
+      this.dependenciaDetalhe = this.dependencesList[index];
+    } else if (tipo === 'instalar') {
+      this.dependenciaDetalhe = this.installDependencesList[index];
+    }
+  }
+
+  public async inicializaNpmSearch() {
+    this.installDependencesList = await this.shell.npmSearch(this.dependenciaSearch);
   }
 
   private async inicializaPid() {
@@ -118,7 +131,7 @@ export class HomeComponent implements OnInit {
       console.log(this.srcGlobal);
       try {
         this.dependencesList = JSON.parse(this.srcGlobal[0].staticPropertiesList[6].propertieValue);
-      } catch(e) {
+      } catch (e) {
         this.dependencesList = [];
       }
       console.log(this.dependencesList);
@@ -128,10 +141,5 @@ export class HomeComponent implements OnInit {
     Emissor.pidProcessoAtual.subscribe(
       data => this.srcGlobal[0].staticPropertiesList[5].propertieValue = data
     );
-  }
-
-  private async inicializaNpmSearch() {
-    console.log(await searchByKeywords(['http']))
-    // this.installDependencesList = await search('http');
   }
 }
