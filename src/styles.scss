@@ -137,6 +137,19 @@ body {
   color: white;
 }
 
+a {
+  cursor: pointer;
+  color: blue;
+}
+
+a:hover {
+  color: rgb(196, 196, 255);
+}
+
+a:active {
+  color: blue;
+}
+
 .item-com-erro {
   border: thin dotted red;
 }
@@ -178,6 +191,16 @@ body {
 
 .btn:focus {
   outline: auto;
+}
+
+.primary {
+  background-color: #0F77BF9c;
+  color: #fffffff0;
+}
+
+.danger {
+  background-color: #c700009c;
+  color: #fffffff0;
 }
 
 .input-padrao {

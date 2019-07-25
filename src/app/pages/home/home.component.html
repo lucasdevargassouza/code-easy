@@ -75,7 +75,13 @@
           </div>
         </div>
       </div>
-      <div class="dependences-details">
+
+
+
+
+
+
+      <div class="dependences-details" *ngIf="dependenciaDetalhe">
         <div class="title-dependences-details">
           {{ dependenciaDetalhe.name }}
           <div class="version-dependences">
@@ -83,27 +89,43 @@
           </div>
         </div>
         <div class="dependences-details-main">
+
+
+          <div style="display: flex;">
+            <button class="btn btn-instalar-remover-dependencia danger" (click)="return;">Remover</button>
+            <button class="btn btn-instalar-remover-dependencia primary" (click)="return;">Instalar</button>
+          </div>
+
+
+
+
+
+
           <div style="padding: 10px;">
-            Autor: <div style="font-size: 14px;">{{ dependenciaDetalhe?.author?.name }}</div>
+            Autor: <div style="font-size: 14px; font-weight: 100;">{{ dependenciaDetalhe?.author?.name }}</div>
           </div>
           <div style="padding: 10px;">
-            Data: <div style="font-size: 14px;">{{ dependenciaDetalhe?.date }}</div>
+            Data: <div style="font-size: 14px; font-weight: 100;">{{ dependenciaDetalhe?.date }}</div>
           </div>
           <div style="padding: 10px;">
-            Descrição: <div style="font-size: 14px;">{{ dependenciaDetalhe?.description }}</div>
+            Descrição: <div style="font-size: 14px; font-weight: 100;">{{ dependenciaDetalhe?.description }}</div>
           </div>
           <div style="padding: 10px;">
             Palavras chave: 
-            <div style="font-size: 14px; display: flex; flex-wrap: wrap;">
+            <div style="font-size: 14px; display: flex; flex-wrap: wrap; font-weight: 100;">
               <div style="padding-left: 5px;" *ngFor="let keyword of dependenciaDetalhe.keywords">{{ keyword + ", " }}</div>
             </div>
           </div>
+          <div style="padding: 10px;">
+            Links úteis: 
+            <div style="font-size: 14px; display: flex; flex-wrap: wrap; font-weight: 100;">
+              <a (click)="abrirNavegador(dependenciaDetalhe?.links?.bugs)">bugs,</a>
+              <a (click)="abrirNavegador(dependenciaDetalhe?.links?.homepage)">homepage,</a>
+              <a (click)="abrirNavegador(dependenciaDetalhe?.links?.npm)">npm,</a>
+              <a (click)="abrirNavegador(dependenciaDetalhe?.links?.repository)">repository</a>
+            </div>
+          </div>
         </div>
-
-
-
-
-
       </div>
     </div>
   </div>

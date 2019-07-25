@@ -9,7 +9,14 @@ export class TerminalAccessService {
 
   constructor() { }
 
-
+  /**
+   * Deve ser passado um link para abrir no navegador.
+   * 
+   * @param url string Url que será aberta em navegador.
+   */
+  public openUrl(url: string) {
+    this.execCommand("start " + url);
+  }
 
   /**
    * Busca por pacotes npm disponíveis.

@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private database: DatabaseStorageService,
     private utils: UtilsService,
-    private shell: TerminalAccessService,
+    private terminalAccess: TerminalAccessService,
 
   ) {}
 
@@ -95,6 +95,10 @@ export class HomeComponent implements OnInit {
     }, 100);
   }
 
+  public abrirNavegador(url: string) {
+    this.terminalAccess.openUrl(url);
+  }
+
   public changeCurrentTab(value: string) {
     Emissor.currentTab.emit(value);
   }
@@ -109,8 +113,8 @@ export class HomeComponent implements OnInit {
   }
 
   public async inicializaNpmSearch() {
-    console.log(await this.shell.npmSearch(this.dependenciaSearch));
-    this.installDependencesList = await this.shell.npmSearch(this.dependenciaSearch);
+    console.log(await this.terminalAccess.npmSearch(this.dependenciaSearch));
+    this.installDependencesList = await this.terminalAccess.npmSearch(this.dependenciaSearch);
   }
 
   private async inicializaPid() {

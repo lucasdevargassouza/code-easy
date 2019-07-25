@@ -158,6 +158,9 @@
       border: 1px solid $color-border-light-gray;
       padding: $size-1;
       height: -webkit-fill-available;
+      a {
+        padding-left: 5px; 
+      }
     }
   }
   .body-dependences-main {
@@ -177,7 +180,7 @@
   }
 }
 
-.btns-toggle {
+.btns-toggle, .btn-instalar-remover-dependencia {
   padding-top: $size-7;
   padding-bottom: $size-7;
   width: $size-92-5;
@@ -185,12 +188,13 @@
   display: flex;
 }
 
-.btn-toggle {
+.btn-toggle, .btn-instalar-remover-dependencia {
   padding: $size-5;
   padding-top: $size-2;
   padding-bottom: $size-2;
   margin: $size-0-5;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   flex: 1;
+  justify-content: center;
 }
 
