@@ -81,7 +81,7 @@
 
 
 
-      <div class="dependences-details" *ngIf="dependenciaDetalhe">
+      <div class="dependences-details" *ngIf="dependenciaDetalhe.name !== ''">
         <div class="title-dependences-details">
           {{ dependenciaDetalhe.name }}
           <div class="version-dependences">
@@ -92,8 +92,8 @@
 
 
           <div style="display: flex;">
-            <button class="btn btn-instalar-remover-dependencia danger" (click)="return;">Remover</button>
-            <button class="btn btn-instalar-remover-dependencia primary" (click)="return;">Instalar</button>
+            <button class="btn btn-instalar-remover-dependencia danger" *ngIf="dependenciaDetalhe.name !== '' && instalarDependencia === false" (click)="removeDependencia(dependenciaDetalhe.index);">Remover</button>
+            <button class="btn btn-instalar-remover-dependencia primary" *ngIf="dependenciaDetalhe.name !== '' && instalarDependencia === true"  (click)="adicionaDependencia(dependenciaDetalhe.index);">Instalar</button>
           </div>
 
 

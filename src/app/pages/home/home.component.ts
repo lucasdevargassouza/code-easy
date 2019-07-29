@@ -22,11 +22,12 @@ export class HomeComponent implements OnInit {
   public widthColRight = 300;
   public currentTab = CONSTS.editorTabs.plugins;
   public dependencesList: [];
-  public installDependencesList: [];
+  public installDependencesList: any[];
   public dependenciaIndex: Number = 0;
-  public dependenciaDetalhe = {name: '', version: ''};
+  public dependenciaDetalhe = {name: '', version: '', index: 0};
   public dependenciaSearch: string;
   public toggleTab: Boolean = true;
+  public instalarDependencia: Boolean = false;
 
   private oldX = 0;
   private grabberColLeft = false;
@@ -104,12 +105,56 @@ export class HomeComponent implements OnInit {
   }
 
   public abrirDependencia(index, tipo) {
+    this.dependenciaDetalhe.index = index;
     this.dependenciaIndex = index;
     if (tipo === 'instaladas') {
       this.dependenciaDetalhe = this.dependencesList[index];
+      this.dependenciaDetalhe.index = index;
+      this.instalarDependencia = false;
     } else if (tipo === 'instalar') {
+
       this.dependenciaDetalhe = this.installDependencesList[index];
+      this.dependenciaDetalhe.index = index;
+
+      // Verifica se o elemento já está instalado.
+      let elementoExiste = this.dependencesList.find((elemento: any) => {
+        return elemento.name == this.installDependencesList[index].name;
+      });
+      if (elementoExiste === undefined) {
+        this.instalarDependencia = true;
+      }
     }
+  }
+
+  public removeDependencia(index) {
+    this.dependencesList.splice(index, 1);
+    this.dependenciaDetalhe = {name: '', version: '', index: 0};
+    try {
+      this.srcGlobal[0].staticPropertiesList[6].propertieValue = JSON.stringify(this.dependencesList);
+    } catch(e) {
+      console.log(e);
+    }
+    this.database.updateSrc();
+  }
+
+  public adicionaDependencia(index) {
+    let elementoExiste = this.dependencesList.find((elemento: any) => {
+      return elemento.name == this.installDependencesList[index].name;
+    });
+
+    if (elementoExiste === undefined) {
+      this.dependencesList.push(this.installDependencesList[index] as never);
+      this.dependenciaDetalhe = this.installDependencesList[index];
+      this.dependenciaDetalhe.index = index;
+      this.instalarDependencia = false;
+    }
+
+    try {
+      this.srcGlobal[0].staticPropertiesList[6].propertieValue = JSON.stringify(this.dependencesList);
+    } catch(e) {
+      console.log(e);
+    }
+    this.database.updateSrc();
   }
 
   public async inicializaNpmSearch() {
