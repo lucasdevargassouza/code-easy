@@ -6,6 +6,7 @@ import { DatabaseStorageService } from '../../share/services/database-storage/da
 import { UtilsService } from '../../share/services/utils/utils.service';
 import { CONSTS } from '../../share/services/consts/consts.service';
 import { TerminalAccessService } from '../../share/services/terminal-access/terminal-access.service';
+import { CompilerService } from '../../share/services/compiler/compiler.service';
 
 const dialog = remote.dialog;
 const fs = require('fs');
@@ -18,9 +19,10 @@ const fs = require('fs');
 })
 export class HomeComponent implements OnInit {
   public srcGlobal = [];
-  public widthColLeft = 300;
+  public widthColLeft = 180;
   public widthColRight = 300;
-  public currentTab = CONSTS.editorTabs.plugins;
+  public heightColRight = 200;
+  public currentTab = CONSTS.editorTabs.editor;
   public dependencesList: [];
   public installDependencesList: any[];
   public dependenciaIndex: Number = 0;
@@ -30,6 +32,8 @@ export class HomeComponent implements OnInit {
   public instalarDependencia: Boolean = false;
 
   private oldX = 0;
+  private oldY = 0;
+  private grabberColRightResizeY = false;
   private grabberColLeft = false;
   private grabberColRight = false;
 
@@ -37,6 +41,7 @@ export class HomeComponent implements OnInit {
     private database: DatabaseStorageService,
     private utils: UtilsService,
     private terminalAccess: TerminalAccessService,
+    private compiler: CompilerService,
 
   ) {}
 
@@ -59,6 +64,11 @@ export class HomeComponent implements OnInit {
     this.oldX = event.clientX;
   }
 
+  public onMouseDownColRightResizeY(event: MouseEvent) {
+    this.grabberColRightResizeY = true;
+    this.oldY = event.clientY;
+  }
+
   @HostListener('document:mousemove', ['$event'])
   public onMouseMove(event: MouseEvent) {
     if (this.grabberColLeft) {
@@ -69,19 +79,23 @@ export class HomeComponent implements OnInit {
       this.widthColRight -= event.clientX - this.oldX;
       this.oldX = event.clientX;
     }
+    if (this.grabberColRightResizeY) {
+      this.heightColRight += event.clientY - this.oldY;
+      this.oldY = event.clientY;
+    }
   }
 
   @HostListener('document:mouseup', ['$event'])
   public onMouseUp(event: MouseEvent) {
     this.grabberColLeft = false;
     this.grabberColRight = false;
+    this.grabberColRightResizeY = false;
   }
 
   //#endregion
 
   public selecionarCaminho(i: number) {
     dialog.showOpenDialog({properties: ['openDirectory']}, (path) => {
-      console.log(path[0]);
       if (path === undefined) {} else {
         this.srcGlobal[i].value = path[0].toString();
         document.getElementById('input-propertie-4').focus();
@@ -117,8 +131,8 @@ export class HomeComponent implements OnInit {
       this.dependenciaDetalhe.index = index;
 
       // Verifica se o elemento já está instalado.
-      let elementoExiste = this.dependencesList.find((elemento: any) => {
-        return elemento.name == this.installDependencesList[index].name;
+      const elementoExiste = this.dependencesList.find((elemento: any) => {
+        return elemento.name === this.installDependencesList[index].name;
       });
       if (elementoExiste === undefined) {
         this.instalarDependencia = true;
@@ -126,20 +140,22 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  public removeDependencia(index) {
+  public async removeDependencia(index) {
     this.dependencesList.splice(index, 1);
     this.dependenciaDetalhe = {name: '', version: '', index: 0};
     try {
       this.srcGlobal[0].staticPropertiesList[6].propertieValue = JSON.stringify(this.dependencesList);
-    } catch(e) {
+      this.database.updateSrc();
+      await this.compiler.genereteFiles(this.srcGlobal);
+      await this.compiler.instalaNodeModules(this.srcGlobal[0].staticPropertiesList[4].propertieValue);
+    } catch (e) {
       console.log(e);
     }
-    this.database.updateSrc();
   }
 
-  public adicionaDependencia(index) {
-    let elementoExiste = this.dependencesList.find((elemento: any) => {
-      return elemento.name == this.installDependencesList[index].name;
+  public async adicionaDependencia(index) {
+    const elementoExiste = this.dependencesList.find((elemento: any) => {
+      return elemento.name === this.installDependencesList[index].name;
     });
 
     if (elementoExiste === undefined) {
@@ -147,14 +163,13 @@ export class HomeComponent implements OnInit {
       this.dependenciaDetalhe = this.installDependencesList[index];
       this.dependenciaDetalhe.index = index;
       this.instalarDependencia = false;
+      try {
+        this.srcGlobal[0].staticPropertiesList[6].propertieValue = JSON.stringify(this.dependencesList);
+        this.database.updateSrc();
+        await this.compiler.genereteFiles(this.srcGlobal);
+        await this.compiler.instalaNodeModules(this.srcGlobal[0].staticPropertiesList[4].propertieValue);
+      } catch (e) { console.log(e); }
     }
-
-    try {
-      this.srcGlobal[0].staticPropertiesList[6].propertieValue = JSON.stringify(this.dependencesList);
-    } catch(e) {
-      console.log(e);
-    }
-    this.database.updateSrc();
   }
 
   public async inicializaNpmSearch() {
@@ -186,7 +201,13 @@ export class HomeComponent implements OnInit {
       }
       console.log(this.dependencesList);
     });
-    Emissor.currentTab.subscribe(data => this.currentTab = data);
+
+    Emissor.currentTab.subscribe(data => {
+      this.currentTab = data;
+      setTimeout(() => {
+        this.database.getSrc();
+      }, 60);
+    });
 
     Emissor.pidProcessoAtual.subscribe(
       data => this.srcGlobal[0].staticPropertiesList[5].propertieValue = data

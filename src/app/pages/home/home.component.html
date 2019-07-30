@@ -18,11 +18,11 @@
         <div class="propertie" *ngFor="let item of srcGlobal[0]?.staticPropertiesList; index as i">  
           <div> {{ item.propertieName }} </div>
           <input  *ngIf="item.propertieType === 'openDependencias'" type="button"           class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" value="{{ item.propertiePlaceholder }}" (click)="changeCurrentTab('plugins')"   style="max-height: unset;"/>
-          <input  *ngIf="item.propertieType === 'text'"          type="text"                class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.propertieValue" placeholder="{{ item.propertiePlaceholder }}" (change)="inputsOnChange()" />
-          <input  *ngIf="item.propertieType === 'textMultiline'" type="text"                class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.propertieValue" placeholder="{{ item.propertiePlaceholder }}" (change)="inputsOnChange()" />
-          <input  *ngIf="item.propertieType === 'selectPath'"    type="text"                class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.propertieValue" placeholder="{{ item.propertiePlaceholder }}" (change)="inputsOnChange()" (click)="selecionarCaminho(i)" />
-          <input  *ngIf="item.propertieType === 'number'"        type="number"              class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.propertieValue" placeholder="{{ item.propertiePlaceholder }}" (change)="inputsOnChange()" />
-          <input  *ngIf="item.propertieType === 'disabled'"      type="text"                class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.propertieValue" placeholder="{{ item.propertiePlaceholder }}" (change)="inputsOnChange()" disabled />
+          <input  *ngIf="item.propertieType === 'text'"          type="text"                class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.propertieValue" placeholder="{{ item.propertiePlaceholder }}" (keypress)="inputsOnChange()" />
+          <input  *ngIf="item.propertieType === 'textMultiline'" type="text"                class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.propertieValue" placeholder="{{ item.propertiePlaceholder }}" (keypress)="inputsOnChange()" />
+          <input  *ngIf="item.propertieType === 'selectPath'"    type="text"                class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.propertieValue" placeholder="{{ item.propertiePlaceholder }}" (keypress)="inputsOnChange()" (click)="selecionarCaminho(i)" />
+          <input  *ngIf="item.propertieType === 'number'"        type="number"              class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.propertieValue" placeholder="{{ item.propertiePlaceholder }}" (keypress)="inputsOnChange()" />
+          <input  *ngIf="item.propertieType === 'disabled'"      type="text"                class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.propertieValue" placeholder="{{ item.propertiePlaceholder }}" (keypress)="inputsOnChange()" disabled />
           <select *ngIf="item.propertieType === 'select'"        style="max-height: unset;" class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.propertieValue" >
               <option value="0">{{ item.placeholder }}</option>
               <option *ngFor="let sugest of item.sugestions" value="{{ sugest.value }}">{{ sugest.label }}</option>
@@ -32,13 +32,6 @@
     </div>
   </div>
   <!-- Properties tab -->
-
-
-
-
-
-
-
 
   <div class="application-body" *ngIf="currentTab == 'plugins'">
     <div class="dependences-main">
@@ -130,15 +123,6 @@
     </div>
   </div>
 
-
-
-
-
-
-
-
-
-
   <div class="application-body" *ngIf="currentTab == 'editor'">
 
     <div class="col-left" [style.width.px]="widthColLeft">
@@ -152,12 +136,13 @@
         <div class="grabber-col-right" (mousedown)="onMouseDownColRight($event)"></div>
         
         <div style="display: flex; flex-direction: column; width: 100%;">
-          <div style="flex: 1; min-height: min-content;">
+          <div style="min-height: min-content;" [style.height.px]="heightColRight">
             <app-resources-tree *ngFor="let obj of srcGlobal" [objeto]="obj"></app-resources-tree>
-            <hr>
           </div>
-            
-          <div style="flex: 1; overflow: -webkit-paged-x;">
+          
+          <div class="grabber-col-right-resize-y" (mousedown)="onMouseDownColRightResizeY($event)"></div>
+
+          <div style="flex: 1;">
             <app-properties-editor></app-properties-editor>
           </div>
         </div>

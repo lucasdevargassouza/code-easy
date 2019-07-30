@@ -36,25 +36,35 @@
   overflow-y: auto;
 }
 
-.grabber-col-left:active, .grabber-col-right:active {
+.grabber-col-left:active,
+.grabber-col-right:active,
+.grabber-col-right-resize-y:active {
   background-color: $color-top-bar;
 }
 
 .grabber-col-left {
-  cursor: e-resize;
-  width: 2px;
-  background-color: $color-background-col;
+  cursor: col-resize;
+  width: $size-1-5;
+  background-color: $color-background;
   overflow: hidden;
   height: $size-fill;
   margin-left: auto;
 }
 
 .grabber-col-right {
-  cursor: e-resize;
-  width: 2px;
-  background-color: $color-background-col;
+  cursor: col-resize;
+  width: $size-1-5;
+  background-color: $color-background;
   overflow: hidden;
   height: $size-fill;
+}
+
+.grabber-col-right-resize-y {
+  cursor: row-resize;
+  width: $size-fill;
+  background-color: $color-background;
+  overflow: hidden;
+  height: $size-1-5;
 }
 
 .barra-lateral {

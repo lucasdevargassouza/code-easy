@@ -20,9 +20,14 @@ export class TranspilerService {
     const appConfig: ResourcesTreeInterface =  await this.getItemEspecifico(srcGlobal, CONSTS.tiposItens.appConfig);
 
     let dependences = ' \"dependencies\": {\n';
-    JSON.parse(appConfig.staticPropertiesList[6].propertieValue).forEach(dependencia => {
-      dependences = dependences + '  \"' + dependencia.name + '\": \"' + dependencia.version + '\", \n';
-    });
+    for (let index = 0; index < JSON.parse(appConfig.staticPropertiesList[6].propertieValue).length; index++) {
+      const dependencia = JSON.parse(appConfig.staticPropertiesList[6].propertieValue)[index];
+      if ((index + 1) === JSON.parse(appConfig.staticPropertiesList[6].propertieValue).length) {
+        dependences = dependences + '   \"' + dependencia.name + '\": \"' + dependencia.version + '\" \n';
+      } else {
+        dependences = dependences + '   \"' + dependencia.name + '\": \"' + dependencia.version + '\", \n';
+      }
+    }
     dependences = dependences + ' }\n';
     console.log(dependences);
 

@@ -57,9 +57,18 @@ export class PropertiesEditorComponent implements OnInit {
     this.database.updateSrc();
   }
 
+  // Em cada change salva os dados.
+  public inputsOnChange() {
+    setTimeout(() => {
+      this.database.updateSrc();
+    }, 100);
+  }
+
   // Sempre retorna o item que deve ser editado.
   private getItemAEditar(itemAtual: []) {
+
     let itemCurrent: any = this.srcGlobal;
+
     if (itemAtual.length > 0) {
       for (let i = 0; itemAtual.length > i; i++) {
         if (i > 0) {
@@ -79,24 +88,14 @@ export class PropertiesEditorComponent implements OnInit {
         this.srcGlobal = data;
       },
       error => console.log(error)
-      );
+    );
 
-      Emissor.itemSelectedLocation.subscribe(
-        async data => {
+    Emissor.itemSelectedLocation.subscribe(
+      async data => {
         console.log(data);
-          this.srcLocal = await this.getItemAEditar(data);
-          /* console.log(await this.traspiler.getContentRotas(this.srcGlobal));
-          console.log(await this.traspiler.getContentServidor(this.srcGlobal));
-          console.log(await this.traspiler.getPackageJson(this.srcGlobal)); */
+        this.srcLocal = await this.getItemAEditar(data);
       },
       error => console.log(error)
     );
-  }
-
-  // Em cada change salva os dados.
-  public inputsOnChange() {
-    setTimeout(() => {
-      this.database.updateSrc();
-    }, 100);
   }
 }
