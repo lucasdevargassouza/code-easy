@@ -124,31 +124,36 @@
   </div>
 
   <div class="application-body" *ngIf="currentTab == 'editor'">
-
     <div class="col-left" [style.width.px]="widthColLeft">
       <div style="flex: 1"></div>
       <div class="grabber-col-left" (mousedown)="onMouseDownColLeft($event)"></div>
     </div>
-
     <div class="col-center" contenteditable="false"></div>
+
+
+
 
     <div class="col-right" [style.width.px]="widthColRight">
         <div class="grabber-col-right" (mousedown)="onMouseDownColRight($event)"></div>
         
         <div style="display: flex; flex-direction: column; width: 100%;">
-          <div style="min-height: min-content;" [style.height.px]="heightColRight">
+          <div resizeElements resizedY="true" style="min-height: min-content;" [style.height.px]="heightColRight">
             <app-resources-tree *ngFor="let obj of srcGlobal" [objeto]="obj"></app-resources-tree>
           </div>
           
-          <div class="grabber-col-right-resize-y" (mousedown)="onMouseDownColRightResizeY($event)"></div>
+          <div resizeElements resizerY="true" class="grabber-col-right-resize-y" (mousedown)="onMouseDownColRightResizeY($event)"></div>
 
           <div style="flex: 1;">
             <app-properties-editor></app-properties-editor>
           </div>
         </div>
-
-
     </div>
+
+
+
+
+
+
   </div>
 
 

@@ -89,11 +89,11 @@ export class UtilsService {
     src[2].itemList.forEach(rota => {
       rota.staticPropertiesList[4].propertieSugestions = [];
     });
-    src[3].itemList.forEach(controller => {
+    src[3].itemList.forEach((controller, index) => {
       src[2].itemList.forEach(rota => {
         rota.staticPropertiesList[4].propertieSugestions.push({
             'sugestionsName': controller.staticPropertiesList[0].propertieValue,
-            'sugestionsValue': controller.staticPropertiesList[0].propertieValue
+            'sugestionsValue': index.toString()
         });
       });
     });

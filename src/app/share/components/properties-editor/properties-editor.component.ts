@@ -1,10 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Emissor } from '../../services/emissor-eventos/emissor-eventos.service';
 import { ResourcesTreeInterface } from '../../services/resources-tree.interface';
-import { CONSTS } from '../../services/consts/consts.service';
 import { DatabaseStorageService } from '../../services/database-storage/database-storage.service';
-import { TranspilerService } from '../../services/transpiler/transpiler.service';
-import { UtilsService } from '../../services/utils/utils.service';
 
 
 /**

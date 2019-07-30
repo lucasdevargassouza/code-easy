@@ -307,6 +307,13 @@ export class CONSTS {
               propertieSugestions: [],
               propertiePlaceholder: 'Uma descrição aqui...',
               propertieValue: ''
+            },
+            {
+              propertieName: 'Retorno: ',
+              propertieType: 'text',
+              propertieSugestions: [],
+              propertiePlaceholder: 'Defina o retorno aqui...',
+              propertieValue: ''
             }
           ],
           propertiesList: [
