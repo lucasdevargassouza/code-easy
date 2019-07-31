@@ -30,6 +30,7 @@ export class HomeComponent implements OnInit {
   public dependenciaSearch: string;
   public toggleTab: Boolean = true;
   public instalarDependencia: Boolean = false;
+  public codeToEdit: string;
 
   private oldX = 0;
   private oldY = 0;

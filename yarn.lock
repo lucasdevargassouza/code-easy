@@ -128,15 +128,17 @@
     "@angular-devkit/core" "8.1.1"
     rxjs "6.4.0"
 
-"@angular/animations@github:angular/animations-builds":
-  version "8.2.0-next.1"
-  resolved "https://codeload.github.com/angular/animations-builds/tar.gz/a77928455c835dac4c0ca8437db1529ff06db340"
+"@angular/animations@^8.1.3":
+  version "8.1.3"
+  resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-8.1.3.tgz#369853b2d74c6e99086243a747d05f0f77286f96"
+  integrity sha512-IdWz2EcF+8ZM7LSZ+Kc64RNoLQK7t7hJr+3nKuiTZDncIwMcV3yPn98Jz5BncLNcK0vkYju/hPqnWJgI/0+w6A==
   dependencies:
     tslib "^1.9.0"
 
-"@angular/cdk@github:angular/cdk-builds":
-  version "8.1.0-8dffd8eef"
-  resolved "https://codeload.github.com/angular/cdk-builds/tar.gz/d11b232faccd5cff814676041407ae0a949ea95a"
+"@angular/cdk@^8.1.2":
+  version "8.1.2"
+  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-8.1.2.tgz#6e2c2451554b0a9d752e7f5bde593be4c7d51520"
+  integrity sha512-jzPT1mMfGaA2xjnkMh1kd0uyWI7pz58/7BWBijLtSLKM9+HkhrnqXIHesKNE7EwpapzuPBtkGm3MGl661goIvA==
   dependencies:
     tslib "^1.7.1"
   optionalDependencies:
@@ -216,9 +218,10 @@
   resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-8.1.1.tgz#5940b764fa395b75acd50777721c0aa2914e58c9"
   integrity sha512-72ILJBDGhmXUsufxjDT1dzt0oOV7EHWUePgk4xv2s9/gg/xeB0XEDv+AH4LNcYKrbUWyZj7/z7wPzJe+K5PfKQ==
 
-"@angular/material@github:angular/material2-builds":
-  version "8.1.0-8dffd8eef"
-  resolved "https://codeload.github.com/angular/material2-builds/tar.gz/d9618994570b7e1993455c8344cce0f9719b5a41"
+"@angular/material@^8.1.2":
+  version "8.1.2"
+  resolved "https://registry.yarnpkg.com/@angular/material/-/material-8.1.2.tgz#0d8b00def93e337f8bc5a6db1e94531894f17229"
+  integrity sha512-c/EYufDPTClr7F2ZFv7KSaPpA/b/Bq+89oU5/AioNzx3KIZWBB24U/GaIsh3NI75mPTeVdJDhXhCcrE5WbsZnQ==
   dependencies:
     tslib "^1.7.1"
 
@@ -6251,6 +6254,11 @@ neo-async@^2.5.0, neo-async@^2.6.0:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
   integrity sha512-iyam8fBuCUpWeKPGpaNMetEocMt364qkCsfL9JuhjXX6dRnguRVOfk2GZaDpPjcOKiiXCPINZC1GczQ7iTq3Zw==
+
+ngx-monaco-editor@6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/ngx-monaco-editor/-/ngx-monaco-editor-6.0.0.tgz#c427c9a3d6dcd91b8e51a47d6cb3f7b7df899de5"
+  integrity sha512-sgNZblVUsIYHaWIKUqHopX3+rDL3DsjH9nsQoCuD7aA4p7Oppmd7UXwyT8OYTmimfcoufiA0tiIcH41XCZW58w==
 
 nice-try@^1.0.4:
   version "1.0.5"

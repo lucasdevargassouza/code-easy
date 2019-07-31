@@ -85,10 +85,11 @@
     "node": ">=10.9.0"
   },
   "dependencies": {
-    "@angular/animations": "github:angular/animations-builds",
-    "@angular/cdk": "github:angular/cdk-builds",
-    "@angular/material": "github:angular/material2-builds",
+    "@angular/animations": "^8.1.3",
+    "@angular/cdk": "^8.1.2",
+    "@angular/material": "^8.1.2",
     "hammerjs": "^2.0.8",
+    "ngx-monaco-editor": "6.0.0",
     "node-powershell": "^4.0.0",
     "npm": "^6.9.0",
     "utf8": "^3.0.0"

@@ -30,11 +30,11 @@ export class CONSTS {
   };
 
   private static dependencesList = [
-    {name: "cors", version: "^2.8.5"},
-    {name: "debug", version: "^4.1.1"},
-    {name: "express", version: "^4.17.1"},
-    {name: "http", version: "0.0.0"}
-  ]
+    {name: 'cors', version: '^2.8.5'},
+    {name: 'debug', version: '^4.1.1'},
+    {name: 'express', version: '^4.17.1'},
+    {name: 'http', version: '0.0.0'}
+  ];
 
   private static srcPadrao: ResourcesTreeInterface[] = [
     {
@@ -243,7 +243,7 @@ export class CONSTS {
               propertieType: 'select',
               propertieSugestions: [],
               propertiePlaceholder: 'Tudo que será retornado...',
-              propertieValue: 'title: \'ok\''
+              propertieValue: '0'
             }
           ],
           propertiesList: [
@@ -310,10 +310,10 @@ export class CONSTS {
             },
             {
               propertieName: 'Retorno: ',
-              propertieType: 'text',
+              propertieType: 'code',
               propertieSugestions: [],
               propertiePlaceholder: 'Defina o retorno aqui...',
-              propertieValue: ''
+              propertieValue: 'return \"Hello world!\";'
             }
           ],
           propertiesList: [

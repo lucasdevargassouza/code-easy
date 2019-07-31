@@ -189,6 +189,13 @@ export class ResourcesTreeComponent implements OnInit {
               propertieSugestions: [],
               propertiePlaceholder: 'Uma descrição aqui...',
               propertieValue: ''
+            },
+            {
+              propertieName: 'Retorno: ',
+              propertieType: 'code',
+              propertieSugestions: [],
+              propertiePlaceholder: 'Uma descrição aqui...',
+              propertieValue: 'return \"Hello world!\";'
             }
           ],
           propertiesList: [

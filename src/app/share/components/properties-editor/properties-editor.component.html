@@ -3,6 +3,7 @@
         <div class="propertie" *ngFor="let item of srcLocal.staticPropertiesList; index as i">
             <div> {{ item.propertieName }} </div>
             <input *ngIf="item.propertieType == 'text'" type="text" id="input-propertie-{{ i }}" (change)="inputsOnChange()" name="input-propertie-{{ i }}" placeholder="{{ item.propertiePlaceholder }}" [(ngModel)]="item.propertieValue" title=""/>
+            <input *ngIf="item.propertieType == 'code'" type="text" id="input-propertie-{{ i }}" (change)="inputsOnChange()" name="input-propertie-{{ i }}" placeholder="{{ item.propertiePlaceholder }}" [(ngModel)]="item.propertieValue" title=""/>
             <input *ngIf="item.propertieType == 'number'" type="number" id="input-propertie-{{ i }}" (change)="inputsOnChange()" name="input-propertie-{{ i }}" placeholder="{{ item.propertiePlaceholder }}" [(ngModel)]="item.propertieValue" title=""/>
             <input *ngIf="item.propertieType == 'disabled'" type="text" disabled id="input-propertie-{{ i }}" (change)="inputsOnChange()" name="input-propertie-{{ i }}" placeholder="{{ item.propertiePlaceholder }}" [(ngModel)]="item.propertieValue" title=""/>
             <input *ngIf="item.propertieType == 'selectDialog'" type="button" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" value="{{ item.propertiePlaceholder }}" style="min-height: 25px;" title="Abrir dialog!"/>
