@@ -1,5 +1,14 @@
-.my-code-editor {
-  .editor-container {
-    height: calc(100vh - 100px);
-  }
+@import "../../../../styles.scss";
+
+textarea {
+  background: transparent;
+  border: $size-none solid $font-color-input-propertie-editor;
+  color: $font-color-input-propertie-editor;
+  padding: $size-2;
+  padding-left: $size-1-5;
+  padding-right: $size-1-5;
+  font-family: Arial, 'Courier New', monospace;
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;
+  resize: none;
 }

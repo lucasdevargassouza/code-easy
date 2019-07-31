@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Emissor } from '../../services/emissor-eventos/emissor-eventos.service';
 import { ResourcesTreeInterface } from '../../services/resources-tree.interface';
+import { DatabaseStorageService } from '../../services/database-storage/database-storage.service';
 
 @Component({
   selector: 'app-code-editor',
@@ -8,16 +9,26 @@ import { ResourcesTreeInterface } from '../../services/resources-tree.interface'
   styleUrls: ['./code-editor.component.scss']
 })
 export class CodeEditorComponent implements OnInit {
-  public options = {theme: 'vs-dark', language: 'javascript'};
-  public code = 'function x() {}';
+  public codeIndex: number;
 
   public srcGlobal: ResourcesTreeInterface[];
   public srcLocal: ResourcesTreeInterface;
 
-  constructor() { }
+  constructor(
+    private database: DatabaseStorageService
+  ) { }
 
   ngOnInit() {
     this.inicializaEmissores();
+
+  
+  }
+
+  // Em cada change salva os dados.
+  public inputsOnChange() {
+    setTimeout(() => {
+      this.database.updateSrc();
+    }, 100);
   }
 
   // Sempre retorna o item que deve ser editado.
@@ -50,11 +61,13 @@ export class CodeEditorComponent implements OnInit {
         console.log(data);
         this.srcLocal = await this.getItemAEditar(data);
 
-        this.srcLocal.staticPropertiesList.forEach(propertie => {
-          if (propertie.propertieType === 'code') {
-            this.code = propertie.propertieValue;
+        this.codeIndex = undefined;
+
+        for (let index = 0; index < this.srcLocal.staticPropertiesList.length; index++) {
+          if (this.srcLocal.staticPropertiesList[index].propertieType === 'code') {
+            this.codeIndex = index;
           }
-        });
+        }
 
       },
       error => console.log(error)

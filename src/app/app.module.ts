@@ -5,7 +5,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MonacoEditorModule } from 'ngx-monaco-editor';
 
 // Componentes angular material
 import {
@@ -65,7 +64,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MonacoEditorModule.forRoot(),
 
     // Componentes angular material
     MatProgressBarModule,

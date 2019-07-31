@@ -1,1 +1,7 @@
-<ngx-monaco-editor class="my-code-editor" [options]="{theme: 'vs-dark', language: 'javascript'}" [(ngModel)]="code"></ngx-monaco-editor>
+<!-- <ngx-monaco-editor class="my-code-editor" [options]="{theme: 'vs-dark', language: 'javascript'}" [(ngModel)]="code"></ngx-monaco-editor>
+ -->
+<textarea
+    *ngIf="srcLocal?.staticPropertiesList[codeIndex]"
+    id="input-editor" (keypress)="inputsOnChange()" name="input-editor"
+    [(ngModel)]="srcLocal?.staticPropertiesList[codeIndex].propertieValue" title="" 
+></textarea>
