@@ -7,10 +7,12 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Componentes angular material
+import { DragDropModule } from '@angular/cdk/drag-drop';
+
 import {
   MatProgressBarModule,
   MatIconModule,
-  MatDialogModule
+  MatDialogModule,
 } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -66,6 +68,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserAnimationsModule,
 
     // Componentes angular material
+    DragDropModule,
     MatProgressBarModule,
     MatIconModule,
     MatDialogModule,
