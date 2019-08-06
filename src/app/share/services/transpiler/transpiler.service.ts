@@ -55,7 +55,7 @@ export class TranspilerService {
   public async getContentRotas(srcGlobal: ResourcesTreeInterface[]): Promise<String> {
     const rotas: ResourcesTreeInterface = await this.getItemEspecifico(srcGlobal, CONSTS.tiposItens.rota);
     let listaRotas = '\n';
-
+    console.log("Aqui");
     rotas.itemList.forEach(rota => {
       listaRotas = listaRotas + '\n' +
       '/*' + rota.staticPropertiesList[1].propertieValue + '*/\n' +

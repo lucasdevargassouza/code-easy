@@ -25,6 +25,7 @@
   height: $size-fill;
   width: $size-fill;
   flex: 1;
+  overflow: auto;
 }
 
 .col-right {
@@ -141,7 +142,7 @@
     .item-lista {
       display: flex;
       padding: 10px;
-      cursor: pointer; 
+      cursor: pointer;
       flex: 1;
     }
     .item-lista:hover {
@@ -169,7 +170,7 @@
       padding: $size-1;
       height: -webkit-fill-available;
       a {
-        padding-left: 5px; 
+        padding-left: 5px;
       }
     }
   }

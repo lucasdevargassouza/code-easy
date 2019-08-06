@@ -1,11 +1,11 @@
 <!-- <ngx-monaco-editor class="my-code-editor" [options]="{theme: 'vs-dark', language: 'javascript'}" [(ngModel)]="code"></ngx-monaco-editor>
  -->
-<textarea
+<!-- <textarea
     *ngIf="srcLocal?.staticPropertiesList[codeIndex]"
     id="input-editor" (keypress)="inputsOnChange()" name="input-editor"
     [(ngModel)]="srcLocal?.staticPropertiesList[codeIndex].propertieValue" title=""
 ></textarea>
-
+ -->
 <div cdkDropList class="flow-list" (cdkDropListDropped)="drop($event)">
-  <div class="draggable-item" *ngFor="let movie of movies" cdkDrag>{{movie}}</div>
+  <div class="draggable-item" *ngFor="let itemFlow of flowCode" cdkDrag>{{ itemFlow }}</div>
 </div>

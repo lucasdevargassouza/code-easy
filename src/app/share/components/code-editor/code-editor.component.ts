@@ -11,36 +11,23 @@ import { DatabaseStorageService } from '../../services/database-storage/database
   styleUrls: ['./code-editor.component.scss']
 })
 export class CodeEditorComponent implements OnInit {
-  public codeIndex: number;
-
   public srcGlobal: ResourcesTreeInterface[];
   public srcLocal: ResourcesTreeInterface;
-
-
-  movies = [
-    'Episode I - The Phantom Menace',
-    'Episode II - Attack of the Clones',
-    'Episode III - Revenge of the Sith',
-    'Episode IV - A New Hope',
-    'Episode V - The Empire Strikes Back',
-    'Episode VI - Return of the Jedi',
-    'Episode VII - The Force Awakens',
-    'Episode VIII - The Last Jedi'
-  ];
-
-  drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.movies, event.previousIndex, event.currentIndex);
-  }
-
+  public flowCodeIndexInScrLocal: number;
+  public flowCode: [];
 
   constructor(
-    private database: DatabaseStorageService
+    private database: DatabaseStorageService,
+
   ) { }
 
   ngOnInit() {
     this.inicializaEmissores();
+  }
 
-
+  public drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.flowCode, event.previousIndex, event.currentIndex);
+    this.srcLocal.staticPropertiesList[this.flowCodeIndexInScrLocal].propertieValue = JSON.stringify(this.flowCode);
   }
 
   // Em cada change salva os dados.
@@ -80,11 +67,12 @@ export class CodeEditorComponent implements OnInit {
         console.log(data);
         this.srcLocal = await this.getItemAEditar(data);
 
-        this.codeIndex = undefined;
-
         for (let index = 0; index < this.srcLocal.staticPropertiesList.length; index++) {
           if (this.srcLocal.staticPropertiesList[index].propertieType === 'code') {
-            this.codeIndex = index;
+            console.log(this.srcLocal.staticPropertiesList[index].propertieValue);
+            this.flowCodeIndexInScrLocal = index;
+            this.flowCode = JSON.parse(this.srcLocal.staticPropertiesList[index].propertieValue);
+            console.log(JSON.parse(this.srcLocal.staticPropertiesList[index].propertieValue));
           }
         }
 

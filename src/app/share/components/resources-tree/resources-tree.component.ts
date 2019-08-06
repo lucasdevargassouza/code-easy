@@ -119,10 +119,10 @@ export class ResourcesTreeComponent implements OnInit {
             },
             {
               propertieName: 'Retorno: ',
-              propertieType: 'text',
+              propertieType: 'select',
               propertieSugestions: [],
               propertiePlaceholder: 'Tudo que será retornado...',
-              propertieValue: ''
+              propertieValue: '0'
             }
           ],
           propertiesList: [
@@ -181,7 +181,7 @@ export class ResourcesTreeComponent implements OnInit {
               propertieType: 'text',
               propertieSugestions: [],
               propertiePlaceholder: 'Um nome aqui...',
-              propertieValue: 'Nome' + CONSTS.tiposItens.controller
+              propertieValue: 'NomeControler'
             },
             {
               propertieName: 'Descrição: ',
@@ -195,7 +195,7 @@ export class ResourcesTreeComponent implements OnInit {
               propertieType: 'code',
               propertieSugestions: [],
               propertiePlaceholder: 'Uma descrição aqui...',
-              propertieValue: 'return \"Hello world!\";'
+              propertieValue: '[{ "type": "return", "value": "\"return \\\"Hello world!\\\";\"}]'
             }
           ],
           propertiesList: [
