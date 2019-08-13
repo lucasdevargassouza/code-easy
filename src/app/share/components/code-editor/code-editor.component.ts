@@ -27,6 +27,10 @@ export class CodeEditorComponent implements OnInit {
 
   public drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.flowCode, event.previousIndex, event.currentIndex);
+
+    console.log("teste");
+
+    // Atualiza onde os itens estão salvos!
     this.srcLocal.staticPropertiesList[this.flowCodeIndexInScrLocal].propertieValue = JSON.stringify(this.flowCode);
   }
 
@@ -64,7 +68,7 @@ export class CodeEditorComponent implements OnInit {
 
     Emissor.itemSelectedLocation.subscribe(
       async data => {
-        console.log(data);
+
         this.srcLocal = await this.getItemAEditar(data);
 
         for (let index = 0; index < this.srcLocal.staticPropertiesList.length; index++) {
@@ -72,7 +76,7 @@ export class CodeEditorComponent implements OnInit {
             console.log(this.srcLocal.staticPropertiesList[index].propertieValue);
             this.flowCodeIndexInScrLocal = index;
             this.flowCode = JSON.parse(this.srcLocal.staticPropertiesList[index].propertieValue);
-            console.log(JSON.parse(this.srcLocal.staticPropertiesList[index].propertieValue));
+            console.log(this.flowCode);
           }
         }
 

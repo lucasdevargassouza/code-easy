@@ -1,4 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { remote } from 'electron';
 
 import { Emissor } from '../../share/services/emissor-eventos/emissor-eventos.service';
@@ -31,6 +32,7 @@ export class HomeComponent implements OnInit {
   public toggleTab: Boolean = true;
   public instalarDependencia: Boolean = false;
   public codeToEdit: string;
+  public listTools;
 
   private oldX = 0;
   private oldY = 0;
@@ -43,7 +45,6 @@ export class HomeComponent implements OnInit {
     private utils: UtilsService,
     private terminalAccess: TerminalAccessService,
     private compiler: CompilerService,
-
   ) {}
 
   ngOnInit() {
@@ -52,6 +53,10 @@ export class HomeComponent implements OnInit {
     this.inicializaPid();
     this.inicializaNpmSearch();
     console.log(this.srcGlobal);
+    this.listTools = [
+      {type: 'return', value: 'Variável'},
+      {type: 'return', value: 'Variável'}
+    ];
   }
 
   //#region Resize Divs

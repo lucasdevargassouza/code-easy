@@ -195,7 +195,7 @@ export class ResourcesTreeComponent implements OnInit {
               propertieType: 'code',
               propertieSugestions: [],
               propertiePlaceholder: 'Uma descrição aqui...',
-              propertieValue: '[{ "type": "return", "value": "\"return \\\"Hello world!\\\";\"}]'
+              propertieValue: '[{ "type": "return", "value": "return \\\"Hello world!\\\";\"}]'
             }
           ],
           propertiesList: [

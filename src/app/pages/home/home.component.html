@@ -2,7 +2,7 @@
   <!-- Top bar frame -->
   <app-top-bar-frame [tituloIde]="srcGlobal[0]?.staticPropertiesList[0]?.propertieValue"></app-top-bar-frame>
   <!-- Top bar frame -->
-  
+
   <!-- Tool bar -->
   <app-tool-bar></app-tool-bar>
   <!-- Tool bar -->
@@ -15,7 +15,7 @@
         <hr>
       </div>
       <div class="body-properties-main">
-        <div class="propertie" *ngFor="let item of srcGlobal[0]?.staticPropertiesList; index as i">  
+        <div class="propertie" *ngFor="let item of srcGlobal[0]?.staticPropertiesList; index as i">
           <div> {{ item.propertieName }} </div>
           <input  *ngIf="item.propertieType === 'openDependencias'" type="button"           class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" value="{{ item.propertiePlaceholder }}" (click)="changeCurrentTab('plugins')"   style="max-height: unset;"/>
           <input  *ngIf="item.propertieType === 'text'"          type="text"                class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.propertieValue" placeholder="{{ item.propertiePlaceholder }}" (keypress)="inputsOnChange()" />
@@ -104,13 +104,13 @@
             Descrição: <div style="font-size: 14px; font-weight: 100;">{{ dependenciaDetalhe?.description }}</div>
           </div>
           <div style="padding: 10px;">
-            Palavras chave: 
+            Palavras chave:
             <div style="font-size: 14px; display: flex; flex-wrap: wrap; font-weight: 100;">
               <div style="padding-left: 5px;" *ngFor="let keyword of dependenciaDetalhe.keywords">{{ keyword + ", " }}</div>
             </div>
           </div>
           <div style="padding: 10px;">
-            Links úteis: 
+            Links úteis:
             <div style="font-size: 14px; display: flex; flex-wrap: wrap; font-weight: 100;">
               <a (click)="abrirNavegador(dependenciaDetalhe?.links?.bugs)">bugs,</a>
               <a (click)="abrirNavegador(dependenciaDetalhe?.links?.homepage)">homepage,</a>
@@ -127,9 +127,19 @@
 
 
     <div class="col-left" [style.width.px]="widthColLeft">
-      <div style="flex: 1"></div>
+      <div style="flex: 1">
+
+
+        <div cdkDropList class="draggable-list" cdkDropListSortingDisabled>
+          <div class="draggable-item" *ngFor="let tool of listTools" cdkDrag>{{ tool?.value }}</div>
+        </div>
+
+
+      </div>
       <div class="grabber-col-left" (mousedown)="onMouseDownColLeft($event)"></div>
     </div>
+
+
     <div class="col-center">
       <app-code-editor></app-code-editor>
     </div>
@@ -139,12 +149,12 @@
 
     <div class="col-right" [style.width.px]="widthColRight">
         <div class="grabber-col-right" (mousedown)="onMouseDownColRight($event)"></div>
-        
+
         <div style="display: flex; flex-direction: column; width: 100%;">
           <div style="min-height: min-content;" [style.height.px]="heightColRight">
             <app-resources-tree *ngFor="let obj of srcGlobal" [objeto]="obj"></app-resources-tree>
           </div>
-          
+
           <div class="grabber-col-right-resize-y" (mousedown)="onMouseDownColRightResizeY($event)"></div>
 
           <div style="flex: 1;">
@@ -152,12 +162,6 @@
           </div>
         </div>
     </div>
-
-
-
-
-
-
   </div>
 
 

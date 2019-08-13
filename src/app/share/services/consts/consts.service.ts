@@ -313,7 +313,7 @@ export class CONSTS {
               propertieType: 'code',
               propertieSugestions: [],
               propertiePlaceholder: 'Defina o retorno aqui...',
-              propertieValue: '[{ "type": "return", "value": "\"return \\\"Hello world!\\\";\"}]'
+              propertieValue: '[{ "type": "return", "value": "return \\\"Hello world!\\\";\"}]'
             }
           ],
           propertiesList: [
