@@ -1,3 +1,6 @@
-<div cdkDropList class="draggable-list" (cdkDropListDropped)="drop($event)" #flowList="cdkDropList">
-  <div class="draggable-item" *ngFor="let itemFlow of flowCode" cdkDrag>{{ itemFlow?.value }}</div>
+<div cdkDropList id="flowList" class="draggable-list"  [cdkDropListData]="flowCode" (cdkDropListDropped)="drop($event)" #flowList="cdkDropList">
+  <div class="draggable-item" *ngFor="let itemFlow of flowCode; index as i" cdkDrag>
+    <label>{{ itemFlow?.value }}</label>
+    <div class="btn btn-remove-item" (click)="flowCode.splice(i, 1)">X</div>
+  </div>
 </div>

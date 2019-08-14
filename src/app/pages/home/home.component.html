@@ -17,15 +17,29 @@
       <div class="body-properties-main">
         <div class="propertie" *ngFor="let item of srcGlobal[0]?.staticPropertiesList; index as i">
           <div> {{ item.propertieName }} </div>
-          <input  *ngIf="item.propertieType === 'openDependencias'" type="button"           class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" value="{{ item.propertiePlaceholder }}" (click)="changeCurrentTab('plugins')"   style="max-height: unset;"/>
-          <input  *ngIf="item.propertieType === 'text'"          type="text"                class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.propertieValue" placeholder="{{ item.propertiePlaceholder }}" (keypress)="inputsOnChange()" />
-          <input  *ngIf="item.propertieType === 'textMultiline'" type="text"                class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.propertieValue" placeholder="{{ item.propertiePlaceholder }}" (keypress)="inputsOnChange()" />
-          <input  *ngIf="item.propertieType === 'selectPath'"    type="text"                class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.propertieValue" placeholder="{{ item.propertiePlaceholder }}" (keypress)="inputsOnChange()" (click)="selecionarCaminho(i)" />
-          <input  *ngIf="item.propertieType === 'number'"        type="number"              class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.propertieValue" placeholder="{{ item.propertiePlaceholder }}" (keypress)="inputsOnChange()" />
-          <input  *ngIf="item.propertieType === 'disabled'"      type="text"                class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.propertieValue" placeholder="{{ item.propertiePlaceholder }}" (keypress)="inputsOnChange()" disabled />
-          <select *ngIf="item.propertieType === 'select'"        style="max-height: unset;" class="input-padrao" id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.propertieValue" >
-              <option value="0">{{ item.placeholder }}</option>
-              <option *ngFor="let sugest of item.sugestions" value="{{ sugest.value }}">{{ sugest.label }}</option>
+          <input *ngIf="item.propertieType === 'openDependencias'" type="button" class="input-padrao"
+            id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" value="{{ item.propertiePlaceholder }}"
+            (click)="changeCurrentTab('plugins')" style="max-height: unset;" />
+          <input *ngIf="item.propertieType === 'text'" type="text" class="input-padrao" id="input-propertie-{{ i }}"
+            name="input-propertie-{{ i }}" [(ngModel)]="item.propertieValue"
+            placeholder="{{ item.propertiePlaceholder }}" (keypress)="inputsOnChange()" />
+          <input *ngIf="item.propertieType === 'textMultiline'" type="text" class="input-padrao"
+            id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.propertieValue"
+            placeholder="{{ item.propertiePlaceholder }}" (keypress)="inputsOnChange()" />
+          <input *ngIf="item.propertieType === 'selectPath'" type="text" class="input-padrao"
+            id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.propertieValue"
+            placeholder="{{ item.propertiePlaceholder }}" (keypress)="inputsOnChange()"
+            (click)="selecionarCaminho(i)" />
+          <input *ngIf="item.propertieType === 'number'" type="number" class="input-padrao" id="input-propertie-{{ i }}"
+            name="input-propertie-{{ i }}" [(ngModel)]="item.propertieValue"
+            placeholder="{{ item.propertiePlaceholder }}" (keypress)="inputsOnChange()" />
+          <input *ngIf="item.propertieType === 'disabled'" type="text" class="input-padrao" id="input-propertie-{{ i }}"
+            name="input-propertie-{{ i }}" [(ngModel)]="item.propertieValue"
+            placeholder="{{ item.propertiePlaceholder }}" (keypress)="inputsOnChange()" disabled />
+          <select *ngIf="item.propertieType === 'select'" style="max-height: unset;" class="input-padrao"
+            id="input-propertie-{{ i }}" name="input-propertie-{{ i }}" [(ngModel)]="item.propertieValue">
+            <option value="0">{{ item.placeholder }}</option>
+            <option *ngFor="let sugest of item.sugestions" value="{{ sugest.value }}">{{ sugest.label }}</option>
           </select>
         </div>
       </div>
@@ -48,22 +62,25 @@
         <div class="corpo-dependences-list" *ngIf="toggleTab == true">
           <div class="resultado-busca">
             <div style="display: flex; flex-direction: column;" *ngFor="let dependence of dependencesList; index as i">
-                <div class="item-lista" (click)="abrirDependencia(i, 'instaladas')">
-                    <div style="flex: 1; align-self: center;">{{ dependence.name }}</div>
-                    <div style="flex: 1; align-self: center; text-align: right;">{{ dependence.version }}</div>
-                </div>
+              <div class="item-lista" (click)="abrirDependencia(i, 'instaladas')">
+                <div style="flex: 1; align-self: center;">{{ dependence.name }}</div>
+                <div style="flex: 1; align-self: center; text-align: right;">{{ dependence.version }}</div>
+              </div>
             </div>
           </div>
         </div>
 
-        <input type="text" (keypress)="inicializaNpmSearch()" *ngIf="toggleTab == false" [(ngModel)]="dependenciaSearch" class="input-padrao input-large input-fill" style="margin-bottom: 14px;" id="input-busca" name="input-busca" placeholder="Buscar pacote npm..." />
+        <input type="text" (keypress)="inicializaNpmSearch()" *ngIf="toggleTab == false" [(ngModel)]="dependenciaSearch"
+          class="input-padrao input-large input-fill" style="margin-bottom: 14px;" id="input-busca" name="input-busca"
+          placeholder="Buscar pacote npm..." />
         <div class="corpo-dependences-list" *ngIf="toggleTab == false">
           <div class="resultado-busca">
-            <div style="display: flex; flex-direction: column;" *ngFor="let dependence of installDependencesList; index as i">
-                <div class="item-lista" (click)="abrirDependencia(i, 'instalar')">
-                    <div style="flex: 1; align-self: center;">{{ dependence.name }}</div>
-                    <div style="flex: 1; align-self: center; text-align: right;">{{ dependence.version }}</div>
-                </div>
+            <div style="display: flex; flex-direction: column;"
+              *ngFor="let dependence of installDependencesList; index as i">
+              <div class="item-lista" (click)="abrirDependencia(i, 'instalar')">
+                <div style="flex: 1; align-self: center;">{{ dependence.name }}</div>
+                <div style="flex: 1; align-self: center; text-align: right;">{{ dependence.version }}</div>
+              </div>
             </div>
           </div>
         </div>
@@ -85,8 +102,12 @@
 
 
           <div style="display: flex;">
-            <button class="btn btn-instalar-remover-dependencia danger" *ngIf="dependenciaDetalhe.name !== '' && instalarDependencia === false" (click)="removeDependencia(dependenciaDetalhe.index);">Remover</button>
-            <button class="btn btn-instalar-remover-dependencia primary" *ngIf="dependenciaDetalhe.name !== '' && instalarDependencia === true"  (click)="adicionaDependencia(dependenciaDetalhe.index);">Instalar</button>
+            <button class="btn btn-instalar-remover-dependencia danger"
+              *ngIf="dependenciaDetalhe.name !== '' && instalarDependencia === false"
+              (click)="removeDependencia(dependenciaDetalhe.index);">Remover</button>
+            <button class="btn btn-instalar-remover-dependencia primary"
+              *ngIf="dependenciaDetalhe.name !== '' && instalarDependencia === true"
+              (click)="adicionaDependencia(dependenciaDetalhe.index);">Instalar</button>
           </div>
 
 
@@ -106,7 +127,8 @@
           <div style="padding: 10px;">
             Palavras chave:
             <div style="font-size: 14px; display: flex; flex-wrap: wrap; font-weight: 100;">
-              <div style="padding-left: 5px;" *ngFor="let keyword of dependenciaDetalhe.keywords">{{ keyword + ", " }}</div>
+              <div style="padding-left: 5px;" *ngFor="let keyword of dependenciaDetalhe.keywords">{{ keyword + ", " }}
+              </div>
             </div>
           </div>
           <div style="padding: 10px;">
@@ -130,7 +152,8 @@
       <div style="flex: 1">
 
 
-        <div cdkDropList class="draggable-list" cdkDropListSortingDisabled>
+        <div cdkDropList id="toolList" [cdkDropListData]="listTools" class="draggable-list" cdkDropListSortingDisabled
+          cdkDropListConnectedTo="flowList">
           <div class="draggable-item" *ngFor="let tool of listTools" cdkDrag>{{ tool?.value }}</div>
         </div>
 
@@ -141,26 +164,26 @@
 
 
     <div class="col-center">
-      <app-code-editor></app-code-editor>
+      <app-code-editor toolList="listTools"></app-code-editor>
     </div>
 
 
 
 
     <div class="col-right" [style.width.px]="widthColRight">
-        <div class="grabber-col-right" (mousedown)="onMouseDownColRight($event)"></div>
+      <div class="grabber-col-right" (mousedown)="onMouseDownColRight($event)"></div>
 
-        <div style="display: flex; flex-direction: column; width: 100%;">
-          <div style="min-height: min-content;" [style.height.px]="heightColRight">
-            <app-resources-tree *ngFor="let obj of srcGlobal" [objeto]="obj"></app-resources-tree>
-          </div>
-
-          <div class="grabber-col-right-resize-y" (mousedown)="onMouseDownColRightResizeY($event)"></div>
-
-          <div style="flex: 1;">
-            <app-properties-editor></app-properties-editor>
-          </div>
+      <div style="display: flex; flex-direction: column; width: 100%;">
+        <div style="min-height: min-content;" [style.height.px]="heightColRight">
+          <app-resources-tree *ngFor="let obj of srcGlobal" [objeto]="obj"></app-resources-tree>
         </div>
+
+        <div class="grabber-col-right-resize-y" (mousedown)="onMouseDownColRightResizeY($event)"></div>
+
+        <div style="flex: 1;">
+          <app-properties-editor></app-properties-editor>
+        </div>
+      </div>
     </div>
   </div>
 

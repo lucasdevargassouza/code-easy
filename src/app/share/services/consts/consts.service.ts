@@ -29,6 +29,21 @@ export class CONSTS {
     propriedades: 'propriedades'
   };
 
+  public static tipoOfTools = [
+    {
+      type: 'inicio',
+      value: 'início'
+    },
+    {
+      type: 'variavel',
+      value: 'Variável'
+    },
+    {
+      type: 'return',
+      value: 'Fim'
+    }
+  ];
+
   private static dependencesList = [
     {name: 'cors', version: '^2.8.5'},
     {name: 'debug', version: '^4.1.1'},

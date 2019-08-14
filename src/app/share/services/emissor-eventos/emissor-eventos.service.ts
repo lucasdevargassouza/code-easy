@@ -13,6 +13,7 @@ export class Emissor {
   public static currentStatus = new EventEmitter<CurrentStatus>();
   public static currentTab = new EventEmitter<string>();
   public static pidProcessoAtual = new EventEmitter<any>();
+  public static listTools = new EventEmitter<any[]>();
 
   constructor() {}
 }

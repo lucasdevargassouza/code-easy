@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { Component, OnInit, Input } from '@angular/core';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 import { Emissor } from '../../services/emissor-eventos/emissor-eventos.service';
 import { ResourcesTreeInterface } from '../../services/resources-tree.interface';
 import { DatabaseStorageService } from '../../services/database-storage/database-storage.service';
+import { CONSTS } from '../../services/consts/consts.service';
 
 @Component({
   selector: 'app-code-editor',
@@ -16,8 +17,11 @@ export class CodeEditorComponent implements OnInit {
   public flowCodeIndexInScrLocal: number;
   public flowCode: [];
 
+  @Input() private toolList: [];
+
   constructor(
     private database: DatabaseStorageService,
+
 
   ) { }
 
@@ -26,12 +30,21 @@ export class CodeEditorComponent implements OnInit {
   }
 
   public drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.flowCode, event.previousIndex, event.currentIndex);
-
-    console.log("teste");
+    console.log(event);
+    if (event.previousContainer.id === event.container.id) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    }
+    Emissor.listTools.emit(CONSTS.tipoOfTools);
 
     // Atualiza onde os itens estão salvos!
     this.srcLocal.staticPropertiesList[this.flowCodeIndexInScrLocal].propertieValue = JSON.stringify(this.flowCode);
+
   }
 
   // Em cada change salva os dados.

@@ -1,5 +1,4 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { remote } from 'electron';
 
 import { Emissor } from '../../share/services/emissor-eventos/emissor-eventos.service';
@@ -32,7 +31,7 @@ export class HomeComponent implements OnInit {
   public toggleTab: Boolean = true;
   public instalarDependencia: Boolean = false;
   public codeToEdit: string;
-  public listTools;
+  public listTools = [];
 
   private oldX = 0;
   private oldY = 0;
@@ -53,10 +52,9 @@ export class HomeComponent implements OnInit {
     this.inicializaPid();
     this.inicializaNpmSearch();
     console.log(this.srcGlobal);
-    this.listTools = [
-      {type: 'return', value: 'Variável'},
-      {type: 'return', value: 'Variável'}
-    ];
+    CONSTS.tipoOfTools.forEach(tool => {
+      this.listTools.push(tool);
+    });
   }
 
   //#region Resize Divs
@@ -217,6 +215,15 @@ export class HomeComponent implements OnInit {
 
     Emissor.pidProcessoAtual.subscribe(
       data => this.srcGlobal[0].staticPropertiesList[5].propertieValue = data
+    );
+
+    Emissor.listTools.subscribe(
+      data => {
+        this.listTools = [];
+        data.forEach(tool => {
+          this.listTools.push(tool);
+        });
+      }
     );
   }
 }
