@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ResourcesTreeInterface } from '../resources-tree.interface';
+import { ResourcesTreeInterface } from '../../interfaces/resources-tree.interface';
 import { CONSTS } from '../consts/consts.service';
 
 @Injectable({
@@ -51,21 +51,37 @@ export class TranspilerService {
     return packagejson;
   }
 
+  private montaRetorno(retorno: any): String {
+    let res = '';
+
+    retorno.forEach(item => {
+      res += item.value + '\n';
+    });
+
+    return res;
+  }
+
   // Retorna as rotas
   public async getContentRotas(srcGlobal: ResourcesTreeInterface[]): Promise<String> {
     const rotas: ResourcesTreeInterface = await this.getItemEspecifico(srcGlobal, CONSTS.tiposItens.rota);
     let listaRotas = '\n';
     console.log("Aqui");
+
+
     rotas.itemList.forEach(rota => {
       listaRotas = listaRotas + '\n' +
+
       '/*' + rota.staticPropertiesList[1].propertieValue + '*/\n' +
       'app.' + rota.staticPropertiesList[2].propertieValue.trim() +
       '(\'' + rota.staticPropertiesList[3].propertieValue.trim() + '\', (req, res, next) => {\n' +
       '  res.send((() => {\n    ' +
-        srcGlobal[3].itemList[rota.staticPropertiesList[4].propertieValue].staticPropertiesList[2].propertieValue  +
+      this.montaRetorno(JSON.parse(
+          srcGlobal[3].itemList[rota.staticPropertiesList[4].propertieValue].staticPropertiesList[2].propertieValue
+      )) +
       '\n  })())\n' +
       '});\n';
     });
+
 
     const stringFile = '' +
       '\'use strict\';\n\n' +

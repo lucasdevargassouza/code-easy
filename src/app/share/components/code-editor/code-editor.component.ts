@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 import { Emissor } from '../../services/emissor-eventos/emissor-eventos.service';
-import { ResourcesTreeInterface } from '../../services/resources-tree.interface';
+import { ResourcesTreeInterface } from '../../interfaces/resources-tree.interface';
 import { DatabaseStorageService } from '../../services/database-storage/database-storage.service';
 import { CONSTS } from '../../services/consts/consts.service';
 
@@ -52,6 +52,13 @@ export class CodeEditorComponent implements OnInit {
     setTimeout(() => {
       this.database.updateSrc();
     }, 100);
+  }
+
+  public removeItemOflow(i: number) {
+    this.flowCode.splice(i, 1);
+
+    // Atualiza onde os itens estão salvos!
+    this.srcLocal.staticPropertiesList[this.flowCodeIndexInScrLocal].propertieValue = JSON.stringify(this.flowCode);
   }
 
   // Sempre retorna o item que deve ser editado.

@@ -1,6 +1,7 @@
 <div cdkDropList id="flowList" class="draggable-list"  [cdkDropListData]="flowCode" (cdkDropListDropped)="drop($event)" #flowList="cdkDropList">
   <div class="draggable-item" *ngFor="let itemFlow of flowCode; index as i" cdkDrag>
-    <label>{{ itemFlow?.value }}</label>
-    <div class="btn btn-remove-item" (click)="flowCode.splice(i, 1)">X</div>
+    <label>{{ itemFlow?.type }}</label>
+    <input type="text" style="margin-left: 10px; margin-right: 10px; width: 100%;" class="input-padrao" [(ngModel)]="itemFlow.value"/>
+    <div class="btn btn-remove-item" (click)="removeItemOflow(i)">X</div>
   </div>
 </div>

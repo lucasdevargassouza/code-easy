@@ -4,7 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { AppConfig } from '../environments/environment';
 
 import { CONSTS } from './share/services/consts/consts.service';
-import { ResourcesTreeInterface } from './share/services/resources-tree.interface';
+import { ResourcesTreeInterface } from './share/interfaces/resources-tree.interface';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 

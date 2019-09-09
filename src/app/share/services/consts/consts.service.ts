@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ResourcesTreeInterface } from '../resources-tree.interface';
+import { ResourcesTreeInterface } from '../../interfaces/resources-tree.interface';
+import { TipoOfTools } from '../../interfaces/tipo-of-tools';
 
 @Injectable({
   providedIn: 'root'
@@ -29,18 +30,21 @@ export class CONSTS {
     propriedades: 'propriedades'
   };
 
-  public static tipoOfTools = [
+  public static tipoOfTools: TipoOfTools[] = [
     {
-      type: 'inicio',
-      value: 'início'
+      type: 'variable',
+      comment: '',
+      value: 'let var1;'
     },
     {
-      type: 'variavel',
-      value: 'Variável'
+      type: 'js',
+      comment: '',
+      value: ''
     },
     {
       type: 'return',
-      value: 'Fim'
+      comment: '',
+      value: 'return null;'
     }
   ];
 

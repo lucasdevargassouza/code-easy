@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { TranspilerService } from '../transpiler/transpiler.service';
-import { ResourcesTreeInterface } from '../resources-tree.interface';
+import { ResourcesTreeInterface } from '../../interfaces/resources-tree.interface';
 import { UtilsService } from '../utils/utils.service';
 import { DatabaseStorageService } from '../database-storage/database-storage.service';
 import { Emissor } from '../emissor-eventos/emissor-eventos.service';

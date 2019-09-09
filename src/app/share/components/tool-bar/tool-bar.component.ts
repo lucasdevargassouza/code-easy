@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ResourcesTreeInterface } from '../../services/resources-tree.interface';
+import { ResourcesTreeInterface } from '../../interfaces/resources-tree.interface';
 import { CurrentStatus } from '../../services/emissor-eventos/interfaces.interface';
 import { Emissor } from '../../services/emissor-eventos/emissor-eventos.service';
 

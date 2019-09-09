@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { remote } from 'electron';
 import { DatabaseStorageService } from '../../share/services/database-storage/database-storage.service';
-import { ResourcesTreeInterface } from '../../share/services/resources-tree.interface';
+import { ResourcesTreeInterface } from '../../share/interfaces/resources-tree.interface';
 import { CONSTS } from '../../share/services/consts/consts.service';
 import { Router } from '@angular/router';
 import { CompilerService } from '../../share/services/compiler/compiler.service';

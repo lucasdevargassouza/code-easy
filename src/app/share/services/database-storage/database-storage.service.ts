@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Emissor } from '../emissor-eventos/emissor-eventos.service';
 import { CONSTS } from '../consts/consts.service';
-import { ResourcesTreeInterface } from '../resources-tree.interface';
+import { ResourcesTreeInterface } from '../../interfaces/resources-tree.interface';
 import { UtilsService } from '../utils/utils.service';
 import { Router } from '@angular/router';
 

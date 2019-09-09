@@ -1,5 +1,5 @@
 import { Injectable, EventEmitter  } from '@angular/core';
-import { ResourcesTreeInterface } from '../resources-tree.interface';
+import { ResourcesTreeInterface } from '../../interfaces/resources-tree.interface';
 import { CurrentStatus } from './interfaces.interface';
 
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ResourcesTreeInterface } from '../resources-tree.interface';
+import { ResourcesTreeInterface } from '../../interfaces/resources-tree.interface';
 import { HttpClient } from '@angular/common/http';
 import { Emissor } from '../emissor-eventos/emissor-eventos.service';
 
@@ -13,14 +13,14 @@ export class UtilsService {
 
   constructor(
   ) { }
-  
+
   /**
    * Serve para inicializar o indexPath de cada elemento passado.
-   * 
-   * 
+   *
+   *
    * @param src ResourcesTreeInterface[] Basicamento todo o código do projeto atual.
    * @param indexPath number[] Opcional, serve para verificar se já não existe um path, evitando gerar outro.
-   * 
+   *
    * @returns ResourcesTreeInterface[] Retorna todo que foi passado por parâmetro, mas com os indexPaths atualizados.
    */
   public initIndexPath(src: ResourcesTreeInterface[], indexPath?: number[]): ResourcesTreeInterface[] {

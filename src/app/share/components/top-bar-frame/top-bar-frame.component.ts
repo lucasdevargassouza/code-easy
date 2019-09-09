@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { remote } from 'electron';
 import { Emissor } from '../../services/emissor-eventos/emissor-eventos.service';
 import { CompilerService } from '../../services/compiler/compiler.service';
-import { ResourcesTreeInterface } from '../../services/resources-tree.interface';
+import { ResourcesTreeInterface } from '../../interfaces/resources-tree.interface';
 import { DatabaseStorageService } from '../../services/database-storage/database-storage.service';
 import { CurrentStatus } from '../../services/emissor-eventos/interfaces.interface';
 
