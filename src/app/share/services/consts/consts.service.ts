@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ResourcesTreeInterface } from '../../interfaces/resources-tree.interface';
-import { TipoOfTools, EnumTypeOfTools } from '../../interfaces/tipo-of-tools';
+import { TipoOfTools, EnumTypeOfTools, EnumTypeIconsOfTools } from '../../interfaces/tipo-of-tools';
 
 @Injectable({
   providedIn: 'root'
@@ -34,16 +34,19 @@ export class CONSTS {
     {
       type: EnumTypeOfTools.variable,
       comment: '',
+      previewIcon: EnumTypeIconsOfTools.variable,
       value: 'let var1;'
     },
     {
       type: EnumTypeOfTools.js,
       comment: '',
+      previewIcon: EnumTypeIconsOfTools.js,
       value: ''
     },
     {
       type: EnumTypeOfTools.return,
       comment: '',
+      previewIcon: EnumTypeIconsOfTools.return,
       value: 'return null;'
     }
   ];

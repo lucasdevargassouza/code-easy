@@ -45,6 +45,8 @@ export class CodeEditorComponent implements OnInit {
     // Atualiza onde os itens estão salvos!
     this.srcLocal.staticPropertiesList[this.flowCodeIndexInScrLocal].propertieValue = JSON.stringify(this.flowCode);
 
+    // Atualiza o local storage!
+    this.database.updateSrc();
   }
 
   // Em cada change salva os dados.
@@ -59,12 +61,14 @@ export class CodeEditorComponent implements OnInit {
 
     // Atualiza onde os itens estão salvos!
     this.srcLocal.staticPropertiesList[this.flowCodeIndexInScrLocal].propertieValue = JSON.stringify(this.flowCode);
+
+    // Atualiza o local storage!
+    this.database.updateSrc();
   }
 
   // Sempre retorna o item que deve ser editado.
   private getItemAEditar(itemAtual: []) {
     let itemCurrent: any = this.srcGlobal;
-
     if (itemAtual.length > 0) {
       for (let i = 0; itemAtual.length > i; i++) {
         if (i > 0) {
@@ -88,15 +92,12 @@ export class CodeEditorComponent implements OnInit {
 
     Emissor.itemSelectedLocation.subscribe(
       async data => {
-
         this.srcLocal = await this.getItemAEditar(data);
 
         for (let index = 0; index < this.srcLocal.staticPropertiesList.length; index++) {
           if (this.srcLocal.staticPropertiesList[index].propertieType === 'code') {
-            console.log(this.srcLocal.staticPropertiesList[index].propertieValue);
             this.flowCodeIndexInScrLocal = index;
             this.flowCode = JSON.parse(this.srcLocal.staticPropertiesList[index].propertieValue);
-            console.log(this.flowCode);
           }
         }
 

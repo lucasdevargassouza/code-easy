@@ -28,3 +28,20 @@ textarea {
   outline: auto;
 }
 
+.input-local-custom {
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 100%;
+}
+
+.cursor-default {
+  cursor: default;
+}
+
+.cursor-grab {
+  cursor: grab;
+}
+
+.cursor-grab:active {
+  cursor: grabbing;
+}
