@@ -112,7 +112,7 @@
   padding-right: $size-1-5;
   font-family: Arial, 'Courier New', monospace;
   max-height: $size-4;
-  width: 70%;
+  width: $size-half-70;
 }
 
 .dependences-main {
@@ -166,7 +166,7 @@
       font-size: $size-3;
     }
     .dependences-details-main {
-      border: 1px solid $color-border-light-gray;
+      border: $size-0-25 solid $color-border-light-gray;
       padding: $size-1;
       height: -webkit-fill-available;
       a {
@@ -209,3 +209,7 @@
   justify-content: center;
 }
 
+.align-start {
+  width: $size-fill;
+  padding-left: $size-2;
+}

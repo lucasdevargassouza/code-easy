@@ -14,6 +14,7 @@ $size-half-20: 20%;
 $size-half-10: 10%;
 $size-none: 0px;
 
+$size-0-25: 1px;
 $size-0-5: 2px;
 $size-0-75: 3px;
 $size-1: 4px;
@@ -276,6 +277,7 @@ a:active {
   padding-top: 5px;
   padding-bottom: 5px;
   background-color: blue;
+  cursor: grabbing;
 }
 
 .cdk-drag-placeholder {

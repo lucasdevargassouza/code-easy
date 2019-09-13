@@ -52,6 +52,10 @@ export class CodeEditorComponent implements OnInit {
   // Em cada change salva os dados.
   public inputsOnChange() {
     setTimeout(() => {
+      // Atualiza onde os itens estão salvos!
+      this.srcLocal.staticPropertiesList[this.flowCodeIndexInScrLocal].propertieValue = JSON.stringify(this.flowCode);
+
+      //
       this.database.updateSrc();
     }, 100);
   }

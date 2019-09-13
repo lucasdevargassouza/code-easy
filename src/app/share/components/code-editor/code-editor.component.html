@@ -1,7 +1,7 @@
 <div cdkDropList id="flowList" class="draggable-list"  [cdkDropListData]="flowCode" (cdkDropListDropped)="drop($event)" #flowList="cdkDropList">
   <div class="draggable-item cursor-default" *ngFor="let itemFlow of flowCode; index as i" cdkDragBoundary="" cdkDrag>
     <mat-icon aria-hidden="false" aria-label="Example home icon">{{ itemFlow?.previewIcon }}</mat-icon>
-    <input type="text" class="input-padrao input-local-custom" [(ngModel)]="itemFlow.value"/>
+    <input id="input-editor-{{ i }}" name="input-editor-{{ i }}" type="text" class="input-padrao input-local-custom" (change)="inputsOnChange()" [(ngModel)]="itemFlow.value"/>
     <div class="btn btn-remove-item" (click)="removeItemOflow(i)">X</div>
     <label style="width: 10px;"></label>
     <mat-icon class="cursor-grab" aria-hidden="false" aria-label="Example home icon" cdkDragHandle>drag_handle</mat-icon>
