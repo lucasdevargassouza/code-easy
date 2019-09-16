@@ -151,7 +151,7 @@ export class HomeComponent implements OnInit {
       this.srcGlobal[0].staticPropertiesList[6].propertieValue = JSON.stringify(this.dependencesList);
       this.database.updateSrc();
       await this.compiler.genereteFiles(this.srcGlobal);
-      await this.compiler.instalaNodeModules(this.srcGlobal[0].staticPropertiesList[4].propertieValue);
+      await this.terminalAccess.instalaNodeModules(this.srcGlobal[0].staticPropertiesList[4].propertieValue);
     } catch (e) {
       console.log(e);
     }
@@ -171,7 +171,7 @@ export class HomeComponent implements OnInit {
         this.srcGlobal[0].staticPropertiesList[6].propertieValue = JSON.stringify(this.dependencesList);
         this.database.updateSrc();
         await this.compiler.genereteFiles(this.srcGlobal);
-        await this.compiler.instalaNodeModules(this.srcGlobal[0].staticPropertiesList[4].propertieValue);
+        await this.terminalAccess.instalaNodeModules(this.srcGlobal[0].staticPropertiesList[4].propertieValue);
       } catch (e) { console.log(e); }
     }
   }
@@ -187,7 +187,7 @@ export class HomeComponent implements OnInit {
       if (this.srcGlobal) {
         if (this.srcGlobal[0].staticPropertiesList[4].propertieValue !== '') {
           try {
-            await this.utils.getPidCurrentProcess(this.srcGlobal[1].staticPropertiesList[2].propertieValue);
+            await this.terminalAccess.getPidCurrentProcess(this.srcGlobal[1].staticPropertiesList[2].propertieValue);
           } catch (error) { pid = '--'; let err; err = error; }
         }
       }

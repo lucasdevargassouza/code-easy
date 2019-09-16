@@ -5,6 +5,7 @@ import { ResourcesTreeInterface } from '../../share/interfaces/resources-tree.in
 import { CONSTS } from '../../share/services/consts/consts.service';
 import { Router } from '@angular/router';
 import { CompilerService } from '../../share/services/compiler/compiler.service';
+import { TerminalAccessService } from '../../share/services/terminal-access/terminal-access.service';
 
 const dialog = remote.dialog;
 const fs = require('fs');
@@ -68,6 +69,7 @@ export class PaginaInicialComponent implements OnInit {
     private database: DatabaseStorageService,
     private router: Router,
     private compiler: CompilerService,
+    private terminalAccess: TerminalAccessService,
   ) { }
 
   ngOnInit() {
@@ -138,14 +140,6 @@ export class PaginaInicialComponent implements OnInit {
     this.database.setListaProjetos(this.listaProjetos);
   }
 
-/*   public busca() {
-    this.listaProjetos.filter((value) => {
-      if (value[0].staticPropertiesList[0].propertieValue.indexOf(this.busca)) {
-
-      }
-    });
-  } */
-
   // Responsável por inicializar os arquivos e suas dependências nas pastas do dispositivo.
   private async inicializaDiretorio() {
     if (!fs.existsSync(this.srcGlobal[0].staticPropertiesList[4].propertieValue)) {
@@ -154,7 +148,7 @@ export class PaginaInicialComponent implements OnInit {
 
     await this.compiler.genereteFiles(this.srcGlobal);
 
-    await this.compiler.instalaNodeModules(this.srcGlobal[0].staticPropertiesList[4].propertieValue);
+    await this.terminalAccess.instalaNodeModules(this.srcGlobal[0].staticPropertiesList[4].propertieValue);
 
     this.router.navigate(['']);
   }

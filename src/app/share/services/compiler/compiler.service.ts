@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
 import { TranspilerService } from '../transpiler/transpiler.service';
 import { ResourcesTreeInterface } from '../../interfaces/resources-tree.interface';
-import { UtilsService } from '../utils/utils.service';
 import { DatabaseStorageService } from '../database-storage/database-storage.service';
 import { Emissor } from '../emissor-eventos/emissor-eventos.service';
-import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material';
-import { LoadingModalComponent } from '../../components/loading-modal/loading-modal.component';
+import { TerminalAccessService } from '../terminal-access/terminal-access.service';
 
 const { dialog } = require('electron').remote;
 const fs = require('fs');
@@ -20,11 +18,10 @@ export class CompilerService {
   private srcGlobal: ResourcesTreeInterface[];
 
   constructor(
+    public dialogModal: MatDialog,
     private transpiler: TranspilerService,
     private database: DatabaseStorageService,
-    public dialogModal: MatDialog,
-    private http: HttpClient,
-    private utils: UtilsService,
+    private terminalAccess: TerminalAccessService,
 
   ) {
     Emissor.srcGlobal.subscribe(data => this.srcGlobal = data);
@@ -64,55 +61,8 @@ export class CompilerService {
       color: '', isShowLoadingBar: true
     });
 
-    this.utils.finalizaProcessos(srcGlobal[1].staticPropertiesList[2].propertieValue);
+    this.terminalAccess.finalizaProcessos(srcGlobal[1].staticPropertiesList[2].propertieValue);
 
-  }
-
-  public async instalaNodeModules(caminho: string) {
-  /* this.dialogModal.open(LoadingModalComponent, {
-      id: 'loading-modal',
-      width: '250px',
-      disableClose: true,
-      data: {}
-    });
-
-    this.dialogModal.closeAll();
-  */
-
-    setTimeout(() => {
-      Emissor.currentStatus.emit({
-        message: 'Localizando pasta',
-        color: '', isShowLoadingBar: true
-      });
-      ps.addCommand('cd ' + caminho);
-      ps.invoke().then(output => {
-
-
-        Emissor.currentStatus.emit({
-          message: 'Executando npm install',
-          color: '', isShowLoadingBar: true
-        });
-        ps.addCommand('npm i');
-        ps.invoke().then(() => {
-
-          Emissor.currentStatus.emit({
-            message: 'Npm install executado com sucesso',
-            color: '', isShowLoadingBar: false
-          });
-
-        }).catch(err => {
-          console.log(err);
-          Emissor.currentStatus.emit({
-            message: 'Npm install finalizado com avisos',
-            color: '', isShowLoadingBar: false
-          });
-        });
-
-
-      }).catch(err => {
-        console.log(err);
-      });
-    }, 2000);
   }
 
   public async genereteFiles(srcGlobal: ResourcesTreeInterface[]): Promise<any> {
@@ -149,7 +99,7 @@ export class CompilerService {
   private async iniciarEscutaAPI(srcGlobal: ResourcesTreeInterface[]) {
     let temNodeModules: Boolean = false;
 
-    this.utils.finalizaProcessos(srcGlobal[1].staticPropertiesList[2].propertieValue);
+    this.pararAplicacao(srcGlobal);
 
     ps.addCommand('cd ' + srcGlobal[0].staticPropertiesList[4].propertieValue);
       ps.invoke().then(() => {

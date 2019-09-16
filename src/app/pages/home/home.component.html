@@ -177,7 +177,7 @@
       <div class="grabber-col-right" (mousedown)="onMouseDownColRight($event)"></div>
 
       <div style="display: flex; flex-direction: column; width: 100%;">
-        <div style="min-height: min-content;" [style.height.px]="heightColRight">
+        <div style="min-height: min-content; overflow-y: -webkit-paged-y;" [style.height.px]="heightColRight">
           <app-resources-tree *ngFor="let obj of srcGlobal" [objeto]="obj"></app-resources-tree>
         </div>
 
