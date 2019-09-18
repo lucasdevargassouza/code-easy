@@ -24,7 +24,7 @@ Você pode executar esta aplicação:
 - Rode sua aplicação em ambiente de produção.
 - Crie executáveis para windows, mac e linux.
 
-/!\ Angular 8.0 CLI preciza do Node 10.9 ou superior para funcionar.
+/!\ Angular 8.0 CLI precisa do Node 10.9 ou superior para funcionar.
 
 ## Como iniciar
 
