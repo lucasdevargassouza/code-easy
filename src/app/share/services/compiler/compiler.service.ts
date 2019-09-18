@@ -6,7 +6,8 @@ import { Emissor } from '../emissor-eventos/emissor-eventos.service';
 import { MatDialog } from '@angular/material';
 import { TerminalAccessService } from '../terminal-access/terminal-access.service';
 
-const { dialog } = require('electron').remote;
+import { dialog } from 'electron';
+
 const fs = require('fs');
 const shell = require('node-powershell');
 let ps = new shell({ executionPolicy: 'Bypass', noProfile: true });
@@ -18,7 +19,6 @@ export class CompilerService {
   private srcGlobal: ResourcesTreeInterface[];
 
   constructor(
-    public dialogModal: MatDialog,
     private transpiler: TranspilerService,
     private database: DatabaseStorageService,
     private terminalAccess: TerminalAccessService,
@@ -34,20 +34,18 @@ export class CompilerService {
     // Finaliza e inicia o ps.
     ps = new shell({ executionPolicy: 'Bypass', noProfile: true });
 
+    // Pega o pid do processo que estiver radando!
+    const pidProcesso = srcGlobal[0].staticPropertiesList[5].propertieValue;
+
     // Usado para validar se já existe outro processo rodando na mesma porta.
-    if (
-      srcGlobal[0].staticPropertiesList[5].propertieValue !== '' &&
-      srcGlobal[0].staticPropertiesList[5].propertieValue !== '--' &&
-      srcGlobal[0].staticPropertiesList[5].propertieValue !== undefined &&
-      srcGlobal[0].staticPropertiesList[5].propertieValue !== null
-    ) {
-      ps.addCommand('taskKill.exe /F /PID ' + srcGlobal[0].staticPropertiesList[5].propertieValue);
-      ps.invoke().then(output => {
+    if (pidProcesso !== '' && pidProcesso !== '--' && pidProcesso !== undefined && pidProcesso !== null) {
+
+      const processStoped = await this.terminalAccess.finalizaProcessos(srcGlobal[1].staticPropertiesList[2].propertieValue);
+      if (processStoped) {
         this.iniciarEscutaAPI(srcGlobal);
-      }).catch(err => {
-        console.log(err);
+      } else {
         this.iniciarEscutaAPI(srcGlobal);
-      });
+      }
 
     } else {
       this.iniciarEscutaAPI(srcGlobal);
@@ -102,73 +100,76 @@ export class CompilerService {
     this.pararAplicacao(srcGlobal);
 
     ps.addCommand('cd ' + srcGlobal[0].staticPropertiesList[4].propertieValue);
-      ps.invoke().then(() => {
-        ps.addCommand('ls');
-        ps.invoke().then((output) => {
+    ps.invoke().then(() => {
+      ps.addCommand('ls');
+      ps.invoke().then((output) => {
 
-          const nodemodules = output.toString().indexOf('node_modules');
-          if (nodemodules !== -1) {
-            temNodeModules = true;
-          } else {
-            // Instala a pasta node_modules
-            ps.addCommand('npm i');
-            Emissor.currentStatus.emit({
-              message: 'Instalando dependências',
-              color: '', isShowLoadingBar: true
-            });
-          }
+        const nodemodules = output.toString().indexOf('node_modules');
+        if (nodemodules !== -1) {
+          temNodeModules = true;
+        } else {
+          // Instala a pasta node_modules
+          ps.addCommand('npm i');
+          Emissor.currentStatus.emit({
+            message: 'Instalando dependências',
+            color: '', isShowLoadingBar: true
+          });
+        }
 
-          // Executa npm i se nescessário
+        // Executa npm i se nescessário
+        ps.invoke().then(() => {
+
+          Emissor.currentStatus.emit({
+            message: 'Escutando API',
+            color: '#207d00', isShowLoadingBar: false
+          });
+
+          // this.terminalAccess.getPidCurrentProcess(srcGlobal[1].staticPropertiesList[2].propertieValue);
+          /* ps.addCommand('netstat -ona | findstr :' + srcGlobal[1].staticPropertiesList[2].propertieValue);
+          ps.invoke().then(data => {
+            try {
+
+               // Se o processo iniciou grava o pid do processo
+              const pid = data.split('LISTENING ')[1].split('TCP ')[0].trim();
+              srcGlobal[0].staticPropertiesList[5].propertieValue = pid;
+
+
+            } catch (error) { let erro; erro = error; }
+          }).catch(error => { console.log(error); }); */
+
+          // Inicia novo processo
+          ps.addCommand('node server.js > ' + srcGlobal[0].staticPropertiesList[0].propertieValue.toLocaleLowerCase().trim() + '.json');
           ps.invoke().then(() => {
 
             Emissor.currentStatus.emit({
-              message: 'Escutando API',
-              color: '#207d00', isShowLoadingBar: false
+              message: 'Processo finalizado!',
+              color: '', isShowLoadingBar: false
             });
 
-            ps.addCommand('netstat -ona | findstr :' + srcGlobal[1].staticPropertiesList[2].propertieValue);
-            ps.invoke().then(data => {
-              try {
-                const pid = data.split('LISTENING ')[1].split('TCP ')[0].trim();
-                console.log(pid);
-
-                srcGlobal[0].staticPropertiesList[5].propertieValue = pid;
-              } catch (error) { let erro; erro = error; }
-            }).catch(error => {  console.log(error); });
-
-            // Inicia novo processo
-            ps.addCommand('node server.js > ' + srcGlobal[0].staticPropertiesList[0].propertieValue.toLocaleLowerCase().trim() + '.json');
-            ps.invoke().then(() => {
-
-              Emissor.currentStatus.emit({
-                message: 'Processo finalizado!',
-                color: '', isShowLoadingBar: false
-              });
-
-            }).catch(err => {
-              console.log(err);
-              Emissor.currentStatus.emit({
-                message: 'API não iniciada!',
-                color: '', isShowLoadingBar: true
-              });
-            });
           }).catch(err => {
             console.log(err);
             Emissor.currentStatus.emit({
-              message: 'Execução da API finalizada!',
-              color: '', isShowLoadingBar: false
+              message: 'API não iniciada!',
+              color: '', isShowLoadingBar: true
             });
+          });
+        }).catch(err => {
+          console.log(err);
+          Emissor.currentStatus.emit({
+            message: 'Execução da API finalizada!',
+            color: '', isShowLoadingBar: false
+          });
         });
-        }).catch(err => console.log(err));
       }).catch(err => console.log(err));
+    }).catch(err => console.log(err));
   }
 
   private async salvarFiles(caminhoSalvar: String, files: any[], srcGlobal: ResourcesTreeInterface[]) {
 
     if (caminhoSalvar === '' || caminhoSalvar === undefined || caminhoSalvar === null) {
 
-      dialog.showOpenDialog({properties: ['openDirectory']}, (path) => {
-        if (path === undefined) {} else {
+      dialog.showOpenDialog({ properties: ['openDirectory'] }, (path) => {
+        if (path === undefined) { } else {
 
           srcGlobal[0].staticPropertiesList[4].propertieValue = path.toString();
           this.database.updateSrc();
@@ -180,9 +181,9 @@ export class CompilerService {
           files.forEach(file => {
             try {
               Emissor.currentStatus.emit({
-                  message: path + '\\' + file.fileName + '.' + file.extensao,
-                  color: '', isShowLoadingBar: true
-                });
+                message: path + '\\' + file.fileName + '.' + file.extensao,
+                color: '', isShowLoadingBar: true
+              });
               fs.writeFile(path + '\\' + file.fileName + '.' + file.extensao, file.content, () => {
                 Emissor.currentStatus.emit({
                   message: file.fileName + ' salvo!',
@@ -201,7 +202,7 @@ export class CompilerService {
           fs.writeFile(
             caminhoSalvar + '\\' + srcGlobal[0].staticPropertiesList[0].propertieValue.toLocaleLowerCase().trim() + '.json',
             '',
-            () => {}
+            () => { }
           );
         }
       });

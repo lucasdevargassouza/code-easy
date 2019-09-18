@@ -36,8 +36,7 @@ export class TerminalAccessService {
    * @param port String Porta na qual o processo está rodando
    * @returns new Promise(null)
    */
-  public finalizaProcessos(port: string): Promise<any> {
-
+  public finalizaProcessos(port: string): Promise<boolean> {
     this.execCommand('netstat -ona | findstr :' + port).then(data => {
 
       try {
@@ -51,20 +50,19 @@ export class TerminalAccessService {
             color: '', isShowLoadingBar: false
           });
 
+          return Promise.resolve(true);
         }).catch(error => { console.log(error); });
       } catch (error) {
         let erro;
         erro = error;
+        return Promise.resolve(false);
       }
-
-
-
-
     }).catch(error => {
       console.log(error);
+      return Promise.resolve(false);
     });
 
-    return new Promise(null);
+    return Promise.resolve(false);
   }
 
   /**
@@ -77,12 +75,21 @@ export class TerminalAccessService {
   public async getPidCurrentProcess(port: string): Promise<any> {
     this.execCommand('netstat -ona | findstr :' + port).then(data => {
       try {
-        const pid = data.split('LISTENING ')[1].split('TCP ')[0].trim();
+
+        const pid = data.split('LISTENING ')[1].split('TCP ')[0].trim(); // Pega o pid.
+
         Emissor.pidProcessoAtual.emit(Number(pid));
+        Emissor.currentStatus.emit({
+          message: 'Escutando API',
+          color: '#207d00', isShowLoadingBar: false
+        });
+
       } catch (error) { let erro; erro = error; Emissor.pidProcessoAtual.emit('--'); }
     }).catch(error => {
+
       console.log('Nenhuma API rodando...');
       Emissor.pidProcessoAtual.emit('--');
+
     });
     return new Promise(null);
   }
@@ -121,7 +128,6 @@ export class TerminalAccessService {
       });
     }, 2000);
   }
-
 
   private execCommand(command: string): Promise<any> {
     return new Promise((a, r) => {
