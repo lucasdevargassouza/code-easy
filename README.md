@@ -34,38 +34,32 @@ Clone este repositório na sua maquina :
 git clone https://github.com/maximegris/angular-electron.git
 ```
 
-instale as dependências com o npm :
+Instale as dependências com o npm :
 
 ``` bash
 npm install
 ```
 
-There is an issue with `yarn` and `node_modules` that are only used in electron on the backend when the application is built by the packager. Please use `npm` as dependencies manager.
-
-
-If you want to generate Angular components with Angular-cli , you **MUST** install `@angular/cli` in npm global context.
-Please follow [Angular-cli documentation](https://github.com/angular/angular-cli) if you had installed a previous version of `angular-cli`.
+Se você quiser gerar componentes com o Angular-cli , você **precisa** instalar o `@angular/cli` no contexto global do npm.
+Por favor siga [Angular-cli documentation](https://github.com/angular/angular-cli) se você precisar instalar versões anteriores do  `angular-cli`.
 
 ``` bash
 npm install -g @angular/cli
 ```
 
-## To build for development
+## Para iniciar a aplicação em modo desenvolvedor
 
-- **in a terminal window** -> npm start
+- **no terminal do windows execute** -> npm start
 
-Voila! You can use your Angular + Electron app in a local development environment with hot reload !
+Feito! você já pode ver a aplicação feita com Angular + Electron em um anbiente local de desenvolvimento com o hot reload do angular!
 
-The application code is managed by `main.ts`. In this sample, the app runs with a simple Angular App (http://localhost:4200) and an Electron window.
-The Angular component contains an example of Electron and NodeJS native lib import.
-You can disable "Developer Tools" by commenting `win.webContents.openDevTools();` in `main.ts`.
 
-## Included Commands
+## Comandos incluídos
 
-|Command|Description|
+|Comando|Descrição|
 |--|--|
-|`npm run ng:serve:web`| Execute the app in the browser |
-|`npm run build`| Build the app. Your built files are in the /dist folder. |
+|`npm run ng:serve:web`| Executa o app no navegador |
+|`npm run build`| Constroi o app. Seus arquivos de build estão na pasta /dist. |
 |`npm run build:prod`| Build the app with Angular aot. Your built files are in the /dist folder. |
 |`npm run electron:local`| Builds your application and start electron
 |`npm run electron:linux`| Builds your application and creates an app consumable on linux system |
