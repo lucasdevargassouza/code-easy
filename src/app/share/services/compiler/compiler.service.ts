@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material';
 import { TerminalAccessService } from '../terminal-access/terminal-access.service';
 
 import { dialog } from 'electron';
+import { TypeOfStatus, ColorsOfStatus } from '../../interfaces/status-bar';
 
 const fs = require('fs');
 const shell = require('node-powershell');
@@ -55,6 +56,7 @@ export class CompilerService {
   public async pararAplicacao(srcGlobal: ResourcesTreeInterface[]) {
     console.log('Parando API...');
     Emissor.currentStatus.emit({
+      status: TypeOfStatus.OutroStatus,
       message: 'Parando API...',
       color: '', isShowLoadingBar: true
     });
@@ -111,8 +113,9 @@ export class CompilerService {
           // Instala a pasta node_modules
           ps.addCommand('npm i');
           Emissor.currentStatus.emit({
+            status: TypeOfStatus.OutroStatus,
             message: 'Instalando dependências',
-            color: '', isShowLoadingBar: true
+            color: ColorsOfStatus.OutroStatus, isShowLoadingBar: true
           });
         }
 
@@ -120,8 +123,9 @@ export class CompilerService {
         ps.invoke().then(() => {
 
           Emissor.currentStatus.emit({
+            status: TypeOfStatus.EscutandoApi,
             message: 'Escutando API',
-            color: '#207d00', isShowLoadingBar: false
+            color: ColorsOfStatus.EscutandoApi, isShowLoadingBar: false
           });
 
           // this.terminalAccess.getPidCurrentProcess(srcGlobal[1].staticPropertiesList[2].propertieValue);
@@ -142,6 +146,7 @@ export class CompilerService {
           ps.invoke().then(() => {
 
             Emissor.currentStatus.emit({
+      status: TypeOfStatus.OutroStatus,
               message: 'Processo finalizado!',
               color: '', isShowLoadingBar: false
             });
@@ -149,6 +154,7 @@ export class CompilerService {
           }).catch(err => {
             console.log(err);
             Emissor.currentStatus.emit({
+              status: TypeOfStatus.FalhaGeral,
               message: 'API não iniciada!',
               color: '', isShowLoadingBar: true
             });
@@ -156,6 +162,7 @@ export class CompilerService {
         }).catch(err => {
           console.log(err);
           Emissor.currentStatus.emit({
+            status: TypeOfStatus.ApiFinalizada,
             message: 'Execução da API finalizada!',
             color: '', isShowLoadingBar: false
           });
@@ -175,23 +182,27 @@ export class CompilerService {
           this.database.updateSrc();
 
           Emissor.currentStatus.emit({
+            status: TypeOfStatus.OutroStatus,
             message: 'Salvando em: \"' + path + '\"',
             color: '', isShowLoadingBar: true
           });
           files.forEach(file => {
             try {
               Emissor.currentStatus.emit({
+                status: TypeOfStatus.OutroStatus,
                 message: path + '\\' + file.fileName + '.' + file.extensao,
                 color: '', isShowLoadingBar: true
               });
               fs.writeFile(path + '\\' + file.fileName + '.' + file.extensao, file.content, () => {
                 Emissor.currentStatus.emit({
+                  status: TypeOfStatus.OutroStatus,
                   message: file.fileName + ' salvo!',
                   color: '', isShowLoadingBar: true
                 });
               });
             } catch (e) {
               Emissor.currentStatus.emit({
+                status: TypeOfStatus.FalhaGeral,
                 message: 'Falha ao salvar o arquivo',
                 color: '', isShowLoadingBar: false
               });
@@ -208,6 +219,7 @@ export class CompilerService {
       });
     } else {
       Emissor.currentStatus.emit({
+        status: TypeOfStatus.OutroStatus,
         message: 'Salvando em: \"' + caminhoSalvar + '\"',
         color: '', isShowLoadingBar: true
       });
@@ -215,12 +227,14 @@ export class CompilerService {
         try {
           fs.writeFile(caminhoSalvar + '\\' + file.fileName + '.' + file.extensao, file.content, (err) => {
             Emissor.currentStatus.emit({
+              status: TypeOfStatus.OutroStatus,
               message: file.fileName + '.' + file.extensao + ' salvo!',
               color: '', isShowLoadingBar: true
             });
           });
         } catch (e) {
           Emissor.currentStatus.emit({
+            status: TypeOfStatus.OutroStatus,
             message: 'Erro aosalvar o arquivo: \"' + file.fileName + '.' + file.extensao,
             color: '', isShowLoadingBar: false
           });

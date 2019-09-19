@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import * as child_process from 'child_process';
 import * as utf8 from 'utf8';
 import { Emissor } from '../emissor-eventos/emissor-eventos.service';
+import { TypeOfStatus, ColorsOfStatus, MessagesOfStatus } from '../../interfaces/status-bar';
 
 @Injectable({
   providedIn: 'root'
@@ -46,8 +47,9 @@ export class TerminalAccessService {
         this.execCommand('taskKill.exe /F /PID ' + pid).then(() => {
 
           Emissor.currentStatus.emit({
+            status: TypeOfStatus.OutroStatus,
             message: 'Execução da API finalizada!',
-            color: '', isShowLoadingBar: false
+            color: ColorsOfStatus.OutroStatus, isShowLoadingBar: false
           });
 
           return Promise.resolve(true);
@@ -80,8 +82,10 @@ export class TerminalAccessService {
 
         Emissor.pidProcessoAtual.emit(Number(pid));
         Emissor.currentStatus.emit({
-          message: 'Escutando API',
-          color: '#207d00', isShowLoadingBar: false
+          status: TypeOfStatus.EscutandoApi,
+          isShowLoadingBar: false,
+          color: ColorsOfStatus.EscutandoApi,
+          message: MessagesOfStatus.EscutandoApi,
         });
 
       } catch (error) { let erro; erro = error; Emissor.pidProcessoAtual.emit('--'); }
@@ -97,28 +101,32 @@ export class TerminalAccessService {
   public async instalaNodeModules(caminho: string) {
     setTimeout(() => {
       Emissor.currentStatus.emit({
+        status: TypeOfStatus.OutroStatus,
         message: 'Localizando pasta',
-        color: '', isShowLoadingBar: true
+        color: ColorsOfStatus.OutroStatus, isShowLoadingBar: true
       });
       this.execCommand('cd ' + caminho).then(output => {
 
         Emissor.currentStatus.emit({
+          status: TypeOfStatus.OutroStatus,
           message: 'Executando npm install',
-          color: '', isShowLoadingBar: true
+          color: ColorsOfStatus.OutroStatus, isShowLoadingBar: true
         });
 
         this.execCommand('npm i').then(() => {
 
           Emissor.currentStatus.emit({
+            status: TypeOfStatus.OutroStatus,
             message: 'Npm install executado com sucesso',
-            color: '', isShowLoadingBar: false
+            color: ColorsOfStatus.OutroStatus, isShowLoadingBar: false
           });
 
         }).catch(err => {
           console.log(err);
           Emissor.currentStatus.emit({
+            status: TypeOfStatus.OutroStatus,
             message: 'Npm install finalizado com avisos',
-            color: '', isShowLoadingBar: false
+            color: ColorsOfStatus.OutroStatus, isShowLoadingBar: false
           });
         });
 

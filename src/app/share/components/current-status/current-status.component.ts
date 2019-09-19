@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Emissor } from '../../services/emissor-eventos/emissor-eventos.service';
-import { CurrentStatus } from '../../services/emissor-eventos/interfaces.interface';
+import { StatusBar } from '../../interfaces/status-bar';
 
 @Component({
   selector: 'app-current-status',
@@ -8,13 +8,13 @@ import { CurrentStatus } from '../../services/emissor-eventos/interfaces.interfa
   styleUrls: ['./current-status.component.scss']
 })
 export class CurrentStatusComponent implements OnInit {
-  public currentStatus: CurrentStatus;
+  public currentStatus: StatusBar;
 
   constructor() { }
 
   ngOnInit() {
     Emissor.currentStatus.subscribe(
-      (data: CurrentStatus) => {
+      (data: StatusBar) => {
         this.currentStatus = data;
       },
       error => console.log(error)

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Emissor } from '../../services/emissor-eventos/emissor-eventos.service';
-import { CurrentStatus } from '../../services/emissor-eventos/interfaces.interface';
+import { StatusBar } from '../../interfaces/status-bar';
 
 @Component({
   selector: 'app-botton-bar-status',
@@ -8,7 +8,7 @@ import { CurrentStatus } from '../../services/emissor-eventos/interfaces.interfa
   styleUrls: ['./botton-bar-status.component.scss']
 })
 export class BottonBarStatusComponent implements OnInit {
-  public currentStatus: CurrentStatus;
+  public currentStatus: StatusBar;
 
   constructor() { }
 

@@ -4,7 +4,7 @@ import { Emissor } from '../../services/emissor-eventos/emissor-eventos.service'
 import { CompilerService } from '../../services/compiler/compiler.service';
 import { ResourcesTreeInterface } from '../../interfaces/resources-tree.interface';
 import { DatabaseStorageService } from '../../services/database-storage/database-storage.service';
-import { CurrentStatus } from '../../services/emissor-eventos/interfaces.interface';
+import { StatusBar, TypeOfStatus, ColorsOfStatus } from '../../interfaces/status-bar';
 
 @Component({
   selector: 'app-top-bar-frame',
@@ -13,7 +13,7 @@ import { CurrentStatus } from '../../services/emissor-eventos/interfaces.interfa
 })
 export class TopBarFrameComponent implements OnInit {
   public srcGlobal: ResourcesTreeInterface[];
-  public currentStatus: CurrentStatus;
+  public currentStatus: StatusBar;
   @Input() tituloIde: string;
 
   private window = remote.getCurrentWindow();
@@ -58,8 +58,9 @@ export class TopBarFrameComponent implements OnInit {
   private inicializaEmissores() {
 
     this.currentStatus = {
+      status: TypeOfStatus.OutroStatus,
       message: '',
-      color: '',
+      color: ColorsOfStatus.OutroStatus,
       isShowLoadingBar: false
     };
 
@@ -73,14 +74,16 @@ export class TopBarFrameComponent implements OnInit {
     );
 
     Emissor.currentStatus.subscribe(
-      (data: CurrentStatus) => {
+      (data: StatusBar) => {
         this.currentStatus = data;
+        console.log(data);
       },
       error => {
         console.log(error);
         this.currentStatus = {
+          status: TypeOfStatus.OutroStatus,
           message: '',
-          color: '',
+          color: ColorsOfStatus.OutroStatus,
           isShowLoadingBar: false
         };
       }

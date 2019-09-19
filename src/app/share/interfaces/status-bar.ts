@@ -5,8 +5,27 @@ export interface StatusBar {
   isShowLoadingBar: Boolean;
 }
 
-enum TypeOfStatus {
+export enum TypeOfStatus {
   EscutandoApi,
   ApiFinalizada,
-  ApiNaoIniciada
+  ApiNaoIniciada,
+  OutroStatus,
+  FalhaGeral
 }
+
+export enum ColorsOfStatus {
+  EscutandoApi = '#207d00',
+  ApiFinalizada = '',
+  ApiNaoIniciada = '',
+  OutroStatus = '',
+  FalhaGeral = ''
+}
+
+export enum MessagesOfStatus {
+  EscutandoApi = 'Escutando API...',
+  ApiFinalizada = '',
+  ApiNaoIniciada = '',
+  OutroStatus = '',
+  FalhaGeral = ''
+}
+

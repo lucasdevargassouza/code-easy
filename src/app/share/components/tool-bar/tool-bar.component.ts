@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ResourcesTreeInterface } from '../../interfaces/resources-tree.interface';
-import { CurrentStatus } from '../../services/emissor-eventos/interfaces.interface';
 import { Emissor } from '../../services/emissor-eventos/emissor-eventos.service';
+import { StatusBar, TypeOfStatus, ColorsOfStatus } from '../../interfaces/status-bar';
 
 @Component({
   selector: 'app-tool-bar',
@@ -10,7 +10,7 @@ import { Emissor } from '../../services/emissor-eventos/emissor-eventos.service'
 })
 export class ToolBarComponent implements OnInit {
   public srcGlobal: ResourcesTreeInterface[];
-  public currentStatus: CurrentStatus;
+  public currentStatus: StatusBar;
 
   constructor() { }
 
@@ -25,22 +25,24 @@ export class ToolBarComponent implements OnInit {
   private inicializaEmissores() {
 
     this.currentStatus = {
+      status: TypeOfStatus.OutroStatus,
       message: '',
-      color: '',
+      color: ColorsOfStatus.OutroStatus,
       isShowLoadingBar: false
     };
 
     Emissor.srcGlobal.subscribe(data => this.srcGlobal = data);
 
     Emissor.currentStatus.subscribe(
-      (data: CurrentStatus) => {
+      (data: StatusBar) => {
         this.currentStatus = data;
       },
       error => {
         console.log(error);
         this.currentStatus = {
+          status: TypeOfStatus.OutroStatus,
           message: '',
-          color: '',
+          color: ColorsOfStatus.OutroStatus,
           isShowLoadingBar: false
         };
       }
